@@ -1,0 +1,42 @@
+
+CFLAGS = -Wall -O2 -fopenmp -I$(MKL_INCLUDE) -DARCH="Linux" -DPARDISO -DARPACK -DMATRIXSTORAGE -DUSE_MT=1 
+FFLAGS = -Wall -O2 -fopenmp 
+
+CC=gcc
+FC=gfortran
+
+.c.o :
+	$(CC) $(CFLAGS) -c $<
+.f.o :
+	$(FC) $(FFLAGS) -c $<
+
+include Makefile.inc
+
+SCCXMAIN = ccx_2.20.c
+
+OCCXF = $(SCCXF:.f=.o)
+OCCXC = $(SCCXC:.c=.o)
+OCCXMAIN = $(SCCXMAIN:.c=.o)
+
+# Intel MKL 路径（根据你 oneAPI 实际安装路径修改)
+MKL_ROOT    = /public/software/compiler/intel/oneapi/oneapi-2023.2.0/mkl/2023.2.0
+MKL_LIB     = $(MKL_ROOT)/lib/intel64
+MKL_INCLUDE = $(MKL_ROOT)/include
+COMPILER_LIB=  /public/software/compiler/intel/oneapi/oneapi-2023.2.0/compiler/2023.2.0/linux/lib
+ARPACK_LIB = /work/home/yyxiao/preCICE-CalculiX/req/ARPACK-master/libarpack_INTEL.a
+
+LIBS = \
+        -Wl,--start-group \
+	$(MKL_LIB)/libmkl_gf_lp64.a \
+        $(MKL_LIB)/libmkl_gnu_thread.a \
+        $(MKL_LIB)/libmkl_core.a \
+	$(ARPACK_LIB) \
+        -Wl,--end-group \
+	-L$(COMPILER_LIB) -liomp5 -lpthread -lm -ldl
+
+ccx_2.20_MT: $(OCCXMAIN) ccx_2.20_MT.a
+	./date.pl; $(CC) $(CFLAGS) -c ccx_2.20.c; $(FC) -fopenmp -Wall -O2 -o $@ $(OCCXMAIN) ccx_2.20_MT.a $(LIBS)
+
+ccx_2.20_MT.a: $(OCCXF) $(OCCXC)
+	ar vr $@ $?
+                                                                               
