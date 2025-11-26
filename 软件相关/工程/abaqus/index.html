@@ -1,0 +1,1898 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="../ansysem%20hfss/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>abaqus - hpc-use-mark</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="hpc-use-mark" class="md-header__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hpc-use-mark
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              abaqus
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="hpc-use-mark" class="md-nav__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    hpc-use-mark
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    软件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    软件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    abaqus
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    abaqus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        破解方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        启动可执行文件及方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ansysem%20hfss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ansysem hfss
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apdl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    apdl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autodyna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    autodyna
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ccx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ccx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CFD%2B%2B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFD++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CFX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemkin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    chemkin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comsol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    comsol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../converge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    converge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpfd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cpfd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    edem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fdtd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fdtd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feko
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fidelityCharles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fidelityCharles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fluent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IBAMR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBAMR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../noe" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    科学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    气象
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    异构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    智能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集群
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    集群
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Styling your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    非集群tip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        破解方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        启动可执行文件及方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">安装</h1>
+<ul>
+<li>
+<p>license</p>
+<blockquote>
+<p>https://blog.csdn.net/m0_48170265/article/details/136654433
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/public/software/abaqus/license/DSLS.AllOS/1/RedHat_Suse
+./startInstLicServ<span class="w"> </span>-noUI<span class="w">  </span>-p<span class="w"> </span>/public/software/abaqus/license/install<span class="w">   </span><span class="c1"># -p 指定安装路径 -noUI 无图形</span>
+<span class="nb">cd</span><span class="w"> </span>/public/software/abaqus/license/install/linux_a64/code/bin
+./DSLicTarget<span class="w"> </span>-t<span class="w"> </span><span class="c1"># 输出 Computer Id:  AJN-53C51394EFAFCEBC</span>
+</code></pre></div></p>
+</blockquote>
+</li>
+<li>
+<p>license启动lmgrd报没有这个文件
+<div class="highlight"><pre><span></span><code><span class="c1"># 报错</span>
+<span class="o">[</span>root@admin2-2<span class="w"> </span>abaqus2022<span class="o">]</span><span class="c1"># ./SSQ__lmgrd__linux64.bin -c ABAQUSTEST.lic -l log.admin2-2</span>
+-bash:<span class="w"> </span>./SSQ__lmgrd__linux64.bin:<span class="w"> </span>没有那个文件或目录
+
+<span class="c1"># 排查</span>
+<span class="o">[</span>root@admin2-2<span class="w"> </span>abaqus2022<span class="o">]</span><span class="c1"># ldd  SSQ__lmgrd__linux64.bin </span>
+<span class="w">    </span>linux-vdso.so.1<span class="w"> </span><span class="o">(</span>0x00007ffdb2d98000<span class="o">)</span>
+<span class="w">    </span>libpthread.so.0<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>/usr/lib64/libpthread.so.0<span class="w"> </span><span class="o">(</span>0x00007f5c89495000<span class="o">)</span>
+<span class="w">    </span>libm.so.6<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>/usr/lib64/libm.so.6<span class="w"> </span><span class="o">(</span>0x00007f5c89314000<span class="o">)</span>
+<span class="w">    </span>libgcc_s.so.1<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>/usr/lib64/libgcc_s.so.1<span class="w"> </span><span class="o">(</span>0x00007f5c892fb000<span class="o">)</span>
+<span class="w">    </span>libc.so.6<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>/usr/lib64/libc.so.6<span class="w"> </span><span class="o">(</span>0x00007f5c8914e000<span class="o">)</span>
+<span class="w">    </span>libdl.so.2<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>/usr/lib64/libdl.so.2<span class="w"> </span><span class="o">(</span>0x00007f5c89149000<span class="o">)</span>
+<span class="w">    </span>/lib64/ld-lsb-x86-64.so.3<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>/lib64/ld-linux-x86-64.so.2<span class="w"> </span><span class="o">(</span>0x00007f5c894dc000<span class="o">)</span><span class="w">  </span><span class="c1">## 这个有问题 so.3 找的是 so.2</span>
+
+<span class="c1"># 解决</span>
+ln<span class="w"> </span>-s<span class="w"> </span>/lib64/ld-linux-x86-64.so.2<span class="w"> </span>/lib64/ld-lsb-x86-64.so.3<span class="w">  </span><span class="c1"># 就可以了</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>本体安装
+<div class="highlight"><pre><span></span><code><span class="c1"># 打包得</span>
+<span class="c1">## 直接把装好的压缩包复制解压过去</span>
+<span class="c1">## license压缩包也有 解压下来就行</span>
+
+<span class="c1"># 手动安装</span>
+module<span class="w"> </span>load<span class="w"> </span>apps/p7zip/9.20.1
+
+<span class="c1">## 赋予权限</span>
+
+chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>-R<span class="w"> </span>*<span class="w">  </span><span class="c1"># 先</span>
+<span class="nb">export</span><span class="w"> </span>DSYAuthOS_<span class="sb">`</span>lsb_release<span class="w"> </span>-si<span class="sb">`</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DSY_Force_OS</span><span class="o">=</span>linux_a64
+<span class="nb">export</span><span class="w"> </span><span class="nv">NOLICENSECHECK</span><span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># 装完3D和CAA就可以命令行运行</span>
+<span class="c1"># CAE模块是图形显示，用不到可以不装</span>
+./StartTUI.sh<span class="w"> </span><span class="c1"># ksh 可以直接改成bash</span>
+<span class="c1"># AbaqusSolver和SIMULIA/CAE  要安装在两个不同目录下，安装SIMULIA/CAE时会要输入AbaqusSolver的路径</span>
+
+<span class="c1"># 会输入全选和路径</span>
+</code></pre></div></p>
+</li>
+</ul>
+<p>五个文件夹
+![[Pasted image 20250820120909.png]]
+<div class="highlight"><pre><span></span><code><span class="m">1</span>.<span class="w"> </span>先安装license
+<span class="nb">cd</span><span class="w"> </span><span class="m">3</span>
+</code></pre></div></p>
+<h3 id="_2">破解方式</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 6144 在</span>
+vim<span class="w"> </span>/work/home/cqu30174361/apprepo/abaqus/6144-none/app/6.14-4/SMA/site/abaqus_v6.env
+
+<span class="c1"># 2020</span>
+vim<span class="w"> </span>/work/home/aclb01ckwc/soft/ABAQUS2020/SIMULIA/EstProducts/2020/linux_a64/SMA/site/custom_v6.env
+
+<span class="c1"># 写入以下</span>
+<span class="c1"># Installation of Established Products 2020</span>
+
+<span class="c1"># Installation of Abaqus CAE 2020</span>
+<span class="c1"># Wed Oct 27 11:51:10 2021</span>
+<span class="nv">plugin_central_dir</span><span class="o">=</span><span class="s2">&quot;/work/home/jsyadmin/dwj/abaqus2020/app/ABAQUS2020/DassaultSystemes/SIMULIA/CAE/plugins/2020&quot;</span>
+<span class="nv">license_server_type</span><span class="o">=</span>FLEXNET
+<span class="nv">abaquslm_license_file</span><span class="o">=</span><span class="s2">&quot;27800@login01&quot;</span><span class="w">  </span><span class="c1"># 修改成服务节点</span>
+</code></pre></div>
+<h3 id="_3">启动可执行文件及方式</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">#2022之后图形启动</span>
+/work/home/jsyadmin/L4/dwj/2.28/abaqus2024/linux_a64/code/bin/SMALauncher
+<span class="c1">#之前图形</span>
+/work/home/jsyadmin/L4/dwj/2.28/abaqus2024/linux_a64/code/bin/ABQLauncher
+
+<span class="c1"># 2016 </span>
+/work/home/zhangzhang08/software/abaqus/2016/linux_a64/code/bin/SMALauncher<span class="w"> </span><span class="c1"># 命令行</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 西安启动</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w">  </span>mpi/intelmpi/2017.4.239<span class="w"> </span>compiler/gcc/9.3.0<span class="w">   </span>
+</code></pre></div>
+<h1 id="_4">使用</h1>
+<ul>
+<li>参数使用
+https://abaqus-docs.mit.edu/2017/English/SIMACAEILGRefMap/simailg-c-envsyntax.htm</li>
+</ul>
+<h2 id="abaqus-starccm">abaqus 和 starccm 联合</h2>
+<p>dlutzy 用户搞了半天</p>
+<p>![[Pasted image 20250617190812.png]]</p>
+<blockquote>
+<p>/public/home/accslasm 5 v/apprepo/abaqus/2019-none/app/abaqus 2019/linux_a 64/code/bin/ABQLauncher
+/public/home/jsyadmin/apprepo/abaqus/2023-none/app/abaqus 2023/command/abq2023
+/public/home/jsyadmin/apprepo/abaqus/2022-null/app/abaqus/Command/abq
+申请的核心数和实际 inp 运行的核心数要一致
+手册：file:///public/home/jsyadmin/apprepo/starccmplus/18.06.006-null/app/18.06.006-R8/STAR-CCM+18.06.006-R8/doc/en/online/STARCCMP/GUID-837EFED7-B4DB-4343-BB6C-03A9541E53F1.html#star.cosimulation.link.common.CoSimulationValueManager.AbaqusExecution</p>
+</blockquote>
+<ul>
+<li>添加 abaqus 软件的 libABQSMACeeModeles. so
+![[Pasted image 20250617191510.png]]<blockquote>
+<p>/public/home/jsyadmin/apprepo/abaqus/2019-none/app/abaqus2019/linux_a64/code/bin/libABQSMACseModules.so
+/public/home/jsyadmin/apprepo/abaqus/2023-none/app/abaqus 2023/linux_a64/code/bin/libABQSMACseModules.so
+/public/home/jsyadmin/apprepo/abaqus/2022-null/app/abaqus/linux_a64/code/bin/libABQSMACseModules.so</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>手册：<code>file:///public/home/jsyadmin/apprepo/starccmplus/18.06.006-null/app/18.06.006-R8/STAR-CCM+18.06.006-R8/doc/en/online/STARCCMP/GUID-837EFED7-B4DB-4343-BB6C-03A9541E53F1.html#star.cosimulation.link.common.CoSimulationValueManager.AbaqusExecution</code></p>
+<p>官方手册：<code>https://www.topcfd.cn/Ebook/STARCCMP/GUID-837EFED7-B4DB-4343-BB6C-03A9541E53F1.html?hl=abaqus%2C%E5%91%BD%E4%BB%A4%2C%E4%BB%A4%E8%A1%8C</code></p>
+<p>常见耦合问题：<code>https://zhuanlan.zhihu.com/p/681761110</code></p>
+</blockquote>
+<ul>
+<li>
+<p>abaqus
+<div class="highlight"><pre><span></span><code><span class="c1"># abaqus2019的license会在</span>
+
+/public/home/accslasm5v/apprepo/abaqus/2019-none/app/abaqus2019/linux_a64/SMA/site/custom_v6.env
+
+
+<span class="nv">doc_root</span><span class="o">=</span><span class="s2">&quot;file:////usr/DassaultSystemes/SIMULIA2019doc/English&quot;</span>
+<span class="nv">license_server_type</span><span class="o">=</span>FLEXNET
+<span class="nv">abaquslm_license_file</span><span class="o">=</span><span class="s2">&quot;27800@11.2.131.1&quot;</span>
+
+<span class="c1"># 修改这个license就可以了，不用export </span>
+
+<span class="c1"># 2023的话这样 里面</span>
+<span class="c1"># Installation of Established Products 2023</span>
+<span class="c1"># Wed Oct 11 13:30:54 2023</span>
+<span class="nv">plugin_central_dir</span><span class="o">=</span><span class="s2">&quot;/usr/local/abaqus-2023/DassaultSystemes/SIMULIA/CAE/plugins/2023&quot;</span>
+<span class="c1"># retrieve licensing configuration from EstablishedProductsConfig.ini</span>
+importEnv<span class="o">(</span><span class="s1">&#39;licensing.env&#39;</span><span class="o">)</span>
+<span class="nv">abaquslm_license_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;27398@XXX.XXX.XXX.XXX&quot;</span>
+
+<span class="c1"># 如果报错什么license check failed 注意看下co**的输出，切换了下mpi就可以写到 ~/abaqus_v6.env 里</span>
+<span class="nv">mp_mpi_implementation</span><span class="o">=</span>IMPI
+<span class="nv">mp_file_system</span><span class="o">=(</span>SHARED,<span class="w"> </span>LOCAL<span class="o">)</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>starccm</p>
+<ul>
+<li>java 文件
+<div class="highlight"><pre><span></span><code><span class="c1">// Simcenter STAR-CCM+ macro: run.java</span>
+<span class="c1">// Written by Simcenter STAR-CCM+ 20.02.007</span>
+<span class="kn">package</span><span class="w"> </span><span class="nn">macro</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">star.common.*</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">star.base.neo.*</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">star.cosimulation.link.abaqus.*</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">star.cosimulation.link.common.*</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">run</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">StarMacro</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">execute0</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute0</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="n">Simulation</span><span class="w"> </span><span class="n">simulation_0</span><span class="w"> </span><span class="o">=</span>
+<span class="w">      </span><span class="n">getActiveSimulation</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">CoSimulation</span><span class="w"> </span><span class="n">coSimulation_0</span><span class="w"> </span><span class="o">=</span>
+<span class="w">      </span><span class="p">((</span><span class="n">CoSimulation</span><span class="p">)</span><span class="w"> </span><span class="n">simulation_0</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">CoSimulationManager</span><span class="p">.</span><span class="na">class</span><span class="p">).</span><span class="na">getObject</span><span class="p">(</span><span class="s">&quot;Link 1&quot;</span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">AbaqusExecution</span><span class="w"> </span><span class="n">abaqusExecution_0</span><span class="w"> </span><span class="o">=</span>
+<span class="w">      </span><span class="n">coSimulation_0</span><span class="p">.</span><span class="na">getCoSimulationValues</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="n">AbaqusExecution</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">abaqusExecution_0</span><span class="p">.</span><span class="na">setJobFileName</span><span class="p">(</span><span class="s">&quot;boatcrashfan.inp&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">abaqusExecution_0</span><span class="p">.</span><span class="na">setExecutableName</span><span class="p">(</span><span class="s">&quot;/gpfs/software/apps/abaqus/2024/abaqus/Commands/abq2024&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">abaqusExecution_0</span><span class="p">.</span><span class="na">setNumCpus</span><span class="p">(</span><span class="mi">190</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">AbaqusLibraryFile</span><span class="w"> </span><span class="n">abaqusLibraryFile_0</span><span class="w"> </span><span class="o">=</span>
+<span class="w">      </span><span class="n">coSimulation_0</span><span class="p">.</span><span class="na">getCoSimulationValues</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="n">AbaqusLibraryFile</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">abaqusLibraryFile_0</span><span class="p">.</span><span class="na">setFilePath</span><span class="p">(</span><span class="s">&quot;/gpfs/software/apps/abaqus/2024/abaqus/linux_a64/code/bin/libABQSMACseModules.so&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+![[run.java]]</li>
+</ul>
+</li>
+</ul>
+<h3 id="_5">网格核心配比</h3>
+<div class="highlight"><pre><span></span><code>.sta<span class="w"> </span>文件里看<span class="w"> </span>
+单核心3-5万网格
+</code></pre></div>
+<h3 id="mpi">mpi 切换</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 自带mpi路径</span>
+/work/home/jsyadmin/apprepo/abaqus/2019-none/app/abaqus2019/linux_a64/code/bin/SMAExternal/impi<span class="w"> </span>
+/work/home/jsyadmin/apprepo/abaqus/2019-none/app/abaqus2019/linux_a64/code/bin/SMAExternal/pmpi
+
+<span class="c1"># 配置文件</span>
+/work/home/jsyadmin/apprepo/abaqus/2019-none/app/abaqus2019/linux_a64/SMA/site/mpi_config.env<span class="w"> </span><span class="c1"># 2019</span>
+/work/home/zhangzhang08/software/abaqus/2016/linux_a64/SMA/site/lnx86_64.env<span class="w"> </span><span class="c1"># 2016 老的最好默认 pmpi</span>
+
+<span class="c1"># 修改mpi</span>
+<span class="c1">## 修改自带的mpi类型</span>
+<span class="c1">### 脚本里</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;mp_mpi_implementation=IMPI&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>abaqus_v6.env<span class="w"> </span><span class="c1"># 用intelmpi</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;mp_mpi_implementation=PMPI&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>abaqus_v6.env<span class="w"> </span><span class="c1"># 用platformmpi</span>
+<span class="c1">### 手动修改 /work/home/jsyadmin/apprepo/abaqus/2019-none/app/abaqus2019/linux_a64/SMA/site/mpi_config.env</span>
+
+<span class="c1">## 使用集群系统的mpi</span>
+<span class="c1">### 1.要修改此配置文件</span>
+vim
+/work/home/jsyadmin/apprepo/abaqus/2019-none/app/abaqus2019/linux_a64/SMA/site/mpi_config.env<span class="w">  </span>
+
+<span class="c1">### 2.替换成集群的路径 intelmpi为例，ABA_PATH 改成 I_MPI_ROOT 后面的路径直到mpirun</span>
+<span class="nv">mp_mpirun_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span>PMPI:<span class="w"> </span>driverUtils.locateFile<span class="o">(</span>os.environ.get<span class="o">(</span><span class="s1">&#39;ABA_PATH&#39;</span>,<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="o">)</span>,<span class="w"> </span><span class="s1">&#39;pmpi/bin&#39;</span>,<span class="w"> </span><span class="s1">&#39;mpirun&#39;</span><span class="o">)</span>,
+<span class="w">                  </span>IMPI:<span class="w"> </span>driverUtils.locateFile<span class="o">(</span>os.environ.get<span class="o">(</span><span class="s1">&#39;I_MPI_ROOT&#39;</span>,<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="o">)</span>,<span class="w"> </span><span class="s1">&#39;intel64/bin&#39;</span>,<span class="w"> </span><span class="s1">&#39;mpirun&#39;</span><span class="o">)</span>,
+<span class="w">                  </span>CMPI:<span class="w"> </span>driverUtils.locateFile<span class="o">(</span>os.environ.get<span class="o">(</span><span class="s1">&#39;ABA_PATH&#39;</span>,<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="o">)</span>,<span class="w"> </span><span class="s1">&#39;impi/bin&#39;</span>,<span class="w"> </span><span class="s1">&#39;mpirun&#39;</span><span class="o">)}</span>
+
+<span class="c1">### 3. 提交时需要在slurm脚本里 </span>
+module<span class="w"> </span>load<span class="w"> </span>mpi/intelmpi/2018.4.274
+
+
+<span class="c1"># 西安切换pmpi </span>
+要在mpi_config.env<span class="w"> </span>里加<span class="w"> </span><span class="nv">mp_mpirun_options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;-srq&#39;</span><span class="w"> </span>注意python语法空格<span class="w"> </span><span class="c1"># 短通信参数</span>
+<span class="c1"># 西安切换intelmpi</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_PIN_DOMAIN</span><span class="o">=</span>numa<span class="w"> </span><span class="c1"># 需要加这个变量</span>
+</code></pre></div>
+<h2 id="_6">调用</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># python 脚本调用</span>
+app/ABAQUS2020/SIMULIA/EstProducts/2020/linux_a64/code/bin/ABQLauncher<span class="w"> </span>cae<span class="w"> </span><span class="nv">noGUI</span><span class="o">=</span>xxx.py<span class="w">  </span>
+</code></pre></div>
+<h1 id="_7">脚本</h1>
+<ul>
+<li>启动脚本
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash </span>
+<span class="c1">#SBATCH -J abaqus_test   #作业名</span>
+<span class="c1">#SBATCH -p wzhctest </span>
+<span class="c1">#SBATCH -N 1   #节点数</span>
+<span class="c1">#SBATCH --ntasks-per-node=30 #每节点进程数</span>
+<span class="c1">#SBATCH -o out.%j    </span>
+<span class="c1">#SBATCH -e err.%j</span>
+
+<span class="nb">unset</span><span class="w"> </span>SLURM_GTIDS
+
+module<span class="w"> </span>purge
+<span class="nb">source</span><span class="w"> </span>../scripts/env.sh
+<span class="nb">export</span><span class="w"> </span><span class="nv">EXEC</span><span class="o">=</span><span class="nv">$PROGLIST</span>
+<span class="nv">WORK_DIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="w">     </span><span class="c1">#当前目录</span>
+<span class="nv">INPUT_FILE</span><span class="o">=</span>tracload2d.inp<span class="w">  </span><span class="c1">#输入文件</span>
+<span class="nv">job_name</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">INPUT_FILE</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F.<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="sb">`</span>
+<span class="c1">#USER_FILE=exa_fml_ortho_damage_umat.for    #fortran子程序</span>
+<span class="nv">LOG_FILE</span><span class="o">=</span>abaqus-test.log
+<span class="c1">#########################################################</span>
+
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WORK_DIR</span>
+<span class="nv">PROCS</span><span class="o">=</span><span class="nv">$SLURM_NPROCS</span>
+
+srun<span class="w"> </span>hostname<span class="p">|</span>sort<span class="p">|</span>uniq<span class="w"> </span>-c<span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>./hostfile_<span class="nv">$PROCS</span>
+<span class="nv">HOST_FILE</span><span class="o">=</span>./hostfile_<span class="nv">$PROCS</span>
+
+<span class="nv">NODELIST</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="k">for</span><span class="w"> </span>host<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>cat<span class="w"> </span><span class="nv">$HOST_FILE</span><span class="w"> </span><span class="p">|</span>uniq<span class="sb">`</span>
+<span class="k">do</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="si">${</span><span class="nv">NODELIST</span><span class="si">}</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nv">NODELIST</span><span class="o">=</span><span class="s2">&quot;[&#39;</span><span class="nv">$host</span><span class="s2">&#39;,</span><span class="nv">$SLURM_NTASKS_PER_NODE</span><span class="s2">]&quot;</span>
+<span class="w">  </span><span class="k">else</span>
+<span class="w">    </span><span class="nv">NODELIST</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$NODELIST</span><span class="s2">,[&#39;</span><span class="nv">$host</span><span class="s2">&#39;,</span><span class="nv">$SLURM_NTASKS_PER_NODE</span><span class="s2">]&quot;</span>
+<span class="w">  </span><span class="k">fi</span>
+<span class="k">done</span>
+
+cat<span class="w"> </span>&gt;<span class="w"> </span>abaqus_v6.env<span class="w"> </span>&lt;&lt;<span class="w"> </span>!
+<span class="nv">mp_host_list</span><span class="o">=[</span><span class="nv">$NODELIST</span><span class="o">]</span>
+<span class="nv">max_history_requests</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">mp_mpi_implementation</span><span class="o">=</span>PMPI<span class="w"> </span>
+<span class="nv">mp_file_system</span><span class="o">=(</span>SHARED,<span class="w"> </span>LOCAL<span class="o">)</span>
+!
+
+<span class="c1">############程序主命令</span>
+
+module<span class="w"> </span>load<span class="w"> </span>compiler/intel/2017.5.239
+
+<span class="nv">$EXEC</span><span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="si">${</span><span class="nv">job_name</span><span class="si">}</span><span class="w"> </span><span class="nv">input</span><span class="o">=</span><span class="si">${</span><span class="nv">INPUT_FILE</span><span class="si">}</span><span class="w"> </span><span class="nv">cpus</span><span class="o">=</span><span class="si">${</span><span class="nv">PROCS</span><span class="si">}</span><span class="w"> </span><span class="nv">mp_mode</span><span class="o">=</span>MPI<span class="w">   </span>int<span class="w">  </span><span class="nv">scratch</span><span class="o">=</span>./<span class="w"> </span><span class="c1"># 缓存</span>
+
+<span class="c1">#$EXEC job=${job_name} input=${INPUT_FILE}  cpus=${PROCS} user=$USER_FILE mp_mode=MPI int    #带子程序</span>
+
+<span class="c1">#$EXEC job=${job_name} input=${INPUT_FILE}  oldjob=job-2  cpus=${PROCS} mp_mode=MPI int    #重启动分析</span>
+
+<span class="nb">echo</span><span class="w"> </span>The<span class="w"> </span>end<span class="w"> </span><span class="nb">time</span><span class="w"> </span>is:<span class="w"> </span><span class="sb">`</span>date<span class="w"> </span>+<span class="s2">&quot;%Y-%m-%d %H:%M:%S&quot;</span><span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span><span class="nv">$LOG_FILE</span>
+</code></pre></div></li>
+</ul>
+<h1 id="_8">报错</h1>
+<h2 id="6144">6144 图形启动缺库</h2>
+<p>![[Pasted image 20250605235844.png]]</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span>/work/home/jsyadmin/L4/liucheng/tmp/libstdc++.so.5<span class="w">  </span><span class="c1"># 在西安下复制过去</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">LM_LICENSE_FILE</span><span class="o">=</span><span class="m">27800</span>@license01
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span>/work/home/handsomer5/lib/libstdc++.so.5
+</code></pre></div>
+<h2 id="2024">2024 启动报错</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># 报错 </span>
+/work/home/martin_tan/apprepo/abaqus/2024-none/app/abaqus2024/Commands/abaqus:<span class="w"> </span>/lib64/libstdc++.so.6:<span class="w"> </span>version<span class="w"> </span><span class="sb">`</span>CXXABI_1.3.9<span class="sb">`</span><span class="w"> </span>not<span class="w"> </span>found<span class="w"> </span><span class="o">(</span>required<span class="w"> </span>by<span class="w"> </span>/work/home/martin_tan/apprepo/abaqus/2024-none/app/abaqus2024/Commands/abaqus<span class="o">)</span>
+
+<span class="c1"># 解决方法</span>
+strings<span class="w"> </span>/lib64/libstdc++.so.6<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>CXXABI<span class="w"> </span><span class="c1"># 查看版本</span>
+
+env里加上这个
+
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>compiler/gcc/9.3.0<span class="w"> </span>mpi/openmpi/4.1.5/gcc-9.3.0
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span>/public/software/compiler/gnu/gcc-9.3.0/lib64/libstdc++.so.6
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/public/software/compiler/gnu/gcc-9.3.0/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
+
+再source<span class="w"> </span>
+</code></pre></div>
+<h2 id="mpi_1">mpi 通信  报错等</h2>
+<h3 id="dapl">dapl 报错</h3>
+<p>![[23d25bdbde3ac4099a564dbfd4415ef2 1.png]]</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">MPI_IC_ORDER</span><span class="o">=</span><span class="s2">&quot;uDAPL:TCP&quot;</span><span class="w"> </span><span class="c1"># 昆山加</span>
+</code></pre></div>
+<h2 id="for">for 子程序编译报错</h2>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash </span>
+<span class="c1">#SBATCH -J abaqus_test   #作业名</span>
+<span class="c1">#SBATCH -p wzhcnormal </span>
+<span class="c1">#SBATCH -N 1   #节点数</span>
+<span class="c1">#SBATCH --ntasks-per-node=16 #每节点进程数</span>
+<span class="c1">#SBATCH -o out.%j    </span>
+<span class="c1">#SBATCH -e err.%j</span>
+<span class="c1">#SBATCH --constraint=&quot;32core&quot;</span>
+<span class="c1">#SBATCH --exclusive</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_PIN_DOMAIN</span><span class="o">=</span>numa
+
+
+<span class="c1">#module load compiler/devtoolset/7.3.1 mpi/hpcx/2.11.0/gcc-7.3.1</span>
+<span class="c1">#module load compiler/intel/2021.3.0 mpi/intelmpi/2021.3.0</span>
+<span class="c1">#module load compiler/intel/2020.1.217  mpi/intelmpi/2020.1.217</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>compiler/intel/2017.5.239<span class="w">  </span>mpi/intelmpi/2017.4.239
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/compiler/lib/intel64:<span class="nv">$LD_LIBRARY_PATH</span>
+
+<span class="c1">#export LD_LIBRARY_PATH=/public/software/compiler/intel/intel-2020/compilers_and_libraries_2020.1.217/compiler/lib/intel64/:$LD_LIBRARY_PATH</span>
+
+<span class="nb">source</span><span class="w"> </span>/work/home/ac74q8ni2f/apprepo/abaqus/2021-none/scripts/env.sh<span class="w"> </span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">EXEC</span><span class="o">=</span><span class="nv">$PROGLIST</span>
+<span class="nv">WORK_DIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="w">     </span><span class="c1">#当前目录</span>
+<span class="nv">INPUT_FILE</span><span class="o">=</span>single3DUMAT.inp<span class="w">  </span><span class="c1">#输入文件</span>
+<span class="nv">job_name</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">INPUT_FILE</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F.<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="sb">`</span>
+<span class="nv">USER_FILE</span><span class="o">=</span>umat.f<span class="w">    </span><span class="c1">#fortran子程序</span>
+<span class="nv">LOG_FILE</span><span class="o">=</span>abaqus-test.log<span class="w">   </span>
+<span class="c1">#########################################################</span>
+
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WORK_DIR</span><span class="w">  </span>
+<span class="nv">PROCS</span><span class="o">=</span><span class="nv">$SLURM_NPROCS</span>
+<span class="nv">env_file</span><span class="o">=</span>abaqus_v6.env
+<span class="nv">node_list</span><span class="o">=</span><span class="k">$(</span>scontrol<span class="w"> </span>show<span class="w"> </span>hostname<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_NODELIST</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-u<span class="k">)</span>
+
+<span class="nv">mp_host_list</span><span class="o">=</span><span class="s2">&quot;[&quot;</span>
+<span class="k">for</span><span class="w"> </span>host<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">node_list</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nv">mp_host_list</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">mp_host_list</span><span class="si">}</span><span class="s2">[&#39;</span><span class="nv">$host</span><span class="s2">&#39;, </span><span class="si">${</span><span class="nv">SLURM_CPUS_ON_NODE</span><span class="si">}</span><span class="s2">],&quot;</span>
+<span class="k">done</span>
+
+<span class="nv">mp_host_list</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">mp_host_list</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;s/,</span>$<span class="s2">/]/&quot;</span><span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;mp_host_list=</span><span class="si">${</span><span class="nv">mp_host_list</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">  </span>&gt;<span class="si">${</span><span class="nv">env_file</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;mp_mpi_implementation=IMPI&quot;</span><span class="w"> </span>&gt;&gt;<span class="si">${</span><span class="nv">env_file</span><span class="si">}</span><span class="w"> </span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;mp_file_system=(SHARED, LOCAL)&quot;</span><span class="w"> </span>&gt;&gt;<span class="si">${</span><span class="nv">env_file</span><span class="si">}</span>
+
+
+<span class="nb">echo</span><span class="w"> </span>The<span class="w"> </span>start<span class="w"> </span><span class="nb">time</span><span class="w"> </span>is:<span class="w"> </span><span class="sb">`</span>date<span class="w"> </span>+<span class="s2">&quot;%Y-%m-%d %H:%M:%S&quot;</span><span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span><span class="nv">$LOG_FILE</span><span class="w">  </span>
+<span class="nb">echo</span><span class="w"> </span>My<span class="w"> </span>job<span class="w"> </span>ID<span class="w"> </span>is:<span class="w"> </span><span class="nv">$SLURM_JOB_ID</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span><span class="nv">$LOG_FILE</span><span class="w"> </span>
+<span class="nb">echo</span><span class="w"> </span>The<span class="w"> </span>total<span class="w"> </span>cores<span class="w"> </span>is:<span class="w"> </span><span class="nv">$PROCS</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span><span class="nv">$LOG_FILE</span><span class="w"> </span>
+<span class="nb">echo</span><span class="w"> </span>The<span class="w"> </span>hosts<span class="w"> </span>is:<span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span><span class="nv">$LOG_FILE</span><span class="w"> </span>
+cat<span class="w"> </span><span class="nv">$HOST_FILE</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span><span class="nv">$LOG_FILE</span>
+
+
+<span class="c1">############程序主命令</span>
+<span class="c1">#ssh $HOSTNAME &quot;source /public/software/compiler/intel/intel-compiler-2017.5.239/bin/compilervars.sh intel64;cd $WORK_DIR;$EXEC job=${job_name} input=${INPUT_FILE} user=$USER_FILE cpus=${PROCS} mp_mode=MPI double int&quot;</span>
+
+<span class="nv">$EXEC</span><span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="si">${</span><span class="nv">job_name</span><span class="si">}</span><span class="w"> </span><span class="nv">input</span><span class="o">=</span><span class="si">${</span><span class="nv">INPUT_FILE</span><span class="si">}</span><span class="w"> </span><span class="nv">user</span><span class="o">=</span><span class="nv">$USER_FILE</span><span class="w">  </span><span class="nv">cpus</span><span class="o">=</span><span class="si">${</span><span class="nv">PROCS</span><span class="si">}</span><span class="w"> </span><span class="nv">mp_mode</span><span class="o">=</span>MPI<span class="w">   </span>int<span class="w"> </span><span class="nv">scratch</span><span class="o">=</span>./
+
+<span class="c1">#ssh $HOSTNAME &quot;export LM_LICENSE_FILE=27800@hlogin11;cd $WORK_DIR;$EXEC job=${job_name} input=${INPUT_FILE} cpus=${PROCS} mp_mode=THREAD double int&quot;</span>
+
+<span class="nb">echo</span><span class="w"> </span>The<span class="w"> </span>end<span class="w"> </span><span class="nb">time</span><span class="w"> </span>is:<span class="w"> </span><span class="sb">`</span>date<span class="w"> </span>+<span class="s2">&quot;%Y-%m-%d %H:%M:%S&quot;</span><span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span><span class="nv">$LOG_FILE</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 报错</span>
+/work/home/ac74q8ni2f/apprepo/abaqus/2021-none/app/linux_a64/code/bin/standard:<span class="w"> </span>symbol<span class="w"> </span>lookup<span class="w"> </span>error:<span class="w"> </span>/tmp/ac74q8ni2f_single3DUMAT_5763/libstandardU.so:<span class="w"> </span>undefined<span class="w"> </span>symbol:<span class="w"> </span>for_realloc_lhs
+
+<span class="c1"># 分析 库版本老旧</span>
+<span class="c1"># 参考 https://community.intel.com/t5/Intel-Fortran-Compiler/Turn-off-automatic-reallocation-of-arrays-on-compiler-19-0/m-p/1157977</span>
+<span class="c1"># 官方文档：https://www.intel.com/content/www/us/en/docs/fortran-compiler/developer-guide-reference/2025-0/standard-realloc-lhs.html</span>
+<span class="c1"># 还有些文档：https://www.cnblogs.com/structurer/p/10652854.html</span>
+
+<span class="c1"># 解决</span>
+/work/home/ac74q8ni2f/apprepo/abaqus/2021-none/app/linux_a64/SMA/site/lnx86_64.env<span class="w"> </span><span class="c1"># abaqus_v6.env 里加也行</span>
+<span class="c1"># 里添加编译选项  &#39;-nostandard-realloc-lhs&#39;,</span>
+<span class="nv">compile_fortran</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>fortCmd,
+<span class="w">                   </span><span class="s1">&#39;-V&#39;</span>,
+<span class="w">                   </span><span class="s1">&#39;-c&#39;</span>,<span class="w"> </span><span class="s1">&#39;-fpp&#39;</span>,<span class="s1">&#39;-fPIC&#39;</span>,<span class="s1">&#39;-extend_source&#39;</span>,
+<span class="w">                   </span><span class="s1">&#39;-DABQ_LNX86_64&#39;</span>,<span class="w"> </span><span class="s1">&#39;-DABQ_FORTRAN&#39;</span>,
+<span class="w">                   </span><span class="s1">&#39;-auto&#39;</span>,<span class="w">    </span><span class="c1"># &lt;-- important for thread-safety of parallel user subroutines</span>
+<span class="w">                   </span><span class="s1">&#39;-pc64&#39;</span>,<span class="w">                  </span><span class="c1"># set FPU precision to 53 bit significand</span>
+<span class="w">                   </span><span class="s1">&#39;-align&#39;</span>,<span class="w"> </span><span class="s1">&#39;array64byte&#39;</span>,
+<span class="w">                   </span><span class="s1">&#39;-nostandard-realloc-lhs&#39;</span>,
+<span class="w">                   </span><span class="s1">&#39;-prec-div&#39;</span>,<span class="w"> </span><span class="s1">&#39;-prec-sqrt&#39;</span>,#<span class="w"> </span>improve<span class="w"> </span>precision<span class="w"> </span>of<span class="w"> </span>FP<span class="w"> </span>divides<span class="w"> </span>and<span class="w"> </span>sqrt
+<span class="w">                   </span><span class="s1">&#39;-fp-model&#39;</span>,<span class="w"> </span><span class="s1">&#39;precise&#39;</span>,<span class="w">   </span><span class="c1"># floating point model: precise</span>
+<span class="w">                   </span><span class="s1">&#39;-fimf-arch-consistency=true&#39;</span>,<span class="w"> </span><span class="c1"># math library consistent results</span>
+<span class="w">                   </span><span class="s1">&#39;-mP2OPT_hpo_vec_divbyzero=F&#39;</span>,
+<span class="w">                   </span><span class="s1">&#39;-no-fma&#39;</span>,<span class="w">                </span><span class="c1"># disable floating point fused multiply-add</span>
+<span class="w">                   </span><span class="s1">&#39;-fp-speculation=safe&#39;</span>,<span class="w">   </span><span class="c1"># floating point speculations only when safe</span>
+<span class="w">                   </span><span class="s1">&#39;-fprotect-parens&#39;</span>,<span class="w">       </span><span class="c1"># honor parenthesis during expression evaluation</span>
+<span class="w">                   </span><span class="s1">&#39;-fstack-protector-strong&#39;</span>,<span class="w"> </span><span class="c1"># enable stack overflow protection checks</span>
+<span class="w">                   </span><span class="s1">&#39;-reentrancy&#39;</span>,<span class="w"> </span><span class="s1">&#39;threaded&#39;</span>,<span class="w">  </span><span class="c1"># important for thread-safety</span>
+<span class="w">                   </span><span class="c1">#&#39;-init=zero&#39;,&#39;-init=arrays&#39;,  # automatically initialize all arrays to zero</span>
+<span class="w">                   </span><span class="c1">#&#39;-init=snan&#39;, &#39;-init=arrays&#39;, # automatically initialize all arrays to SNAN</span>
+<span class="w">                   </span><span class="s1">&#39;-msse3&#39;</span>,<span class="w">                      </span><span class="c1"># generate SSE3, SSE2, and SSE instructions</span>
+<span class="w">                   </span><span class="s1">&#39;-axcore-avx2,avx&#39;</span>,
+<span class="w">                   </span><span class="s1">&#39;-WB&#39;</span>,<span class="w"> </span><span class="s1">&#39;-I%I&#39;</span>,<span class="w"> </span><span class="s1">&#39;-I&#39;</span>+abaHomeInc,<span class="w"> </span><span class="s1">&#39;%P&#39;</span><span class="o">]</span>
+</code></pre></div>
+<blockquote>
+<p>不要出现中文注释
+其实也支持gfortran 
+这个视频有 <code>https://www.bilibili.com/video/BV1qU4y1K7A3/?vd_source=12f13b225da822698e030dccdbc9bd97</code></p>
+</blockquote>
+<h2 id="abaqus_v-6-env">abaqus_v 6. env 文件影响</h2>
+<p>![[Pasted image 20250704175103.png]]</p>
+<div class="highlight"><pre><span></span><code>检查主目录下有没有abaqus_v6.env节点文件影响，直接删掉
+</code></pre></div>
+<ul>
+<li>报错 max_history_requests 限制</li>
+</ul>
+<div class="highlight"><pre><span></span><code>Error<span class="w"> </span><span class="k">in</span><span class="w"> </span>job<span class="w"> </span>Job-1-1:<span class="w"> </span>The<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span><span class="nb">history</span><span class="w"> </span>output<span class="w"> </span>requests<span class="w"> </span><span class="o">(</span><span class="m">100001</span><span class="o">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>this<span class="w"> </span>analysis<span class="w"> </span>step<span class="w"> </span>has<span class="w"> </span>exceeded<span class="w"> </span>10x<span class="w"> </span>the<span class="w"> </span>maximum<span class="w"> </span>value<span class="w"> </span>of<span class="w"> </span><span class="m">10000</span><span class="w"> </span>specified<span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>Abaqus<span class="w"> </span>environment<span class="w"> </span>variable<span class="w"> </span><span class="s1">&#39;max_history_requests.&#39;</span><span class="w"> </span>Reduce<span class="w"> </span>the<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>requests,<span class="w"> </span>increase<span class="w"> </span>the<span class="w"> </span>value<span class="w"> </span>of<span class="w"> </span>this<span class="w"> </span>variable,<span class="w"> </span>or<span class="w"> </span>deactivate<span class="w"> </span>this<span class="w"> </span><span class="nb">test</span><span class="w"> </span>by<span class="w"> </span>setting<span class="w"> </span><span class="s1">&#39;max_history_requests=0&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>abaqus_v6.env<span class="w"> </span>file.<span class="w"> </span>Significant<span class="w"> </span>performance<span class="w"> </span>problems<span class="w"> </span>may<span class="w"> </span>occur<span class="w"> </span><span class="k">if</span><span class="w"> </span>these<span class="w"> </span>requests<span class="w"> </span>are<span class="w"> </span>maintained.
+Job<span class="w"> </span>Job-1-1:<span class="w"> </span>Analysis<span class="w"> </span>Input<span class="w"> </span>File<span class="w"> </span>Processor<span class="w"> </span>aborted<span class="w"> </span>due<span class="w"> </span>to<span class="w"> </span>errors.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 主目录下写个abaqus_v6.env 可控制</span>
+<span class="nv">max_history_requests</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="c1"># 无限制 </span>
+
+<span class="nv">mp_mpi_implementation</span><span class="o">=</span>PMPI
+
+<span class="nv">mp_file_system</span><span class="o">=(</span>SHARED,<span class="w"> </span>LOCAL<span class="o">)</span>
+</code></pre></div>
+<h2 id="_9">不分常规</h2>
+<ul>
+<li>算例过小</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>算例过小，网格分块异常，计算错误，其他工业软件也通用
+</code></pre></div>
+- 中文路径特殊字符
+![[c4b5ebea34032b2612fc4ae6b27653c1.jpg]]
+<div class="highlight"><pre><span></span><code><span class="c1"># 报错</span>
+Abaqus<span class="w"> </span>Error:<span class="w"> </span>License<span class="w"> </span><span class="k">for</span><span class="w"> </span>explicit<span class="w"> </span>with<span class="w"> </span><span class="nv">cpus</span><span class="o">=</span><span class="m">8</span><span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>available.
+
+<span class="c1"># 检查中文路径</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code>&lt;IBM<span class="w"> </span>Platform<span class="w"> </span>MPI&gt;:<span class="w"> </span>:<span class="w"> </span>warning,<span class="w"> </span>dlopen<span class="w"> </span>of<span class="w"> </span>libhwloc.so<span class="w"> </span>failed<span class="w"> </span><span class="o">(</span>null<span class="o">)</span>/lib/linux_amd64/libhwloc.so:<span class="w"> </span>cannot<span class="w"> </span>open<span class="w"> </span>shared<span class="w"> </span>object<span class="w"> </span>file:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
+Traceback<span class="w"> </span><span class="o">(</span>most<span class="w"> </span>recent<span class="w"> </span>call<span class="w"> </span>last<span class="o">)</span>:
+Exception:<span class="w"> </span>can<span class="w"> </span>not<span class="w"> </span>parse<span class="w"> </span>host/port<span class="w"> </span>from<span class="w"> </span>umbrella
+
+<span class="c1"># 添加这个 脚本</span>
+<span class="nb">unset</span><span class="w"> </span>SLURM_GTIDS
+<span class="nb">export</span><span class="w"> </span><span class="nv">MKL_CBWR</span><span class="o">=</span>AVX2
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 双精度</span>
+<span class="nv">double</span><span class="o">=</span>both
+</code></pre></div>
+<h4 id="_10">算例问题</h4>
+<div class="highlight"><pre><span></span><code>***ERROR:<span class="w"> </span>ExceSsive<span class="w"> </span>distortion<span class="w"> </span>of<span class="w"> </span>element<span class="w"> </span>number<span class="w"> </span><span class="m">12671</span><span class="w"> </span>of<span class="w"> </span>instance<span class="w"> </span>PART-1-1
+
+算例单元过度变形
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>The<span class="w"> </span>analysis<span class="w"> </span>may<span class="w"> </span>need<span class="w"> </span>a<span class="w"> </span>large<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>increments<span class="w"> </span><span class="o">(</span>more<span class="w"> </span>than<span class="w"> </span><span class="m">20</span>,000,000<span class="o">)</span>...
+
+算例变形发散，修改时间步网格
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Error<span class="w"> </span><span class="s2">&quot;Too many attempts made for this increment&quot;</span><span class="w"> </span>
+
+算例问题，网格不行，或者没进程分配的网格数太少了，看<span class="w"> </span>sta文件
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>aborted<span class="w"> </span>with<span class="w"> </span>system<span class="w"> </span>error<span class="w"> </span><span class="s2">&quot;Illegal instruction&quot;</span><span class="o">(</span>signal<span class="w"> </span><span class="m">4</span><span class="o">)</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">MKL_CBWR</span><span class="o">=</span>AVX2
+</code></pre></div>
+<ul>
+<li>
+<p>odb 文件属性错了，要压缩传输
+![[Pasted image 20250930192444.png]]</p>
+</li>
+<li>
+<p>.for 找不到可以cp下修改后缀为 .f </p>
+</li>
+<li>
+<p>6144运行报错
+<div class="highlight"><pre><span></span><code><span class="c1"># 报错</span>
+Abaqus<span class="w"> </span>Error:<span class="w"> </span>The<span class="w"> </span>executable<span class="w"> </span>standard
+aborted<span class="w"> </span>with<span class="w"> </span>system<span class="w"> </span>error<span class="w"> </span><span class="s2">&quot;Illegal instruction&quot;</span><span class="w"> </span><span class="o">(</span>signal<span class="w"> </span><span class="m">4</span><span class="o">)</span>.
+Please<span class="w"> </span>check<span class="w"> </span>the<span class="w"> </span>.dat,<span class="w"> </span>.msg,<span class="w"> </span>and<span class="w"> </span>.sta<span class="w"> </span>files<span class="w"> </span><span class="k">for</span><span class="w"> </span>error<span class="w"> </span>messages<span class="w"> </span><span class="k">if</span><span class="w"> </span>the<span class="w"> </span>files
+exist.<span class="w">  </span>If<span class="w"> </span>there<span class="w"> </span>are<span class="w"> </span>no<span class="w"> </span>error<span class="w"> </span>messages<span class="w"> </span>and<span class="w"> </span>you<span class="w"> </span>cannot<span class="w"> </span>resolve<span class="w"> </span>the<span class="w"> </span>problem,
+please<span class="w"> </span>run<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span><span class="s2">&quot;abaqus job=support information=support&quot;</span><span class="w"> </span>to<span class="w"> </span>report<span class="w"> </span>and
+save<span class="w"> </span>your<span class="w"> </span>system<span class="w"> </span>information.<span class="w">  </span>Use<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span><span class="nb">command</span><span class="w"> </span>to<span class="w"> </span>run<span class="w"> </span>Abaqus<span class="w"> </span>that<span class="w"> </span>you
+used<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>problem<span class="w"> </span>occurred.<span class="w">  </span>Please<span class="w"> </span>contact<span class="w"> </span>your<span class="w"> </span><span class="nb">local</span><span class="w"> </span>Abaqus<span class="w"> </span>support
+office<span class="w"> </span>and<span class="w"> </span>send<span class="w"> </span>them<span class="w"> </span>the<span class="w"> </span>input<span class="w"> </span>file,<span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span>support.log<span class="w"> </span>which<span class="w"> </span>you<span class="w"> </span>just
+created,<span class="w"> </span>the<span class="w"> </span>executable<span class="w"> </span>name,<span class="w"> </span>and<span class="w"> </span>the<span class="w"> </span>error<span class="w"> </span>code.
+Abaqus/Analysis<span class="w"> </span>exited<span class="w"> </span>with<span class="w"> </span>error
+
+<span class="c1"># env 加这个</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MKL_CBWR</span><span class="o">=</span>AVX2
+换高版本abaqus
+</code></pre></div></p>
+</li>
+<li>
+<p>文件
+<div class="highlight"><pre><span></span><code>## 1. Abaqus 常见计算日志文件
+
+当你提交一个作业（Job）时，Abaqus 会在工作目录下生成多个文件：
+
+|文件扩展名|作用|
+|---|---|
+|**`.log`**|记录作业启动、版本信息、硬件环境、求解器调用过程等。|
+|**`.msg`**|求解过程的详细信息，包括迭代次数、收敛状态、警告等。|
+|**`.dat`**|模型检查信息、单元/节点数、载荷步摘要等。|
+|**`.sta`**|分析步的进度（百分比）、当前增量等。|
+|**`.odb`**|结果数据库文件（可视化用）。|
+|**`.lck`**|锁文件，防止多个进程同时写入 `.odb`。|
+
+## 2. `.log` 文件内容结构
+
+一个典型的 `.log` 文件包含以下部分：
+
+1. **作业启动信息**
+
+    复制代码
+
+    `Begin Analysis Input File Processor Run pre.exe`
+
+    - 显示 Abaqus 版本、启动时间、调用的可执行程序。
+2. **硬件与环境信息**
+
+    复制代码
+
+    `Host Name: myPC Number of CPUs: 8`
+
+    - 记录运行机器的 CPU 核数、内存等。
+3. **分析步骤**
+
+    复制代码
+
+    `Begin Abaqus/Standard Analysis Step 1, Increment 1`
+
+    - 每个分析步的开始时间、增量信息。
+4. **结束状态**
+
+    复制代码
+
+    `Analysis completed successfully`
+
+    - 如果失败，会显示 `ERROR` 或 `Abaqus/Standard exited with an error`.
+
+## 3. 查看计算日志的方法
+
+- **Abaqus/CAE**  
+    在 **Job Manager** 中选中作业 → 点击 **Monitor** → 切换到 **Message** 或 **Log** 标签页。
+- **命令行**  
+    直接用文本编辑器打开 `jobname.log` 或 `jobname.msg`。
+
+## 4. 常见日志问题与排查
+
+|日志提示|可能原因|解决建议|
+|---|---|---|
+|`Too many attempts made for this increment`|收敛失败|检查载荷步设置、网格质量、材料参数。|
+|`Abaqus/Standard exited with an error`|输入文件错误或计算中断|查看 `.dat` 和 `.msg` 文件定位错误行。|
+|`.log` 文件未生成|作业未启动或启动即失败|检查 `.lck` 文件、路径权限、命令行输出。|
+</code></pre></div></p>
+</li>
+<li>
+<p>子程序 for 问题
+<div class="highlight"><pre><span></span><code>dos2unix<span class="w"> </span>xxx.for
+<span class="c1"># 是一个用于将文本文件从 **DOS/Windows 格式** 转换为 **Unix/Linux 格式** 的工具，主要解决不同操作系统间换行符差异导致的问题。它可以有效避免因换行符不一致引发的脚本执行错误或文本处理问题。</span>
+</code></pre></div></p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

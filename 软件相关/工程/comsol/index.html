@@ -1,0 +1,1434 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../chemkin/">
+      
+      
+        <link rel="next" href="../converge/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>comsol - hpc-use-mark</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="hpc-use-mark" class="md-header__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hpc-use-mark
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              comsol
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="hpc-use-mark" class="md-nav__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    hpc-use-mark
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    软件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    软件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abaqus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    abaqus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ansysem%20hfss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ansysem hfss
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apdl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    apdl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autodyna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    autodyna
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ccx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ccx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CFD%2B%2B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFD++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CFX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemkin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    chemkin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    comsol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../converge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    converge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpfd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cpfd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    edem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fdtd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fdtd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feko
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fidelityCharles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fidelityCharles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fluent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IBAMR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBAMR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../noe" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    科学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    气象
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    异构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    智能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集群
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    集群
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Styling your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    非集群tip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="1">1 安装</h1>
+<h1 id="2">2 使用</h1>
+<h2 id="21-matlab">2.1 与 matlab 联合调用</h2>
+<p>![[comsol与matlab联用 1.docx]]</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 模板提交 命令行参数加</span>
+<span class="c1"># -mpibootstrap slurm mphserver  matlab</span>
+slurm<span class="w"> </span>mphserver<span class="w">  </span>matlab<span class="w"> </span><span class="c1"># -mpibootstrap 这个默认有了</span>
+</code></pre></div>
+<ul>
+<li>指令大全</li>
+</ul>
+<p>https://doc.comsol.com/5.5/doc/com.comsol.help.comsol/comsol_ref_running.29.30.html#686067</p>
+<ul>
+<li>method
+<div class="highlight"><pre><span></span><code><span class="nv">$APP</span><span class="w"> </span>batch<span class="w">  </span>-nn<span class="w"> </span><span class="nv">$nn</span><span class="w">  </span>-nnhost<span class="w"> </span><span class="nv">$nnhost</span><span class="w">   </span>-np<span class="w"> </span><span class="nv">$np</span><span class="w">   </span>-mpmode<span class="w"> </span>owner<span class="w"> </span>-methodcall<span class="w"> </span><span class="si">${</span><span class="nv">METHOD_TAG</span><span class="si">}</span><span class="w">  </span>-inputfile<span class="w"> </span><span class="si">${</span><span class="nv">INPUTFILE</span><span class="si">}</span><span class="w"> </span>-outputfile<span class="w"> </span><span class="si">${</span><span class="nv">OUTPUTFILE</span><span class="si">}</span><span class="w"> </span>-batchlog<span class="w"> </span><span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span><span class="w"> </span>-blas<span class="w"> </span>mkl<span class="w"> </span>-prefermph<span class="w">  </span>-mpidebug<span class="w"> </span><span class="m">10</span><span class="w">  </span>-tmpdir<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WDIR</span><span class="s2">/tmp</span><span class="nv">$SLURM_JOB_ID</span><span class="s2">&quot;</span><span class="w">    </span>-prefsdir<span class="w">  </span><span class="s2">&quot;</span><span class="nv">$WDIR</span><span class="s2">/tmp</span><span class="nv">$SLURM_JOB_ID</span><span class="s2">&quot;</span>
+
+<span class="c1"># METHOD_TAG=methodcall1</span>
+-methodcall<span class="w"> </span><span class="si">${</span><span class="nv">METHOD_TAG</span><span class="si">}</span><span class="w">  </span>-inputfile<span class="w"> </span><span class="si">${</span><span class="nv">INPUTFILE</span><span class="si">}</span>
+</code></pre></div></li>
+</ul>
+<h1 id="3">3 脚本</h1>
+<h2 id="31-63">3.1 6.3 版本</h2>
+<ul>
+<li>装在 singularity 外
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J comsol    ##作业名</span>
+<span class="c1">#SBATCH -p xahcnormal   ##队列名</span>
+<span class="c1">#SBATCH -N 1   ##节点数</span>
+<span class="c1">#SBATCH --ntasks-per-node=1   ##每节点进程</span>
+<span class="c1">#SBATCH --cpus-per-task=64   ##每进程占用核数</span>
+
+<span class="c1">### module load apps/apptainer/1.2.4</span>
+
+<span class="nb">source</span><span class="w"> </span>/work/home/ack9hdkbj3/apprepo/comsol/6.3-singularity/scripts/env.sh
+<span class="nv">WDIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="w">       </span><span class="c1">##获取当前脚本所在路径</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WDIR</span><span class="w">           </span><span class="c1">##进入文件夹</span>
+
+<span class="nv">APP</span><span class="o">=</span><span class="nv">$PROGLIST</span><span class="w">   </span><span class="c1">##软件安装路径</span>
+<span class="c1">##################################################################</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>vadmin25:16
+singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="nv">$SIF</span><span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;export LD_LIBRARY_PATH=/work/home/ack9hdkbj3/apprepo/comsol/6.3-singularity/app/libXtst-1.2.3/libXtst-1.2.3/build/lib:</span><span class="nv">$LD_LIBRARY_PATH</span><span class="s2"> ; </span><span class="nv">$APP</span><span class="s2">&quot;</span>
+</code></pre></div></li>
+</ul>
+<blockquote>
+<p>[!NOTE] 
+1. <code>/public/home/jsyadmin/apprepo/comsol/6.3-singularity/app/libXtst-1.2.3</code> 缺库在昆山下
+2. 还得盲选设置成英文</p>
+</blockquote>
+<ul>
+<li>装在 singularity 里，做好的 sif</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 山东五区</span>
+/public/home/jsyadmin/tanjj/softwares/comsol/6.3/comsol63.sif
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 图形</span>
+
+<span class="c1">#!/bin/bash</span>
+<span class="c1">#SBATCH -J comsol    ##作业名</span>
+<span class="c1">#SBATCH -p sdictest   ##队列名</span>
+<span class="c1">#SBATCH -N 1   ##节点数</span>
+<span class="c1">#SBATCH --ntasks-per-node=1   ##每节点进程数</span>
+<span class="c1">#SBATCH --cpus-per-task=5    ##每进程占用核数</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w">  </span>singularity/3.7.3
+<span class="c1">#source /work/home/jsyadmin/apprepo/comsol/6.3-singularity/scripts/env.sh</span>
+<span class="nv">WDIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="w">       </span><span class="c1">##获取当前脚本所在路径</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WDIR</span><span class="w">           </span><span class="c1">##进入文件夹</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>slogin02:4<span class="w"> </span><span class="c1"># 修改端口号，图形桌面提交后，图形管理处可以获取</span>
+
+<span class="c1">#################程序正式调用命令</span>
+
+<span class="c1">#容器内运行，不支持跨节点</span>
+<span class="c1">#IF_COMMAND=&quot;export LD_LIBRARY_PATH=/work/home/jsyadmin/apprepo/comsol/6.3-singularity/lib:$LD_LIBRARY_PATH;export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfreetype.so;export DISPLAY=vadmin26:16;$APP&quot;</span>
+
+<span class="c1">#/public/software/apps/singularity/3.7.3/bin/singularity exec /public/home/ac1xe2jebb/soft/comsol63.sif  /user/local/comsol63/multiphysics/bin/comsol </span>
+
+<span class="c1">#直接运行，需要高版本glibc队列，可跨节点</span>
+<span class="c1">#$APP</span>
+/public/software/apps/singularity/3.7.3/bin/singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>/public/home/ac1xe2jebb/soft/comsol63.sif<span class="w">  </span>/usr/local/comsol63/multiphysics/bin/comsol
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 命令行脚本</span>
+<span class="c1">#!/bin/bash</span>
+<span class="c1">#SBATCH -J comsol    ##作业名</span>
+<span class="c1">#SBATCH -p sdictest   ##队列名</span>
+<span class="c1">#SBATCH -N 1   ##节点数</span>
+<span class="c1">#SBATCH --ntasks-per-node=1   ##每节点进程数</span>
+<span class="c1">#SBATCH --cpus-per-task=64    ##每进程占用核数</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w">  </span>singularity/3.7.3
+<span class="c1">#source /work/home/jsyadmin/apprepo/comsol/6.3-singularity/scripts/env.sh</span>
+<span class="nv">WDIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="w">       </span><span class="c1">##获取当前脚本所在路径</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WDIR</span><span class="w">           </span><span class="c1">##进入文件夹</span>
+
+<span class="nv">APP</span><span class="o">=</span><span class="nv">$PROGLIST</span><span class="w">   </span><span class="c1">##软件安装路径</span>
+<span class="nv">INPUTFILE</span><span class="o">=</span><span class="nv">$WDIR</span>/test.mph<span class="w">    </span><span class="c1">##所要计算的mph文件</span>
+<span class="nv">OUTPUTFILE</span><span class="o">=</span><span class="nv">$WDIR</span>/output<span class="nv">$SLURM_JOB_ID</span>.mph
+<span class="nv">LOGFILE</span><span class="o">=</span><span class="nv">$WDIR</span>/job<span class="nv">$SLURM_JOB_ID</span>.log<span class="w">     </span><span class="c1">##求解日志</span>
+<span class="c1">##################################################################</span>
+
+<span class="c1">##################获取节点列表</span>
+<span class="nv">NP</span><span class="o">=</span><span class="nv">$SLURM_NPROCS</span>
+<span class="nv">NNODE</span><span class="o">=</span><span class="sb">`</span>srun<span class="w"> </span>hostname<span class="w"> </span><span class="p">|</span>sort<span class="w"> </span><span class="p">|</span>uniq<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="sb">`</span>
+<span class="nv">LOG_FILE</span><span class="o">=</span><span class="nv">$WDIR</span>/job_<span class="si">${</span><span class="nv">NP</span><span class="si">}</span>c_<span class="si">${</span><span class="nv">NNODE</span><span class="si">}</span>n_<span class="nv">$SLURM_JOB_ID</span>.log
+<span class="nv">HOSTFILE</span><span class="o">=</span><span class="nv">$WDIR</span>/hosts_<span class="nv">$SLURM_JOB_ID</span>
+srun<span class="w"> </span>hostname<span class="w"> </span><span class="p">|</span>sort<span class="w"> </span><span class="p">|</span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{printf &quot;%s:%s\n&quot;,$2,$1}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$HOSTFILE</span>
+
+mkdir<span class="w"> </span>tmp<span class="nv">$SLURM_JOB_ID</span>
+
+<span class="nv">nn</span><span class="o">=</span><span class="nv">$SLURM_NPROCS</span>
+<span class="nv">nnhost</span><span class="o">=</span><span class="nv">$SLURM_NTASKS_PER_NODE</span>
+<span class="nv">np</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span>
+
+<span class="c1">#################程序正式调用命令</span>
+
+<span class="c1">#容器内运行，不支持跨节点</span>
+<span class="c1">#IF_COMMAND=&quot;export LD_LIBRARY_PATH=/work/home/jsyadmin/apprepo/comsol/6.3-singularity/lib:$LD_LIBRARY_PATH;export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfreetype.so;export DISPLAY=vadmin26:16;$APP&quot;</span>
+
+<span class="c1">#/public/software/apps/singularity/3.7.3/bin/singularity exec /public/home/ac1xe2jebb/soft/comsol63.sif  /user/local/comsol63/multiphysics/bin/comsol</span>
+
+<span class="c1">#直接运行，需要高版本glibc队列，可跨节点</span>
+<span class="c1">#$APP</span>
+<span class="c1">#/public/software/apps/singularity/3.7.3/bin/singularity exec /public/home/ac1xe2jebb/soft/comsol63.sif  /usr/local/comsol63/multiphysics/bin/comsol</span>
+/public/software/apps/singularity/3.7.3/bin/singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>/public/home/ac1xe2jebb/soft/comsol63.sif<span class="w">  </span>/usr/local/comsol63/multiphysics/bin/comsol<span class="w">  </span>batch<span class="w">  </span>-nn<span class="w"> </span><span class="nv">$nn</span><span class="w">  </span>-nnhost<span class="w"> </span><span class="nv">$nnhost</span><span class="w">   </span>-np<span class="w"> </span><span class="nv">$np</span><span class="w">   </span>-mpmode<span class="w"> </span>owner<span class="w"> </span>-inputfile<span class="w"> </span><span class="si">${</span><span class="nv">INPUTFILE</span><span class="si">}</span><span class="w"> </span>-outputfile<span class="w"> </span><span class="si">${</span><span class="nv">OUTPUTFILE</span><span class="si">}</span><span class="w"> </span>-batchlog<span class="w"> </span><span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span><span class="w"> </span>-blas<span class="w"> </span>mkl<span class="w"> </span>-prefermph<span class="w">  </span>-mpidebug<span class="w"> </span><span class="m">10</span><span class="w">  </span>-tmpdir<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WDIR</span><span class="s2">/tmp</span><span class="nv">$SLURM_JOB_ID</span><span class="s2">&quot;</span><span class="w">    </span>-prefsdir<span class="w">  </span><span class="s2">&quot;</span><span class="nv">$WDIR</span><span class="s2">/tmp</span><span class="nv">$SLURM_JOB_ID</span><span class="s2">&quot;</span>
+</code></pre></div>
+<h1 id="4-faq">4 FAQ</h1>
+<h3 id="_1">图片无法加载</h3>
+<p>![[daddc2c6a0041f6b18089f84f1668572.png]]</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 缺库 在西安</span>
+/work/home/jsyadmin/L4/dwj/zlib/install/lib
+
+<span class="c1"># 环境设置</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/work/home/acdxza17zc/apprepo/comsol/6.3-none/app/install/lib:<span class="nv">$LD_LIBRARY_PATH</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="mph">mph 无法加载</h3>
+<div class="highlight"><pre><span></span><code>mpi不能有中文，不支持，java加载的
+</code></pre></div>
+<h3 id="oom">oom</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># java oom</span>
+vim<span class="w"> </span>/work/home/acqkl9gfir/apprepo/comsol/6.1-none_v1/app/comsol61/multiphysics/bin/glnxa64/comsol.ini
+<span class="c1"># 修改  -Xmx20g</span>
+
+<span class="c1"># Settings for COMSOL desktop on glnxa64</span>
+-startup
+../../plugins/org.eclipse.equinox.launcher_1.6.200.v20210416-2027.jar
+--launcher.library
+../glnxa64
+-install<span class="w"> </span>../..
+-vm
+../../java/glnxa64/jre/lib/server/libjvm.so
+-vmargs
+<span class="c1">#-Djava.net.useSystemProxies=true</span>
+-Dosgi.splashPath<span class="o">=</span>platform:/base/plugins/com.comsol.util/
+-Dosgi.clean<span class="o">=</span><span class="nb">true</span>
+-Dorg.osgi.service.log.admin.loglevel<span class="o">=</span>DEBUG
+-Dosgi.configuration.cascaded<span class="o">=</span><span class="nb">true</span>
+-Dosgi.checkConfiguration<span class="o">=</span><span class="nb">true</span>
+-Dosgi.sharedConfiguration.area<span class="o">=</span>file:configuration/comsol
+-Dosgi.sharedConfiguration.area.readOnly<span class="o">=</span><span class="nb">true</span>
+-Dosgi.configuration.area<span class="o">=</span>@user.home/.comsol/v61/configuration/comsol
+-Dosgi.instance.area<span class="o">=</span>@user.home/.comsol/v61/workspace/comsol
+<span class="c1">#-Dorg.eclipse.swt.browser.DefaultType=mozilla</span>
+-Declipse.security<span class="o">=</span>
+-Djava.security.policy<span class="o">=</span><span class="si">${</span><span class="nv">osgi</span><span class="p">.install.area</span><span class="si">}</span>/bin/glnxa64/comsol.policy
+-Dcs.logoutput<span class="o">=</span>file
+-Dcs.logfileprefix<span class="o">=</span>comsol
+-Dcs.client<span class="o">=</span><span class="nb">true</span>
+-Xss4m
+-Xms40m
+-Xmx20g
+-XX:MaxMetaspaceSize<span class="o">=</span>1g
+-Dlog4j2.formatMsgNoLookups<span class="o">=</span><span class="nb">true</span>
+</code></pre></div>
+<ul>
+<li>几何导入闪退的，建议用脚本 vnc 提交
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J comsol    ##作业名</span>
+<span class="c1">#SBATCH -p xhhcnormal01   ##队列名</span>
+<span class="c1">#SBATCH -N 1  ##节点数</span>
+<span class="c1">#SBATCH --ntasks-per-node=1   ##每节点进程数</span>
+<span class="c1">#SBATCH --cpus-per-task=8    ##每进程占用核数</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>vvnc08:2<span class="w"> </span><span class="c1">#注意！需要手动修改为已打开的图形VNC编号</span>
+
+<span class="nb">export</span><span class="w"> </span>GtkComboBox::appears-as-list<span class="o">=</span><span class="m">0</span>
+
+<span class="nv">WDIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="w">       </span><span class="c1">##获取当前脚本所在路径</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WDIR</span><span class="w">           </span><span class="c1">##进入文件夹</span>
+
+<span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;/work/home/acdxza17zc/apprepo/comsol/6.2-none/app/comsol62/multiphysics/bin/comsol&quot;</span><span class="w">   </span><span class="c1">#软件安装路径</span>
+<span class="nv">LOGFILE</span><span class="o">=</span><span class="nv">$WDIR</span>/job<span class="nv">$SLURM_JOB_ID</span>.log<span class="w">     </span><span class="c1">##求解日志</span>
+<span class="c1">##################################################################</span>
+
+<span class="c1">##################获取节点列表</span>
+<span class="nv">NP</span><span class="o">=</span><span class="nv">$SLURM_NPROCS</span>
+<span class="nv">NNODE</span><span class="o">=</span><span class="sb">`</span>srun<span class="w"> </span>hostname<span class="w"> </span><span class="p">|</span>sort<span class="w"> </span><span class="p">|</span>uniq<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="sb">`</span>
+<span class="nv">LOG_FILE</span><span class="o">=</span><span class="nv">$WDIR</span>/job_<span class="si">${</span><span class="nv">NP</span><span class="si">}</span>c_<span class="si">${</span><span class="nv">NNODE</span><span class="si">}</span>n_<span class="nv">$SLURM_JOB_ID</span>.log
+<span class="nv">HOSTFILE</span><span class="o">=</span><span class="nv">$WDIR</span>/hosts_<span class="nv">$SLURM_JOB_ID</span>
+srun<span class="w"> </span>hostname<span class="w"> </span><span class="p">|</span>sort<span class="w"> </span><span class="p">|</span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{printf &quot;%s:%s\n&quot;,$2,$1}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$HOSTFILE</span>
+
+mkdir<span class="w"> </span>tmp<span class="nv">$SLURM_JOB_ID</span>
+
+<span class="nv">nn</span><span class="o">=</span><span class="nv">$SLURM_NPROCS</span>
+<span class="nv">nnhost</span><span class="o">=</span><span class="nv">$SLURM_NTASKS_PER_NODE</span>
+<span class="nv">np</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span>
+
+<span class="c1">#################程序正式调用命令</span>
+<span class="nv">$APP</span><span class="w">  </span>-nn<span class="w"> </span><span class="nv">$nn</span><span class="w">  </span>-nnhost<span class="w"> </span><span class="nv">$nnhost</span><span class="w">   </span>-np<span class="w"> </span><span class="nv">$np</span><span class="w">   </span>-mpmode<span class="w"> </span>owner<span class="w">  </span>-batchlog<span class="w"> </span><span class="si">${</span><span class="nv">LOGFILE</span><span class="si">}</span><span class="w"> </span>-blas<span class="w"> </span>mkl<span class="w"> </span>-prefermph<span class="w">  </span>-mpidebug<span class="w"> </span><span class="m">10</span><span class="w">  </span>-tmpdir<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$WDIR</span><span class="s2">/tmp</span><span class="nv">$SLURM_JOB_ID</span><span class="s2">&quot;</span><span class="w">    </span>-prefsdir<span class="w">  </span><span class="s2">&quot;</span><span class="nv">$WDIR</span><span class="s2">/tmp</span><span class="nv">$SLURM_JOB_ID</span><span class="s2">&quot;</span>
+</code></pre></div></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

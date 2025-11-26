@@ -1,0 +1,1509 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>通信 - hpc-use-mark</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#spack-mpi" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="hpc-use-mark" class="md-header__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hpc-use-mark
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              通信
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="hpc-use-mark" class="md-nav__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    hpc-use-mark
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    软件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    软件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/abaqus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    abaqus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/ansysem%20hfss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ansysem hfss
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/apdl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    apdl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/autodyna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    autodyna
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/ccx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ccx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/CFD%2B%2B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFD++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/CFX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/chemkin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    chemkin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/comsol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    comsol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/converge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    converge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/cpfd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cpfd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/CST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/edem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    edem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/fdtd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fdtd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/feko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feko
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/fidelityCharles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fidelityCharles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/fluent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fluent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/IBAMR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBAMR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../noe" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    科学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    气象
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    异构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    智能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集群
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    集群
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Styling your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    非集群tip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#of" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        of
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        intel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openmpi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        openmpi
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div class="highlight"><pre><span></span><code><span class="c1"># intelmpi 老版本mpi2017、2018版本用</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_FABRICS</span><span class="o">=</span>shm:dapl
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_DAPL_UD</span><span class="o">=</span><span class="nb">enable</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_FALLBACK_DEVICE</span><span class="o">=</span>disable
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_DAPL_UD_PROVIDER</span><span class="o">=</span>ofa-v2-mlx5_0-1u
+
+<span class="c1"># 2021用</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_OFI_PROVIDER</span><span class="o">=</span>verbs
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_PIN_DOMAIN</span><span class="o">=</span>numa<span class="w"> </span><span class="c1"># 西安</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">UCX_NET_DEVICES</span><span class="o">=</span>mlx5_0:1
+<span class="nb">export</span><span class="w"> </span><span class="nv">UCX_IB_PCI_BW</span><span class="o">=</span>mlx5_0:100Gbs
+<span class="nb">export</span><span class="w"> </span><span class="nv">UCX_TLS</span><span class="o">=</span>dc_mlx5,rc_mlx5
+
+<span class="c1"># ibface..</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">UCX_IB_ADDR_TYPE</span><span class="o">=</span>ib_global
+
+https://slurm.schedmd.com/mpi_guide.html#intel_mpi
+
+
+<span class="c1"># oneapi2025 opa网络</span>
+<span class="c1">## 报错 rc_iface.c:499  UCX  ERROR ibv_create_srq() failed: Invalid argument srun: Job step aborted: Waiting up to 32 seconds for job step to finish. Abort(1614479) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init_thread: Unknown error class, error stack:</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_FABRICS</span><span class="o">=</span>shm:ofi
+<span class="nb">export</span><span class="w"> </span><span class="nv">FI_PROVIDER</span><span class="o">=</span>mlx
+<span class="nb">export</span><span class="w"> </span><span class="nv">UCX_IB_ENABLE_OOO_RMA</span><span class="o">=</span>no
+<span class="nb">export</span><span class="w"> </span><span class="nv">UCX_IB_NUM_SRQS</span><span class="o">=</span><span class="m">1</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># of 用低版本openmpi 1.6.5 不支持 ucx  报错如下，</span>
+--------------------------------------------------------------------------
+WARNING:<span class="w"> </span>No<span class="w"> </span>preset<span class="w"> </span>parameters<span class="w"> </span>were<span class="w"> </span>found<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>device<span class="w"> </span>that<span class="w"> </span>Open<span class="w"> </span>MPI
+detected:
+
+<span class="w">  </span>Local<span class="w"> </span>host:<span class="w">            </span>a03r2n05
+<span class="w">  </span>Device<span class="w"> </span>name:<span class="w">           </span>mlx5_0
+<span class="w">  </span>Device<span class="w"> </span>vendor<span class="w"> </span>ID:<span class="w">      </span>0x02c9
+<span class="w">  </span>Device<span class="w"> </span>vendor<span class="w"> </span>part<span class="w"> </span>ID:<span class="w"> </span><span class="m">4123</span>
+
+Default<span class="w"> </span>device<span class="w"> </span>parameters<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>used,<span class="w"> </span>which<span class="w"> </span>may<span class="w"> </span>result<span class="w"> </span><span class="k">in</span><span class="w"> </span>lower
+performance.<span class="w">  </span>You<span class="w"> </span>can<span class="w"> </span>edit<span class="w"> </span>any<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>files<span class="w"> </span>specified<span class="w"> </span>by<span class="w"> </span>the
+btl_openib_device_param_files<span class="w"> </span>MCA<span class="w"> </span>parameter<span class="w"> </span>to<span class="w"> </span><span class="nb">set</span><span class="w"> </span>values<span class="w"> </span><span class="k">for</span><span class="w"> </span>your
+device.
+
+NOTE:<span class="w"> </span>You<span class="w"> </span>can<span class="w"> </span>turn<span class="w"> </span>off<span class="w"> </span>this<span class="w"> </span>warning<span class="w"> </span>by<span class="w"> </span>setting<span class="w"> </span>the<span class="w"> </span>MCA<span class="w"> </span>parameter
+<span class="w">      </span>btl_openib_warn_no_device_params_found<span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.
+--------------------------------------------------------------------------
+
+<span class="c1"># mpirun加上这些参数，高版本openmpi不用，走ucx参数</span>
+mpirun<span class="w">  </span>--mca<span class="w"> </span>btl<span class="w"> </span>self,tcp<span class="w"> </span>--mca<span class="w"> </span>btl_tcp_if_include<span class="w"> </span>ib0<span class="w"> </span>pimpleDyMFoam<span class="w"> </span>-parallel<span class="w"> </span>&gt;<span class="w"> </span>log.pimpleDyMFoam
+</code></pre></div>
+<h1 id="spack-mpi">spack 集群安装 mpi</h1>
+<div class="highlight"><pre><span></span><code>spack<span class="w"> </span>install<span class="w"> </span>openmpi@4.1.5<span class="w"> </span><span class="nv">fabrics</span><span class="o">=</span>xpmem,knem,ucx<span class="w"> </span>%gcc@8.5.0<span class="w"> </span>^xpmem%gcc@8.
+<span class="m">5</span>.0<span class="w"> </span>^knem%gcc@8.5.0<span class="w"> </span>^ucx%gcc@8.5.0
+</code></pre></div>
+<p>![[Pasted image 20250830192745.png]]</p>
+<h2 id="of">of</h2>
+<h2 id="intel">intel</h2>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J openfoam-test #作业名</span>
+<span class="c1">#SBATCH -p cpu #队列名</span>
+<span class="c1">#SBATCH -N 2 #节点数</span>
+<span class="c1">#SBATCH --ntasks-per-node=4 #每节点核数</span>
+<span class="c1">##SBATCH --exclusive</span>
+
+<span class="c1"># intelmpi通信参数</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_FABRICS</span><span class="o">=</span>shm:ofi<span class="w">   </span>
+<span class="c1"># 核心环境变量：I_MPI_FABRICS</span>
+<span class="c1"># 这个变量用于​​显式指定使用的网络协议​​。常用的选项包括：</span>
+<span class="c1"># shm：​**​共享内存​**​，用于​**​单节点内​**​的多进程通信，延迟最低。 </span>
+<span class="c1"># ofi：利用 ​**​libfabric​**​ 框架，这是现代 Intel MPI 版本推荐的方式，支持多种硬件</span>
+<span class="c1"># tcp`：使用 ​**​TCP/IP​**​ 协议栈，通用性强，但延迟和开销通常较大，多见于以太网环境。</span>
+<span class="c1"># dapl`：传统上用于 ​**​InfiniBand​**​ 网络，但在新版本中已弃用，推荐使用 `ofi`</span>
+
+
+
+<span class="c1"># ofv10-gcc850-ip21版本激活</span>
+<span class="nb">source</span><span class="w"> </span>/gpfs/software/apps/openfoam/v10/gcc850-ip21/env.sh
+
+<span class="c1"># of运行指令</span>
+blockMesh<span class="w"> </span>&gt;<span class="w"> </span>log.blockMesh<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+decomposePar<span class="w"> </span>-force<span class="w"> </span>&gt;<span class="w"> </span>log.decomposePar<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+mpirun<span class="w">  </span>-np<span class="w"> </span><span class="m">8</span><span class="w">  </span>rhoSimpleFoam<span class="w"> </span>-parallel<span class="w"> </span>&gt;<span class="w"> </span>log.rhoSimpleFoam<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code>Intel MPI 的通信参数对于优化分布式计算应用的性能至关重要。下面我将为你详细解释这些参数。
+
+### 🖥️ 核心通信模式
+
+Intel MPI 支持多种点对点通信模式，适用于不同场景：
+
+- •
+
+    ​**​标准模式 (`MPI_Send`)​**​: 这是最常用的发送操作。其行为由 Intel MPI 库根据消息大小、可用资源等因素智能决定。对于小消息，它可能会使用缓存加速完成；对于大消息，则可能采用类似同步模式的机制，等待接收方就绪以确保可靠传输
+
+    。
+
+- •
+
+    ​**​缓存模式 (`MPI_Bsend`)​**​: 在此模式下，​**​用户需要提前分配并附加一个缓冲区​**​ (`MPI_Buffer_attach`)。发送操作会将要发送的数据拷贝至该用户提供的缓冲区后立即返回，实现了非阻塞的体验。这能减少等待时间，但需要用户管理缓冲区，且拷贝可能引入开销
+
+    。
+
+- •
+
+    ​**​同步模式 (`MPI_Ssend`)​**​: 此模式是​**​真正的同步发送​**​。`MPI_Ssend`调用只有在消息被接收方成功启动接收（即匹配的 `MPI_Recv`开始）后才会返回。它确保了通信的强同步，但可能增加延迟
+
+    。
+
+- •
+
+    ​**​就绪模式 (`MPI_Rsend`)​**​: 使用此模式的前提是​**​确信接收操作已经启动​**​。如果调用 `MPI_Rsend`时对应的 `MPI_Recv`尚未发布，操作会出错。用对场景可提升效率，但使用需非常谨慎
+
+    。
+
+
+### 🌐 网络结构（Fabric）选择
+
+Intel MPI 的强大之处在于能在运行时通过环境变量灵活选择底层通信网络结构，而无需重新编译程序。
+
+- •
+
+    ​**​核心环境变量：`I_MPI_FABRICS`​**​
+
+    这个变量用于​**​显式指定使用的网络协议​**​。常用的选项包括：
+
+    - •
+
+        `shm`：​**​共享内存​**​，用于​**​单节点内​**​的多进程通信，延迟最低。
+
+    - •
+
+        `ofi`：利用 ​**​libfabric​**​ 框架，这是现代 Intel MPI 版本推荐的方式，支持多种硬件
+
+        。
+
+    - •
+
+        `tcp`：使用 ​**​TCP/IP​**​ 协议栈，通用性强，但延迟和开销通常较大，多见于以太网环境。
+
+    - •
+
+        `dapl`：传统上用于 ​**​InfiniBand​**​ 网络，但在新版本中已弃用，推荐使用 `ofi`
+
+        。
+
+
+- •
+
+    ​**​自动选择策略​**​
+
+    若未设置 `I_MPI_FABRICS`，Intel MPI 会​**​自动检测硬件环境​**​并选择它认为最优的 fabric 组合（如 `shm:ofi`），这通常是大多数情况下的最佳选择。
+
+
+### 📊 进程绑定与调优参数
+
+合理的进程绑定对性能有显著影响。
+
+- •
+
+    ​**​`I_MPI_PIN_PROCESSOR`​**​ 或 ​**​`I_MPI_PIN`​**​
+
+    用于控制是否将 MPI 进程​**​固定（绑定）到特定的 CPU 核心​**​上。这能减少操作系统的调度开销，提高缓存局部性和内存访问性能，对性能有关键影响。通常建议启用（设置为 `1`或 `ON`）。
+
+- •
+
+    ​**​`I_MPI_PIN_DOMAIN`​**​
+
+    此参数定义了进程绑定的​**​粒度或拓扑结构​**​。例如：
+
+    - •
+
+        `socket`：将进程绑定在同一个 CPU 插槽（NUMA 节点）内。
+
+    - •
+
+        `core`：将每个进程固定到特定的物理核心。
+
+    - •
+
+        `auto`：让 Intel MPI 自动决定合适的绑定域。
+
+
+
+### 🐞 调试信息输出
+
+在开发和调试阶段，以下参数非常有用。
+
+- •
+
+    ​**​`I_MPI_DEBUG`​**​
+
+    此变量控制 ​**​MPI 库内部调试信息的输出详细程度​**​。取值范围通常是 `0`（不输出）到 `10`（或更高，输出大量细节）。设置为 `4`或 `5`通常足以获取进程绑定、通信结构选择等有价值信息，而更高值会记录极其详尽的通信细节，可能严重影响性能，仅用于深度调试
+
+    。
+</code></pre></div>
+ 其他重要参数</p>
+<p>|参数或环境变量 |说明与用途| |---|---|
+|​<strong>​<code>I_MPI_OFI_PROVIDER</code>​</strong>​|当使用 <code>I_MPI_FABRICS=ofi</code>时，​<strong>​指定具体的 libfabric Provider​</strong>​。例如，在 AWS 上可能用 <code>efa</code>，在 Mellanox InfiniBand 上用 <code>mlx</code>。|
+|​<strong>​<code>I_MPI_ADJUST_&lt;OPERATION&gt;</code>​</strong>​|这是一系列​<strong>​算法选择变量​</strong>​。Intel MPI 为集体通信操作（如 <code>MPI_Bcast</code>, <code>MPI_Allreduce</code>）提供了多种算法。通过此变量可为特定操作选择不同算法以优化性能（例如 <code>I_MPI_ADJUST_BCAST</code>）。|
+|​<strong>​<code>I_MPI_STATS</code>​</strong>​|启用（例如设置为 <code>1</code>）后，MPI 库会在程序运行结束时​<strong>​输出各类通信统计信息​</strong>​（如消息大小分布、通信时间），帮助进行性能分析。|
+|​<strong>​<code>MPI_Buffer_attach</code>​</strong>​ / ​<strong>​<code>MPI_Buffer_detach</code>​</strong>​|与 ​<strong>​缓存模式 (<code>MPI_Bsend</code>) 配套使用的函数​</strong>​，用于附加和分离用户分配的发送缓冲区<br><br>|</p>
+<h2 id="openmpi">openmpi</h2>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J openfoam-test-ib</span>
+<span class="c1">#SBATCH -p cpu</span>
+<span class="c1">#SBATCH -N 2</span>
+<span class="c1">#SBATCH --ntasks-per-node=2</span>
+<span class="c1">##SBATCH --exclusive</span>
+
+<span class="c1"># 加载OpenFOAM环境</span>
+<span class="nb">source</span><span class="w"> </span>/gpfs/software/apps/openfoam/v10/gcc850-op415/env.sh
+
+<span class="c1"># 可选：检查IB设备状态（诊断用）</span>
+<span class="c1"># ibstat</span>
+<span class="c1"># 可选：查看IB设备与网络接口的映射（诊断用）</span>
+<span class="c1"># ibdev2netdev</span>
+
+<span class="c1"># OpenMPI通信参数 - 针对InfiniBand优化</span>
+<span class="c1"># 使用UCX作为通信框架（推荐，通常比旧的&#39;openib&#39; BTL更高效）</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_pml</span><span class="o">=</span>ucx
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_btl</span><span class="o">=</span>^vader,tcp,openib<span class="w"> </span><span class="c1"># 禁用TCP和openib，使用UCX</span>
+<span class="c1"># 指定网络接口，通常IB卡对应的接口是ib0, ib1等，请根据实际情况调整</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">UCX_NET_DEVICES</span><span class="o">=</span>mlx5_0:1<span class="w"> </span><span class="c1"># 示例设备，使用`ibv_devinfo`命令查看可用设备</span>
+
+<span class="c1"># 进程绑定与CPU映射策略</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_rmaps_base_mapping_policy</span><span class="o">=</span>slot
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_hwloc_base_binding_policy</span><span class="o">=</span>core
+
+<span class="c1"># 可选：设置IB传输相关参数</span>
+<span class="c1"># 设置最大传输大小和 eager 限制（可根据应用调整）</span>
+<span class="c1"># export OMPI_MCA_btl_openib_eager_limit=65536</span>
+<span class="c1"># 启用异步进度引擎，有助于重叠计算和通信</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_opal_common_ucx_async_mode</span><span class="o">=</span>yield
+
+<span class="c1"># of运行指令</span>
+blockMesh<span class="w"> </span>&gt;<span class="w"> </span>log.blockMesh<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+decomposePar<span class="w"> </span>-force<span class="w"> </span>&gt;<span class="w"> </span>log.decomposePar<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+
+<span class="c1"># 使用mpirun启动并行任务</span>
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--mca<span class="w"> </span>pml<span class="w"> </span>ucx<span class="w"> </span><span class="se">\ </span><span class="w">                         </span><span class="c1"># 使用UCX PML</span>
+<span class="w">  </span>--mca<span class="w"> </span>btl<span class="w"> </span>^vader,tcp,openib<span class="w"> </span><span class="se">\ </span><span class="w">           </span><span class="c1"># 禁用TCP/VADER/openib，使用UCX</span>
+<span class="w">  </span>--bind-to<span class="w"> </span>core<span class="w"> </span><span class="se">\ </span><span class="w">                        </span><span class="c1"># 将进程绑定到CPU核心</span>
+<span class="w">  </span>--map-by<span class="w"> </span>core:PE<span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="se">\ </span><span class="w">                    </span><span class="c1"># 按核心映射，并指定每个核心的处理单元</span>
+<span class="w">  </span>--report-bindings<span class="w"> </span><span class="se">\ </span><span class="w">                     </span><span class="c1"># 报告绑定情况</span>
+<span class="w">  </span>icoFoam<span class="w"> </span>-parallel<span class="w"> </span>&gt;<span class="w"> </span>log.icoFoam<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 关闭 ssh 交互</span>
+vim<span class="w"> </span>~/.ssh/config
+StrictHostKeyChecking<span class="w"> </span>no<span class="w"> </span>
+</code></pre></div>
+<h1 id="_1">文档</h1>
+<ul>
+<li>
+<p>高性能网络 （MPI）
+https://docs.zjusct.io/optimization/HPN/mpi/#platform-mpi
+https://scc.ustc.edu.cn/zlsc/user_doc/html/mpi-application/mpi-application.html</p>
+</li>
+<li>
+<p>hpc 概览
+![[4fdf30df11dc65cd7ec251f76e2db309.png]]</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

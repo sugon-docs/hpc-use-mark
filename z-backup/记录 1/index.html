@@ -1,0 +1,3261 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>基础使用 - hpc-use-mark</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="hpc-use-mark" class="md-header__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hpc-use-mark
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              基础使用
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="hpc-use-mark" class="md-nav__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    hpc-use-mark
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    软件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    软件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/abaqus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    abaqus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/ansysem%20hfss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ansysem hfss
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/apdl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    apdl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/autodyna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    autodyna
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/ccx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ccx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/CFD%2B%2B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFD++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/CFX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/chemkin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    chemkin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/comsol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    comsol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/converge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    converge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/cpfd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cpfd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/CST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/edem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    edem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/fdtd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fdtd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/feko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feko
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/fidelityCharles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fidelityCharles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/fluent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fluent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/IBAMR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBAMR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../noe" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    科学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    气象
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    异构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    智能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集群
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    集群
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Styling your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    非集群tip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        环境
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        后台运行
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解压
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-mb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小文件上传（10 MB）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查看资源利用率
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="查看资源利用率">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查看cpu、内存利用率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查看加速卡、显存利用率 ​
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        软件耗时
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#salloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        salloc 申请资源
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        映射图形
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">基础使用</h1>
+<h2 id="_2">环境</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/your/path/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/your/path/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">C_INCLUDE_PATH</span><span class="o">=</span>/your/path/include:<span class="nv">$C_INCLUDE_PATH</span><span class="w"> </span><span class="c1"># C语言 </span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CPLUS_INCLUDE_PATH</span><span class="o">=</span>/your/path/include:<span class="nv">$CPLUS_INCLUDE_PATH</span><span class="w"> </span><span class="c1"># C++</span>
+</code></pre></div>
+<h2 id="_3">后台运行</h2>
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span><span class="nb">command</span><span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;nohup_</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d_%H%M%S<span class="k">)</span><span class="s2">.out&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="c1"># 指定输出名字</span>
+</code></pre></div>
+<h2 id="_4">解压</h2>
+<p>7z
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>p7zip/9.20.1
+7z<span class="w"> </span>x<span class="w"> </span>file.7z
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span>/../libstdc++.so.6
+</code></pre></div></p>
+<h2 id="10-mb">小文件上传（10 MB）</h2>
+<div class="highlight"><pre><span></span><code>rz
+</code></pre></div>
+<h2 id="_5">查看资源利用率</h2>
+<h3 id="cpu">查看cpu、内存利用率</h3>
+<p>ssh计算节点，执行<code>top -u username</code>查看cpu利用率，当每核利用率越接近100%，代表利用率越高；执行<code>free -h</code>查看内存利用情况，当used越接近total大小，越容易内存溢出。</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>mabing@login06<span class="w"> </span>lammps-test<span class="o">]</span>$<span class="w"> </span>ls
+<span class="k">in</span>.silica<span class="w">  </span>isi500.data<span class="w">  </span>lammps.slurm
+<span class="o">[</span>mabing@login06<span class="w"> </span>lammps-test<span class="o">]</span>$<span class="w"> </span>cat<span class="w"> </span>lammps.slurm<span class="w"> </span>
+<span class="c1">#!/bin/bash</span>
+<span class="c1">#SBATCH -J lammps</span>
+<span class="c1">#SBATCH -p xahcnormal</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH -n 8</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>lammps/23Jun2022-intel_21
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">8</span><span class="w"> </span>lmp_mpi<span class="w"> </span>-i<span class="w"> </span><span class="k">in</span>.silica
+<span class="o">[</span>mabing@login06<span class="w"> </span>lammps-test<span class="o">]</span>$<span class="w"> </span>sbatch<span class="w"> </span>lammps.slurm<span class="w"> </span>
+Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">27593262</span>
+<span class="o">[</span>mabing@login06<span class="w"> </span>lammps-test<span class="o">]</span>$<span class="w"> </span>squeue
+<span class="w">             </span>JOBID<span class="w"> </span>PARTITION<span class="w">      </span>NAME<span class="w">           </span>USER<span class="w">           </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+<span class="w">          </span><span class="m">27593262</span><span class="w"> </span>xahcnormal<span class="w">     </span>lammps<span class="w">         </span>mabing<span class="w">          </span>R<span class="w">       </span><span class="m">0</span>:03<span class="w">      </span><span class="m">1</span><span class="w"> </span>b02r4n06
+<span class="o">[</span>mabing@login06<span class="w"> </span>lammps-test<span class="o">]</span>$<span class="w"> </span>ssh<span class="w"> </span>b02r4n06
+top<span class="w"> </span>-<span class="w"> </span><span class="m">20</span>:57:18<span class="w"> </span>up<span class="w"> </span><span class="m">9</span><span class="w"> </span>days,<span class="w"> </span><span class="m">21</span>:13,<span class="w">  </span><span class="m">1</span><span class="w"> </span>user,<span class="w">  </span>load<span class="w"> </span>average:<span class="w"> </span><span class="m">31</span>.90,<span class="w"> </span><span class="m">27</span>.79,<span class="w"> </span><span class="m">24</span>.78
+Tasks:<span class="w"> </span><span class="m">838</span><span class="w"> </span>total,<span class="w">  </span><span class="m">33</span><span class="w"> </span>running,<span class="w"> </span><span class="m">805</span><span class="w"> </span>sleeping,<span class="w">   </span><span class="m">0</span><span class="w"> </span>stopped,<span class="w">   </span><span class="m">0</span><span class="w"> </span>zombie
+%Cpu<span class="o">(</span>s<span class="o">)</span>:<span class="w"> </span><span class="m">96</span>.4<span class="w"> </span>us,<span class="w">  </span><span class="m">3</span>.6<span class="w"> </span>sy,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>ni,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>id,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>wa,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>hi,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>si,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>st
+KiB<span class="w"> </span>Mem<span class="w"> </span>:<span class="w"> </span><span class="m">13176091</span>+total,<span class="w"> </span><span class="m">23336808</span><span class="w"> </span>free,<span class="w"> </span><span class="m">28969952</span><span class="w"> </span>used,<span class="w"> </span><span class="m">79454144</span><span class="w"> </span>buff/cache
+KiB<span class="w"> </span>Swap:<span class="w"> </span><span class="m">16775164</span><span class="w"> </span>total,<span class="w"> </span><span class="m">16675324</span><span class="w"> </span>free,<span class="w">    </span><span class="m">99840</span><span class="w"> </span>used.<span class="w"> </span><span class="m">10036424</span>+avail<span class="w"> </span>Mem
+<span class="w">  </span>PID<span class="w"> </span>USER<span class="w">      </span>PR<span class="w">  </span>NI<span class="w">    </span>VIRT<span class="w">    </span>RES<span class="w">    </span>SHR<span class="w"> </span>S<span class="w">  </span>%CPU<span class="w"> </span>%MEM<span class="w">     </span>TIME+<span class="w"> </span>COMMAND
+<span class="m">11214</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">1738096</span><span class="w"> </span><span class="m">243972</span><span class="w">  </span><span class="m">33016</span><span class="w"> </span>R<span class="w">  </span><span class="m">99</span>.7<span class="w">  </span><span class="m">0</span>.2<span class="w">   </span><span class="m">4</span>:05.40<span class="w"> </span>lmp_mpi
+<span class="m">11216</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">1753688</span><span class="w"> </span><span class="m">266328</span><span class="w">  </span><span class="m">32848</span><span class="w"> </span>R<span class="w">  </span><span class="m">99</span>.7<span class="w">  </span><span class="m">0</span>.2<span class="w">   </span><span class="m">4</span>:04.73<span class="w"> </span>lmp_mpi
+<span class="m">11217</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">1738156</span><span class="w"> </span><span class="m">247992</span><span class="w">  </span><span class="m">32892</span><span class="w"> </span>R<span class="w">  </span><span class="m">99</span>.7<span class="w">  </span><span class="m">0</span>.2<span class="w">   </span><span class="m">4</span>:05.88<span class="w"> </span>lmp_mpi
+<span class="m">11223</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">1738552</span><span class="w"> </span><span class="m">247612</span><span class="w">  </span><span class="m">32600</span><span class="w"> </span>R<span class="w">  </span><span class="m">99</span>.7<span class="w">  </span><span class="m">0</span>.2<span class="w">   </span><span class="m">4</span>:04.90<span class="w"> </span>lmp_mpi
+<span class="m">11220</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">1753468</span><span class="w"> </span><span class="m">262140</span><span class="w">  </span><span class="m">32904</span><span class="w"> </span>R<span class="w">  </span><span class="m">99</span>.3<span class="w">  </span><span class="m">0</span>.2<span class="w">   </span><span class="m">4</span>:06.62<span class="w"> </span>lmp_mpi
+<span class="m">11221</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">1738484</span><span class="w"> </span><span class="m">243612</span><span class="w">  </span><span class="m">32788</span><span class="w"> </span>R<span class="w">  </span><span class="m">99</span>.3<span class="w">  </span><span class="m">0</span>.2<span class="w">   </span><span class="m">4</span>:05.56<span class="w"> </span>lmp_mpi
+<span class="m">11222</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">1753660</span><span class="w"> </span><span class="m">260092</span><span class="w">  </span><span class="m">32796</span><span class="w"> </span>R<span class="w">  </span><span class="m">99</span>.3<span class="w">  </span><span class="m">0</span>.2<span class="w">   </span><span class="m">4</span>:04.70<span class="w"> </span>lmp_mpi
+<span class="m">11213</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">1752084</span><span class="w"> </span><span class="m">260724</span><span class="w">  </span><span class="m">32996</span><span class="w"> </span>R<span class="w">  </span><span class="m">98</span>.0<span class="w">  </span><span class="m">0</span>.2<span class="w">   </span><span class="m">4</span>:05.15<span class="w"> </span>lmp_mpi
+<span class="m">13730</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w">  </span><span class="m">179172</span><span class="w">   </span><span class="m">3632</span><span class="w">   </span><span class="m">2060</span><span class="w"> </span>R<span class="w">   </span><span class="m">0</span>.3<span class="w">  </span><span class="m">0</span>.0<span class="w">   </span><span class="m">0</span>:00.84<span class="w"> </span>top
+
+<span class="o">[</span>mabing@b02r4n06<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>free<span class="w"> </span>-h
+<span class="w">              </span>total<span class="w">        </span>used<span class="w">        </span>free<span class="w">      </span>shared<span class="w">  </span>buff/cache<span class="w">   </span>available
+Mem:<span class="w">           </span>125G<span class="w">         </span>27G<span class="w">         </span>22G<span class="w">        </span>304M<span class="w">         </span>75G<span class="w">         </span>95G
+Swap:<span class="w">           </span>15G<span class="w">         </span>97M<span class="w">         </span>15G
+<span class="o">[</span>mabing@b02r4n06<span class="w"> </span>~<span class="o">]</span>$
+</code></pre></div>
+<h3 id="_6">查看加速卡、显存利用率 <a href="https://www.scnet.cn/help/docs/mainsite/hpc/cmd/skills/resource-usage/#_2-%E6%9F%A5%E7%9C%8B%E5%8A%A0%E9%80%9F%E5%8D%A1%E3%80%81%E6%98%BE%E5%AD%98%E5%88%A9%E7%94%A8%E7%8E%87">​</a></h3>
+<p><strong>型号nvidia RTX 3080，加载nvidia/cuda/11.4，<code>watch nvidia-smi</code>查看利用率</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>mabing@e01r04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>watch<span class="w"> </span>nvidia-smi
+Sun<span class="w"> </span>Jan<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">18</span>:56:27<span class="w"> </span><span class="m">2025</span>
++---------------------------------------------------------------------------------------+
+<span class="p">|</span><span class="w"> </span>NVIDIA-SMI<span class="w"> </span><span class="m">530</span>.41.03<span class="w">              </span>Driver<span class="w"> </span>Version:<span class="w"> </span><span class="m">530</span>.41.03<span class="w">    </span>CUDA<span class="w"> </span>Version:<span class="w"> </span><span class="m">12</span>.1<span class="w">     </span><span class="p">|</span>
+<span class="p">|</span>-----------------------------------------+----------------------+----------------------+
+<span class="p">|</span><span class="w"> </span>GPU<span class="w">  </span>Name<span class="w">                  </span>Persistence-M<span class="p">|</span><span class="w"> </span>Bus-Id<span class="w">        </span>Disp.A<span class="w"> </span><span class="p">|</span><span class="w"> </span>Volatile<span class="w"> </span>Uncorr.<span class="w"> </span>ECC<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>Fan<span class="w">  </span>Temp<span class="w">  </span>Perf<span class="w">            </span>Pwr:Usage/Cap<span class="p">|</span><span class="w">         </span>Memory-Usage<span class="w"> </span><span class="p">|</span><span class="w"> </span>GPU-Util<span class="w">  </span>Compute<span class="w"> </span>M.<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w">                                         </span><span class="p">|</span><span class="w">                      </span><span class="p">|</span><span class="w">               </span>MIG<span class="w"> </span>M.<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="o">=========================================</span>+<span class="o">======================</span>+<span class="o">======================</span><span class="p">|</span>
+<span class="p">|</span><span class="w">   </span><span class="m">0</span><span class="w">  </span>NVIDIA<span class="w"> </span>GeForce<span class="w"> </span>RTX<span class="w"> </span><span class="m">3080</span><span class="w">         </span>On<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">00000000</span>:67:00.0<span class="w"> </span>Off<span class="w"> </span><span class="p">|</span><span class="w">                  </span>N/A<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span><span class="m">30</span>%<span class="w">   </span>37C<span class="w">    </span>P2<span class="w">              </span>105W<span class="w"> </span>/<span class="w"> </span>320W<span class="p">|</span><span class="w">    </span>266MiB<span class="w"> </span>/<span class="w"> </span>10240MiB<span class="w"> </span><span class="p">|</span><span class="w">     </span><span class="m">90</span>%<span class="w">      </span>Default<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w">                                         </span><span class="p">|</span><span class="w">                      </span><span class="p">|</span><span class="w">                  </span>N/A<span class="w"> </span><span class="p">|</span>
++-----------------------------------------+----------------------+----------------------+
+
++---------------------------------------------------------------------------------------+
+<span class="p">|</span><span class="w"> </span>Processes:<span class="w">                                                                            </span><span class="p">|</span>
+<span class="p">|</span><span class="w">  </span>GPU<span class="w">   </span>GI<span class="w">   </span>CI<span class="w">        </span>PID<span class="w">   </span>Type<span class="w">   </span>Process<span class="w"> </span>name<span class="w">                            </span>GPU<span class="w"> </span>Memory<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w">        </span>ID<span class="w">   </span>ID<span class="w">                                                             </span>Usage<span class="w">      </span><span class="p">|</span>
+<span class="p">|</span><span class="o">=======================================================================================</span><span class="p">|</span>
+<span class="p">|</span><span class="w">    </span><span class="m">0</span><span class="w">   </span>N/A<span class="w">  </span>N/A<span class="w">      </span><span class="m">7894</span><span class="w">      </span>C<span class="w">   </span>lmp_mpi<span class="w">                                     </span>264MiB<span class="w"> </span><span class="p">|</span>
++---------------------------------------------------------------------------------------+
+</code></pre></div>
+<p><strong>型号Z100，加载compiler/dtk/24.04.1，<code>watch hy-smi</code>查看利用率</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>mabing@e07r1n06<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>watch<span class="w"> </span>hy-smi
+Every<span class="w"> </span><span class="m">2</span>.0s:<span class="w"> </span>hy-smi<span class="w">                     </span>Sun<span class="w"> </span>Jan<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">19</span>:13:48<span class="w"> </span><span class="nv">2025</span>
+
+<span class="o">============================</span><span class="w"> </span>System<span class="w"> </span>Management<span class="w"> </span><span class="nv">Interface</span><span class="w"> </span><span class="o">=============================</span>
+<span class="o">======================================================================================</span>
+DCU<span class="w">     </span>Temp<span class="w">     </span>AvgPwr<span class="w">     </span>Perf<span class="w">     </span>PwrCap<span class="w">     </span>VRAM%<span class="w">      </span>DCU%<span class="w">      </span>Mode
+<span class="m">0</span><span class="w">       </span><span class="m">51</span>.0C<span class="w">    </span><span class="m">75</span>.0W<span class="w">      </span>auto<span class="w">     </span><span class="m">300</span>.0W<span class="w">     </span><span class="m">18</span>%<span class="w">         </span><span class="m">96</span>%<span class="w">       </span>N/A
+<span class="o">======================================================================================</span>
+<span class="o">===================================</span><span class="w"> </span>End<span class="w"> </span>of<span class="w"> </span>SMI<span class="w"> </span><span class="nv">Log</span><span class="w"> </span><span class="o">===================================</span>
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code>hy-smi<span class="w">   </span><span class="c1"># 对于旧集群</span>
+rocm-smi<span class="w"> </span><span class="c1"># 对于二代卡</span>
+</code></pre></div>
+![[Pasted image 20250411091723.png]]</p>
+<h2 id="_7">软件耗时</h2>
+<p>![[Pasted image 20250411094439.png]]</p>
+<h2 id="salloc"><code>salloc</code> 申请资源</h2>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>yuki@login02<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>salloc<span class="w"> </span>-p<span class="w"> </span>kshcnormal<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>
+salloc:<span class="w"> </span>Pending<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">47416155</span>
+salloc:<span class="w"> </span>job<span class="w"> </span><span class="m">47416155</span><span class="w"> </span>queued<span class="w"> </span>and<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resources
+salloc:<span class="w"> </span>job<span class="w"> </span><span class="m">47416155</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>allocated<span class="w"> </span>resources
+salloc:<span class="w"> </span>Granted<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">47416155</span>
+salloc:<span class="w"> </span>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resource<span class="w"> </span>configuration
+salloc:<span class="w"> </span>Nodes<span class="w"> </span>a02r1n14<span class="w"> </span>are<span class="w"> </span>ready<span class="w"> </span><span class="k">for</span><span class="w"> </span>job
+</code></pre></div>
+<h2 id="_8">映射图形</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>vadmin26:2<span class="w">  </span><span class="c1">#x11协议投射</span>
+</code></pre></div>
+<h1 id="_9">安装</h1>
+<h2 id="_10">所有软件包</h2>
+<div class="highlight"><pre><span></span><code>/work/home/jsyadmin/L4/liucheng/app<span class="w">  </span><span class="c1"># 西安安装好的包</span>
+
+/work/home/ac06c7emqx/.B/.app_tar<span class="w">  </span>
+<span class="c1"># 有些是/public开头</span>
+tar<span class="w"> </span>-xvf<span class="w"> </span>/work/home/ac06c7emqx/.B/.app_tar<span class="w"> </span>-C<span class="w">  </span>安装目录
+
+高版本-西安-乌镇
+/work/home/jsyadmin/L4/dwj/2.28/
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>/public/home/jsyadmin/liucheng/softpack<span class="w">  </span><span class="c1"># 压缩原始包 昆山</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>/work/home/jsyadmin/L4/liucheng/CAE/case_script/#<span class="w"> </span>西安<span class="w"> </span>所有提交脚本
+/work/home/jsyadmin/L4/chuxu/softpack<span class="w">  </span><span class="c1"># 西安 ANSYS2025R1安装包</span>
+/work/home/jsyadmin/L4/dwj/2025ans.tgz<span class="w"> </span><span class="c1"># 西安 安装好的ansys2025</span>
+</code></pre></div>
+<h2 id="wannier_tools">wannier_tools</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># 下载wanniertools和arpack的安装包</span>
+wget<span class="w"> </span>https://github.com/opencollab/arpack-ng/archive/refs/heads/master.zip
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>compiler/intel/2017.5.239<span class="w"> </span>mpi/intelmpi/2017.4.239
+module<span class="w"> </span>load<span class="w"> </span>mathlib/lapack/3.8.0-intel-2017<span class="w"> </span>mathlib/blas/3.5.0-intel-2017
+
+<span class="c1"># 安装arpack</span>
+sh<span class="w"> </span>bootstrap
+mkdir<span class="w"> </span>install<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+<span class="nb">export</span><span class="w"> </span><span class="nv">CC</span><span class="o">=</span>mpicc
+<span class="nb">export</span><span class="w"> </span><span class="nv">CXX</span><span class="o">=</span>mpicxx
+<span class="nb">export</span><span class="w"> </span><span class="nv">FC</span><span class="o">=</span>mpiifort
+<span class="nb">export</span><span class="w"> </span><span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">&quot;-L/public/software/mpi/intelmpi/2017.4.239/intel64/lib </span><span class="nv">$LDFLAGS</span><span class="s2">&quot;</span>
+../configure<span class="w"> </span>--prefix<span class="o">=</span>/work/home/acsqkb8d1l/temp/arpack-ng-master/install<span class="w"> </span>--enable-mpi
+make
+make<span class="w"> </span>check
+make<span class="w"> </span>install
+
+<span class="nb">cd</span><span class="w"> </span>wannier_tools-2.7.0/src
+
+<span class="c1"># 修改Makefile.intel-mpi中</span>
+<span class="nv">F90</span><span class="w">  </span><span class="o">=</span><span class="w"> </span>mpiifort<span class="w"> </span>-fpp<span class="w"> </span>-DMPI<span class="w"> </span>-DINTELMKL<span class="w"> </span>-fpe3<span class="w"> </span>-DARPACK<span class="w"> </span>-DINTELMKL
+<span class="nv">CC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>mpiicc<span class="w"> </span>-cpp<span class="w"> </span>-O3<span class="w"> </span>-DINTELMKL
+<span class="c1"># ARPACK LIBRARY</span>
+<span class="nv">ARPACK</span><span class="o">=</span><span class="w"> </span>-L/work/home/acsqkb8d1l/temp/arpack-ng-master/install/lib<span class="w"> </span>-larpack<span class="w"> </span>-lparpack
+
+cp<span class="w"> </span>Makefile.intel-mpi<span class="w"> </span>Makefile
+make
+
+<span class="c1"># 脚本：</span>
+<span class="c1">#!/bin/bash</span>
+<span class="c1">#SBATCH -J wannier-tools</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH --ntasks-per-node=64</span>
+<span class="c1">#SBATCH -p tyhcnormal</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>compiler/intel/2017.5.239<span class="w"> </span>mpi/intelmpi/2017.4.239
+module<span class="w"> </span>load<span class="w"> </span>mathlib/lapack/3.8.0-intel-2017<span class="w"> </span>mathlib/blas/3.5.0-intel-2017
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/work/home/acsqkb8d1l/temp/arpack-ng-master/install/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">64</span><span class="w"> </span>/work/home/acsqkb8d1l/temp/wannier_tools-2.7.0/bin/wt.x
+</code></pre></div>
+<h2 id="amber">amber</h2>
+<h3 id="gpu">gpu</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 解压</span>
+tar<span class="w"> </span>xvf<span class="w"> </span>Amber24.tar.bz2
+tar<span class="w"> </span>xvf<span class="w"> </span>AmberTools24.tar.bz2
+<span class="c1"># conda 安装</span>
+micromamba<span class="w"> </span>config<span class="w"> </span>append<span class="w"> </span>channels<span class="w"> </span>conda-forge
+
+micromamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>amber24<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
+
+micromamba<span class="w"> </span>activate<span class="w"> </span>amber24
+
+micromamba<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>scipy<span class="w"> </span>cython<span class="w"> </span>ipython<span class="w"> </span>notebook<span class="w"> </span>matplotlib<span class="w"> </span>setuptools<span class="w"> </span>-y
+
+micromamba<span class="w"> </span>install<span class="w"> </span>openmpi<span class="w"> </span>mpi4py
+
+micromamba<span class="w"> </span>install<span class="w"> </span>cudatoolkit-dev<span class="o">=</span><span class="m">11</span>.7<span class="w"> </span>-c<span class="w"> </span>conda-forge
+
+micromamba<span class="w"> </span>install<span class="w"> </span>cuda-nvcc<span class="o">=</span><span class="m">11</span>.7<span class="w"> </span>-c<span class="w"> </span>nvidia
+
+micromamba<span class="w"> </span>activate<span class="w"> </span>amber24
+
+<span class="c1"># 进入Amber_src</span>
+<span class="nb">cd</span><span class="w"> </span>amber24_src/build
+vim<span class="w"> </span>run_cmake
+
+<span class="c1">##</span>
+cmake<span class="w"> </span><span class="nv">$AMBER_PREFIX</span>/amber24_src<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span>/work/home/hnnky01/software/Amber/amber24-parallel-gpu/install<span class="w"> </span><span class="se">\ </span><span class="c1"># 安装位置</span>
+<span class="w">    </span>-DCOMPILER<span class="o">=</span>GNU<span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>-DMPI<span class="o">=</span>FALSE<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DCUDA<span class="o">=</span>TRUE<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DINSTALL_TESTS<span class="o">=</span>TRUE<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DDOWNLOAD_MINICONDA<span class="o">=</span>FALSE<span class="w"> </span>-DUSE_CONDA_LIBS<span class="o">=</span>TRUE<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DCUDA_TOOLKIT_ROOT_DIR<span class="o">=</span>/public/software/compiler/nvidia/cuda/12.1.0<span class="w">  </span><span class="se">\ </span><span class="c1"># cuda位置</span>
+<span class="w">    </span>-DPYTHON_INCLUDE_DIR<span class="o">=</span><span class="k">$(</span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from distutils.sysconfig import get_python_inc; print(get_python_inc())&quot;</span><span class="k">)</span><span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>-DPYTHON_LIBRARY<span class="o">=</span><span class="k">$(</span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var(&#39;LIBDIR&#39;))&quot;</span><span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w">  </span>cmake.log
+
+<span class="k">fi</span>
+<span class="c1">## </span>
+
+<span class="c1">#安装</span>
+./run_cmake
+make<span class="w"> </span>install<span class="w"> </span>-j<span class="w"> </span><span class="m">16</span>
+
+<span class="c1">## 最后在激活 </span>
+<span class="nb">source</span><span class="w"> </span>/work/home/hnnky01/software/Amber/amber24-parallel-gpu/amber24/amber.sh
+</code></pre></div>
+<h2 id="cfd">CFD++</h2>
+<h3 id="_11">安装说明</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 安装好的16.1包</span>
+/public/home/tanjj/apprepo/cfdplus/16.1-install/METACOMP
+
+<span class="c1"># 安装过程</span>
+
+<span class="c1">## 创建METACOMP</span>
+将mcfdall.tar<span class="w">  </span>glib<span class="w"> </span>hpmpi<span class="w"> </span>mbin<span class="w">  </span>MPICH-3.1.4<span class="w"> </span>OPENMPI-1.8.7<span class="w"> </span>msetenv.bash<span class="w"> </span>msetup.bash<span class="w"> </span>全部复制到METACOMP下
+<span class="c1">### 注意glib里将 cp /usr/lib/libGL* glib/ 全部复制过来</span>
+
+./msetup.bash<span class="w"> </span>安装
+<span class="c1">### 最后报错bash: ./msetsgi.bash: No such file or directory 不用管</span>
+
+<span class="c1">## 检查是否成功</span>
+<span class="nb">cd</span><span class="w"> </span>METACOMP/mlib/mcfd.16.1<span class="w"> </span>
+./check.execs-list<span class="w">  </span><span class="c1">#弹出 grep not 则成功</span>
+
+<span class="c1">## 配置文件</span>
+cp<span class="w"> </span>mcfdenv.sh.template<span class="w"> </span>mcfdenv.sh
+vim<span class="w"> </span>mcfdenv.sh,改变MAXMEM和PROCMEM<span class="w"> </span>其中MAXMEM为总内存，PROCMEM为一个进程的内存。<span class="w"> </span>改成200G<span class="w"> </span>2G就行
+
+<span class="c1">## 运行</span>
+<span class="c1">### 图形</span>
+<span class="nb">source</span><span class="w"> </span>/public/home/ac99fewrx5/apprepo/cfdplus/16.1-install/METACOMP/mcfdenv.sh
+/public/home/ac99fewrx5/apprepo/cfdplus/16.1-install/METACOMP/mlib/mcfd.16.1/exec/mcfdgui
+
+<span class="c1">### 命令行</span>
+<span class="nb">source</span><span class="w"> </span>/public/home/ac99fewrx5/apprepo/cfdplus/16.1-none/scripts/env.sh
+tometis<span class="w"> </span>kmetis<span class="w">  </span><span class="nv">$SLURM_NPROCS</span><span class="w"> </span><span class="c1"># 网格分区</span>
+<span class="nv">HOST_STRING</span><span class="o">=</span><span class="sb">`</span>srun<span class="w"> </span>hostname<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2&quot;:&quot;$1}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/,$//&#39;</span><span class="sb">`</span><span class="w"> </span><span class="c1">### slurm2pbs</span>
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="nv">$SLURM_NPROCS</span><span class="w">  </span>-hostlist<span class="w"> </span><span class="nv">$HOST_STRING</span><span class="w">  </span>hpmpimcfd<span class="w"> </span>
+</code></pre></div>
+<h4 id="_12">手册</h4>
+<p>![[cfd++_liunx_141安装说明_详细.docx]]</p>
+<h4 id="_13">运行手册</h4>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>METACOMP/mlib/mcfd.16.1/html/index3.html
+firefox<span class="w"> </span>index3.html
+</code></pre></div>
+<h2 id="openfoam">openfoam</h2>
+<h3 id="cfdem">CFDEM</h3>
+<p>手册在 <code>https://www.cfdem.com/media/CFDEM/docu/CFDEMcoupling_Manual.html#install-7</code></p>
+<p>要先编译好 openfoam</p>
+<ul>
+<li>LIGGGHTS 编译
+再编译 LIGGGHTS</li>
+</ul>
+<p>手册在  <code>https://zhuanlan.zhihu.com/p/664114645</code>
+<code>https://www.cfdem.com/media/DEM/docu/Section_start.html#making-liggghts-r-public</code></p>
+<p>vtk 这边有
+<div class="highlight"><pre><span></span><code>/work/home/jsyadmin/tanjj/soft/vtk.zip<span class="w"> </span><span class="c1"># 西安</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">WM_NCOMPPROCS</span><span class="o">=</span><span class="m">10</span><span class="w"> </span><span class="c1"># 10核并行编译</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w">  </span>/../LIGGGHTS/LIGGGHTS-PUBLIC/src
+make<span class="w"> </span>auto
+cfdemCompLIG
+</code></pre></div>
+<ul>
+<li>CFDEM 编译</li>
+</ul>
+<p>env 里
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">CFDHOME</span><span class="o">=</span>/work/home/xuwanxin/softwares/CFDEM<span class="w"> </span><span class="c1"># 安装位置</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFDEM_SRC_DIR</span><span class="o">=</span>/work/home/xuwanxin/softwares/CFDEM/CFDEMcoupling-PUBLIC-5.x/src<span class="w">  </span><span class="c1"># 源码位置</span>
+<span class="nb">source</span><span class="w"> </span>/work/home/xuwanxin/apprepo/OpenFOAM_org/v5.x-gcc_9.3.0_openmpi_4.1.5_gcc9.3.0/scripts/env.sh<span class="w"> </span><span class="c1"># of激活</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/work/home/xuwanxin/softwares/CFDEM/LIGGGHTS/LIGGGHTS-PUBLIC/lib/vtk/build/lib:<span class="nv">$LD_LIBRARY_PATH</span><span class="w"> </span><span class="c1"># vtk在LIGGGHTS前先编译好</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFDEM_VERSION</span><span class="o">=</span>PUBLIC
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFDEM_PROJECT_DIR</span><span class="o">=</span><span class="nv">$CFDHOME</span>/CFDEMcoupling-<span class="nv">$CFDEM_VERSION</span>-<span class="nv">$WM_PROJECT_VERSION</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFDEM_PROJECT_USER_DIR</span><span class="o">=</span><span class="nv">$CFDHOME</span>/<span class="nv">$LOGNAME</span>-<span class="nv">$CFDEM_VERSION</span>-<span class="nv">$WM_PROJECT_VERSION</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFDEM_bashrc</span><span class="o">=</span><span class="nv">$CFDEM_PROJECT_DIR</span>/src/lagrangian/cfdemParticle/etc/bashrc
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFDEM_LIGGGHTS_SRC_DIR</span><span class="o">=</span><span class="nv">$CFDHOME</span>/LIGGGHTS/LIGGGHTS-PUBLIC/src
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFDEM_LIGGGHTS_MAKEFILE_NAME</span><span class="o">=</span>auto
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFDEM_LPP_DIR</span><span class="o">=</span><span class="nv">$CFDHOME</span>/LIGGGHTS/lpp/src
+.<span class="w"> </span><span class="nv">$CFDEM_bashrc</span>
+
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">WM_NCOMPPROCS</span><span class="o">=</span><span class="m">10</span><span class="w">  </span><span class="c1"># 10核编译</span>
+cfdemCompCFDEMall<span class="w"> </span><span class="c1"># 全部编译</span>
+</code></pre></div></p>
+<h2 id="procast">procast</h2>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>hj2024@login09<span class="w"> </span>procast2019<span class="o">]</span>$<span class="w"> </span>ls
+disk<span class="w">  </span>_SolidSQUAD_
+
+<span class="o">[</span>hj2024@login09<span class="w"> </span>disk<span class="o">]</span>$<span class="w"> </span>ls
+auxsh.tar<span class="w">  </span>getppgdir.sh<span class="w">  </span>optional<span class="w">   </span>Paminst-gui.sh<span class="w">  </span>paminst.tcl<span class="w">  </span>required<span class="w">  </span>VERSION
+CDinst.sh<span class="w">  </span>info<span class="w">          </span>Pamgui.sh<span class="w">  </span>Paminst.sh<span class="w">      </span>reqs.dat<span class="w">     </span>util.tar
+<span class="o">[</span>hj2024@login09<span class="w"> </span>disk<span class="o">]</span>$<span class="w"> </span>./Paminst.sh<span class="w">  </span><span class="c1"># 非图形安装</span>
+
+<span class="c1"># 一一覆盖率，可看readme_linux.txt中</span>
+<span class="o">[</span>hj2024@login09<span class="w"> </span>procast2019<span class="o">]</span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>_SolidSQUAD_/
+<span class="o">[</span>hj2024@login09<span class="w"> </span>_SolidSQUAD_<span class="o">]</span>$<span class="w"> </span>ls
+esiplayer<span class="w">    </span>pamopt<span class="w">   </span>ProCAST2019.1.Suite.Linux64-SSQ.rar<span class="w">  </span>Visual-Environment
+pam_lmd.lic<span class="w">  </span>procast<span class="w">  </span>readme_linux.txt
+<span class="o">[</span>hj2024@login09<span class="w"> </span>_SolidSQUAD_<span class="o">]</span>$
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 破解 配置 写到~/.bashrc中</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PAM_LMD_LICENSE_FILE</span><span class="o">=</span>/work/home/hj2024/softwares/procast2019/licenses/pam_lmd.lic
+<span class="nb">export</span><span class="w"> </span><span class="nv">PAMHOME</span><span class="o">=</span>/work/home/hj2024/softwares/procast2019
+<span class="nb">source</span><span class="w"> </span>~/softwares/procast2019/env-Linux/esiplayer.Baenv
+<span class="nb">source</span><span class="w"> </span>~/softwares/procast2019/env-Linux/pamopt.Baenv
+<span class="nb">source</span><span class="w"> </span>~/softwares/procast2019/env-Linux/procast.Baenv
+<span class="nb">source</span><span class="w"> </span>~/softwares/procast2019/env-Linux/quikcast.Baenv
+<span class="nb">source</span><span class="w"> </span>~/softwares/procast2019/env-Linux/pamopteditor.Baenv
+<span class="nb">source</span><span class="w"> </span>~/softwares/procast2019/env-Linux/psi.Baenv
+<span class="nb">source</span><span class="w"> </span>~/softwares/procast2019/env-Linux/visualenvironment.Baenv
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/work/home/hj2024/softwares/procast2019/procast/2019.0/Linux_x86_64_2.12/visual:<span class="nv">$PATH</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 图形提交脚本</span>
+
+<span class="c1">#!/bin/bash</span>
+<span class="c1">#SBATCH -J procast2019</span>
+<span class="c1">#SBATCH -p xahcnormal</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH --ntasks-per-node=32</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>vadmin26:9<span class="w"> </span><span class="c1"># 需要自定义修改</span>
+
+<span class="nb">source</span><span class="w"> </span>/work/home/hj2024/softwares/procast2019/env.sh
+
+VisualCast.sh
+</code></pre></div>
+<h2 id="open-surfex">open-SURFEX</h2>
+<ul>
+<li>
+<p>env. sh 环境
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>compiler/intel/2017.5.239
+module<span class="w"> </span>load<span class="w"> </span>mathlib/netcdf/4.4.1-intel-2017
+module<span class="w"> </span>load<span class="w"> </span>mathlib/zlib/1.2.11-intel-2017
+module<span class="w"> </span>load<span class="w"> </span>mathlib/pnetcdf/1.12.0-impi-2017
+module<span class="w"> </span>load<span class="w"> </span>mathlib/hdf5/1.8.20-intel-2017
+module<span class="w"> </span>load<span class="w"> </span>mpi/intelmpi/2017.4.239
+module<span class="w"> </span>load<span class="w"> </span>mathlib/szip/2.1.1-intel-2017
+<span class="nb">export</span><span class="w"> </span><span class="nv">CDFF_PATH</span><span class="o">=</span>/public/software/mathlib/netcdf/4.4.1/intel
+<span class="nb">export</span><span class="w"> </span><span class="nv">SZIP_PATH</span><span class="o">=</span>/public/software/apps/szip/2.1.1/intel
+<span class="nb">export</span><span class="w"> </span><span class="nv">CDF_PATH</span><span class="o">=</span>/public/software/mathlib/netcdf/4.4.1/intel
+<span class="nb">export</span><span class="w"> </span><span class="nv">HDF5_PATH</span><span class="o">=</span>/public/software/mathlib/hdf5/1.8.20/intel
+<span class="nb">export</span><span class="w"> </span><span class="nv">HDF_PATH</span><span class="o">=</span>/public/software/mathlib/hdf5/1.8.20/intel
+<span class="nb">export</span><span class="w"> </span><span class="nv">ZLIB_PATH</span><span class="o">=</span>/public/software/mathlib/zlib/1.2.11/intel
+<span class="nb">export</span><span class="w"> </span><span class="nv">VER_CDF</span><span class="o">=</span>CDF2020PARALL
+<span class="nb">export</span><span class="w"> </span><span class="nv">FC</span><span class="o">=</span>/opt/hpc/software/compiler/intel/intel-compiler-2017.5.239/bin/intel64/ifort
+</code></pre></div></p>
+</li>
+<li>
+<p>指令
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">1</span>
+./configure
+.<span class="w"> </span>../conf/profile_surfex-LXgfortran-SFX-V8-1-1-MPIAUTO-O2-X0
+make
+make<span class="w"> </span>installmaster
+
+
+<span class="c1"># 手册 https://www.umr-cnrm.fr/surfex/spip.php?article191</span>
+</code></pre></div></p>
+</li>
+</ul>
+<h2 id="conda">conda</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># miniconda</span>
+wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-py38_23.5.1-0-Linux-x86_64.sh<span class="w"> </span>-i<span class="w"> </span>https://pypi.tuna.tsinghua.edu.cn/simple/<span class="w"> </span>--no-check-certificate<span class="w"> </span>
+chmod<span class="w"> </span>+x<span class="w"> </span>Miniconda3-py38_23.5.1-0-Linux-x86_64.sh<span class="w"> </span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>./miniconda3/<span class="w"> </span>
+bash<span class="w"> </span>Miniconda3-py38_23.5.1-0-Linux-x86_64.sh<span class="w"> </span>-b<span class="w"> </span>-f<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;./miniconda3/&quot;</span><span class="w"> </span>
+rm<span class="w"> </span>-rf<span class="w"> </span>Miniconda3-py38_23.5.1-0-Linux-x86_64.sh
+./miniconda3/bin/conda<span class="w"> </span>init<span class="w"> </span>
+<span class="nb">source</span><span class="w"> </span>~/.bashrc
+
+<span class="c1"># anaconda</span>
+wget<span class="w"> </span>https://repo.anaconda.com/archive/Anaconda3-2024.06-1-Linux-x86_64.sh<span class="w">   </span>-i<span class="w"> </span>https://pypi.tuna.tsinghua.edu.cn/simple/<span class="w"> </span>--no-check-certificate
+chmod<span class="w"> </span>+x<span class="w"> </span>Anaconda3-2024.06-1-Linux-x86_64.sh
+mkdir<span class="w"> </span>./anaconda3
+bash<span class="w"> </span>Anaconda3-2024.06-1-Linux-x86_64.sh<span class="w"> </span>-b<span class="w"> </span>-f<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;./anaconda3/&quot;</span>
+
+<span class="c1"># miniforge</span>
+wget<span class="w"> </span><span class="s2">&quot;https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-</span><span class="k">$(</span>uname<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">.sh&quot;</span>
+chmod<span class="w"> </span>+x<span class="w"> </span>Miniforge3-<span class="k">$(</span>uname<span class="k">)</span>-<span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span>.sh
+mkdir<span class="w"> </span>-p<span class="w"> </span>./miniforge<span class="w"> </span>
+bash<span class="w"> </span>Miniforge3-<span class="k">$(</span>uname<span class="k">)</span>-<span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span>.sh<span class="w"> </span>-b<span class="w"> </span>-f<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;./miniforge/&quot;</span>
+./miniforge/bin/conda<span class="w"> </span>init<span class="w"> </span>
+<span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div>
+<h3 id="_14">配清华源</h3>
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+
+
+conda<span class="w"> </span>install<span class="w"> </span>blastn<span class="w">  </span>-c<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/<span class="w"> </span>
+</code></pre></div>
+<h3 id="pip">pip 指定源头</h3>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>xxxx<span class="w"> </span>-i<span class="w"> </span>https://pypi.tuna.tsinghua.edu.cn/simple<span class="w"> </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip<span class="w">  </span>-i<span class="w"> </span>https://pypi.tuna.tsinghua.edu.cn/simple<span class="w"> </span><span class="c1"># 升级</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>--root-user-action<span class="o">=</span>ignore<span class="w"> </span>xxx
+
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">torch</span><span class="o">==</span><span class="m">1</span>.13.1+cu117<span class="w"> </span><span class="nv">torchvision</span><span class="o">==</span><span class="m">0</span>.14.1+cu117<span class="w"> </span><span class="nv">torchaudio</span><span class="o">==</span><span class="m">0</span>.13.1<span class="w"> </span>--extra-index-url<span class="w"> </span>https://download.pytorch.org/whl/cu117
+</code></pre></div>
+<h3 id="_15">打包环境</h3>
+<div class="highlight"><pre><span></span><code><span class="m">1</span>）A账号下，conda<span class="w"> </span>install<span class="w"> </span>conda-pack<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span><span class="c1">#先安装打包命令</span>
+<span class="m">2</span>）A账号下，conda<span class="w"> </span>pack<span class="w"> </span>-n<span class="w"> </span>envname<span class="w"> </span>-o<span class="w"> </span>~/envname.tar.gz<span class="w"> </span><span class="c1">#开始打包指定输出名</span>
+<span class="m">3</span>）将压缩包传到B账号下
+<span class="m">4</span>）B账号下，mkdir<span class="w"> </span>envname，tar<span class="w"> </span>xvf<span class="w"> </span>envname.tar.gz<span class="w"> </span>-C<span class="w"> </span>envname/
+<span class="m">5</span>）B账号下，source<span class="w"> </span>envname/bin/activate<span class="w"> </span>
+<span class="m">6</span>）B账号下，conda-unpack，直接使用
+</code></pre></div>
+<h4 id="_16">取消自动激活</h4>
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>config<span class="w"> </span>--set<span class="w"> </span>auto_activate_base<span class="w"> </span><span class="nb">false</span>
+</code></pre></div>
+<h4 id="pip-whl">pip 安装 whl 包</h4>
+<div class="highlight"><pre><span></span><code>环境要和whl<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>的一致先
+
+pip<span class="w"> </span>install<span class="w">  </span><span class="nv">pip</span><span class="o">==</span><span class="m">23</span>.*<span class="w">  </span><span class="c1"># 先执行这个</span>
+pip<span class="w"> </span>install<span class="w"> </span>xxxx.whl
+</code></pre></div>
+<h3 id="fqa">FQA</h3>
+<h4 id="_17">启动慢</h4>
+<div class="highlight"><pre><span></span><code>在使用 conda activate 激活同一个环境时，两次耗时不一致是常见现象
+1. 环境缓存状态
+首次激活：需要扫描环境中的依赖项、生成缓存文件，并更新系统路径，耗时较长。
+后续激活：若环境未发生变化，conda 可能直接读取缓存，耗时较短。但如果环境文件或依赖项有更新，缓存需重新生成，导致耗时增加。
+2. 系统资源占用
+后台进程：首次激活时，若系统正运行其他高负载任务，会导致激活速度变慢。
+环境规模：若环境包含大量包，激活时需要加载更多动态链接库，耗时可能不稳定。
+</code></pre></div>
+<h4 id="python-gdal">python缺少 gdal 库</h4>
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>libgdal
+
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>gdal
+
+conda<span class="w"> </span>install<span class="w"> </span><span class="nv">tiledb</span><span class="o">=</span><span class="m">2</span>.2
+
+conda<span class="w"> </span>install<span class="w"> </span>poppler<span class="w">  </span>
+
+ogrinfo<span class="w"> </span>--version
+</code></pre></div>
+<h2 id="r">R 包</h2>
+<h3 id="_18">源码安装的方式</h3>
+<div class="highlight"><pre><span></span><code>R<span class="w"> </span><span class="c1"># 激活rhuanj</span>
+
+install.packages<span class="o">(</span><span class="s2">&quot;/work/home/scau_zhangz_ztr/paks/msigdbr-main.tar.gz&quot;</span>,<span class="w"> </span><span class="nv">repos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>NULL,<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;source&quot;</span><span class="o">)</span><span class="w"> </span><span class="c1"># 源码包可以在conda官方安装里找到home，下载</span>
+</code></pre></div>
+<h3 id="_19">换源</h3>
+<div class="highlight"><pre><span></span><code>install.packages<span class="o">(</span><span class="s2">&quot;RCurl&quot;</span>,repos<span class="o">=</span><span class="s1">&#39;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&#39;</span><span class="o">)</span>
+</code></pre></div>
+<h1 id="_20">编译</h1>
+<h2 id="cmake">cmake 编译</h2>
+<h2 id="gsl">指定 gsl 路径</h2>
+<p><div class="highlight"><pre><span></span><code>-DGSL_PATH<span class="o">=</span>
+</code></pre></div>
+![[Pasted image 20250417131358.png]]</p>
+<h2 id="_21">指定编译</h2>
+<div class="highlight"><pre><span></span><code>-DCMAKE_C_COMPILER<span class="o">=</span>mpiicc<span class="w"> </span>-DCMAKE_CXX_COMPILER<span class="o">=</span>mpiicpc
+</code></pre></div>
+<h2 id="gcc">gcc 编译</h2>
+<h2 id="hdf-5">编译 hdf 5</h2>
+<div class="highlight"><pre><span></span><code>./configure<span class="w"> </span>--prefix<span class="o">=</span>/public/home/eitech002/ThirdCompile/jsy-test/hdf5-1.14.6/install<span class="w">  </span>--enable-fortran<span class="w"> </span>--enable-cxx<span class="w"> </span>--enable-parallel<span class="w"> </span>--enable-shared<span class="w"> </span>--enable-unsupported<span class="w"> </span><span class="nv">CC</span><span class="o">=</span>mpicc<span class="w">  </span><span class="nv">CXX</span><span class="o">=</span>mpicxx<span class="w">  </span><span class="nv">FC</span><span class="o">=</span>mpifort<span class="w">  </span><span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;-O3 -march=native&quot;</span><span class="w">   </span><span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-O3 -march=native&quot;</span>
+
+<span class="c1"># CFLAGS=&quot;-O3 -xhost&quot;   CXXFLAGS=&quot;-O3 -xhost&quot;  ## -xhost是在intel上的</span>
+<span class="c1"># CFLAGS=&quot;-O3 -march=native&quot;   CXXFLAGS=&quot;-O3 -march=native&quot; ## -march=native 可适配机型</span>
+</code></pre></div>
+<h2 id="_22">指定编译环境</h2>
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>compiler/gcc/9.3.0<span class="w"> </span>mpi/openmpi/openmpi-4.1.5-gcc9.3.0
+module<span class="w"> </span>li
+<span class="nb">export</span><span class="w"> </span><span class="nv">CC</span><span class="o">=</span>mpicc<span class="w">    </span><span class="c1"># C编译器</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CXX</span><span class="o">=</span>mpicxx<span class="w">  </span><span class="c1"># C++编译器</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">FC</span><span class="o">=</span>mpifort<span class="w">  </span><span class="c1"># Fortran 编译器</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">F77</span><span class="o">=</span>mpifort<span class="w"> </span><span class="c1"># Fortran77编译器</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">F90</span><span class="o">=</span>mpifort<span class="w"> </span><span class="c1"># Fortran 90 编译器</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">HDF5_DIR</span><span class="o">=</span>/work/home/dabao/soft/hdf5-1.12/install
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">HDF5_DIR</span><span class="si">}</span>/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">HDF5_DIR</span><span class="si">}</span>/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">HDF5_DIR</span><span class="si">}</span>/include:<span class="nv">$CPATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CPATH</span><span class="o">=</span>/public/software/mpi/openmpi/4.1.5/gcc-9.3.0/source/openmpi-4.1.5/ompi/mca/io/romio321/romio/include:<span class="nv">$CPATH</span>
+</code></pre></div>
+<h1 id="_23">软件相关</h1>
+<h2 id="_24">普遍报错</h2>
+<h3 id="bus-err">BUS err</h3>
+<div class="highlight"><pre><span></span><code>反馈系统排查节点<span class="w"> </span>物理地址错误
+</code></pre></div>
+<h3 id="comde-up">comde up</h3>
+<div class="highlight"><pre><span></span><code>程序设计不合理
+</code></pre></div>
+<h3 id="segmentation-fault">segmentation fault</h3>
+<div class="highlight"><pre><span></span><code>问题方向多，可以排查节点
+</code></pre></div>
+<h3 id="_25">段错误</h3>
+<h2 id="gaussian-16">Gaussian 16</h2>
+<h3 id="oom">oom</h3>
+<div class="highlight"><pre><span></span><code>tw.gjf里加<span class="w"> </span>%mem<span class="o">=</span><span class="w"> </span>
+不加默认800MB
+</code></pre></div>
+<h2 id="tcad-2018">tcad 2018</h2>
+<ul>
+<li>
+<p>启动 license
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/work/home/acivd5aptb/soft/scl_lic/scl/2018.06-SP1/linux64/bin<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>./lmgrd<span class="w"> </span>-c<span class="w"> </span>license.dat<span class="w"> </span>-l<span class="w"> </span>tylogin02
+</code></pre></div></p>
+</li>
+<li>
+<p>env
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">STDB</span><span class="o">=</span><span class="nv">$HOME</span>/STDB
+<span class="c1">#---the Path where you install TCAD</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TcadPATH</span><span class="o">=</span>/work/home/acivd5aptb/soft/install2018/sentaurus/O_2018.06-SP2
+<span class="c1">#---the Path where you install SCL</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">SclPATH</span><span class="o">=</span>/work/home/acivd5aptb/soft/scl_lic/scl/2018.06-SP1
+<span class="c1">#---the  Path of your license file</span>
+<span class="c1">#export LicPATH=/public/home/acsxed7yjc/software/Sentaurus/scl/2018.06-SP1/admin/license/license.dat</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LicPATH</span><span class="o">=</span><span class="m">27111</span>@tylogin02
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$SclPATH</span>/linux64/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$TcadPATH</span>/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LM_LICENSE_FILE</span><span class="o">=</span><span class="nv">$LicPATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">SNPSLMD_LICENSE_FILE</span><span class="o">=</span><span class="nv">$LicPATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">STDB</span><span class="o">=</span><span class="nv">$HOME</span>/STDB
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/work/home/acivd5aptb/soft/install2018/sentaurus/O_2018.06-SP2/bin:<span class="nv">$PATH</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>脚本
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J swb</span>
+<span class="c1">#SBATCH -p tyhcnormal</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH --ntasks-per-node=4</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>tyadmin06:2<span class="w">  </span><span class="c1">#linux桌面名称</span>
+<span class="nb">source</span><span class="w"> </span>/work/home/acivd5aptb/soft/env.sh
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>compiler/intel/2017.5.239
+module<span class="w"> </span>load<span class="w"> </span>mpi/intelmpi/2017.4.239
+
+
+<span class="c1">#/work/home/acivd5aptb/soft/install2018/sentaurus/O_2018.06-SP2/bin/swb</span>
+/work/share/acivd5aptb/soft/install2018/sentaurus/O_2018.06-SP2/bin/swb
+</code></pre></div></p>
+</li>
+</ul>
+<h2 id="openfoam_1">openfoam</h2>
+<h3 id="_26">求解器编译改造</h3>
+<p>源码改造目录下有源码和 Make 目录应该
+<div class="highlight"><pre><span></span><code><span class="o">[</span>glory27@login10<span class="w"> </span>processInterfaceTransfer<span class="o">]</span>$<span class="w"> </span>ls<span class="w"> </span>-R
+Make<span class="w">  </span>processInterfaceTransfer.C
+
+./Make:
+files<span class="w">  </span>linux64GccDPInt32Opt<span class="w">  </span>options
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># files里</span>
+processInterfaceTransfer.C<span class="w"> </span><span class="c1">#要编译的源码</span>
+
+<span class="nv">EXE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">$(</span>GCFOAM_APPBIN<span class="k">)</span>/processInterfaceTransfer<span class="w"> </span><span class="c1"># 编译后指定的可执行文件</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># option 里</span>
+
+<span class="nv">EXE_INC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># OpenFOAM-v2212/src 里找</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/transportModels<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/transportModels/incompressible/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/thermophysicalModels/specie/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/finiteVolume/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/meshTools/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/transportModels/twoPhaseProperties/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/transportModels/twoPhaseMixture/lnInclude
+
+<span class="nv">EXE_LIBS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># OpenFOAM-v2212/platforms/linux64GccDPInt32Opt/lib/ 里找</span>
+<span class="w">    </span>-lincompressibleTransportModels<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lspecie<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lfiniteVolume<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-ltwoPhaseProperties
+
+
+<span class="c1"># 可以用grep 筛查出来</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>wmake<span class="w"> </span>processInterfaceTransfer.C<span class="w"> </span><span class="c1"># 开始编译</span>
+wclean<span class="w"> </span><span class="se">\ </span>wmake<span class="w"> </span>clean<span class="w"> </span><span class="c1"># 清除</span>
+</code></pre></div>
+<h2 id="edem">edem</h2>
+<h3 id="2018">2018</h3>
+<h3 id="_27">安装好的包</h3>
+<div class="highlight"><pre><span></span><code>/work/home/jsyadmin/L4/liucheng/app/EDEM<span class="w">  </span><span class="c1"># 安装好的</span>
+</code></pre></div>
+<h4 id="license">license</h4>
+<div class="highlight"><pre><span></span><code>创建
+/work/home/acc90ozeg2/.config/DEMSolutions/EDEM_2018/EDEM_2018.conf
+
+EDEM_2018.conf的内容如下：
+
+<span class="o">[</span>General<span class="o">]</span>
+OpenGL%20Warning<span class="o">=</span><span class="nb">false</span>
+<span class="nv">Theme</span><span class="o">=</span>Legacy<span class="w"> </span>Theme
+
+<span class="o">[</span>Display<span class="o">]</span>
+Legacy%20Particle%20display<span class="o">=</span><span class="nb">true</span>
+
+<span class="o">[</span>Licensing<span class="o">]</span>
+<span class="nv">ServerName</span><span class="o">=</span>i18r4n15
+
+<span class="o">[</span>Window%20Configuration<span class="o">]</span>
+<span class="nv">Position</span><span class="o">=</span><span class="s2">&quot;@ByteArray(\0\0\0\xff\0\x4\0\0\xfd\0\0\0\x2\0\0\0\0\0\0\x1\xf1\0\0\x1t\xfc\x2\0\0\0\x3\xfb\0\0\0</span>$<span class="s2">\0M\0\x61\0i\0n\0\x44\0o\0\x63\0k\0 \0(\0\x43\0r\0\x65\0\x61\0t\0o\0r\0)\0\0\0\0\x46\0\0\x1t\0\0\x1\x10\0\xff\xff\xff\xfb\0\0\0(\0M\0\x61\0i\0n\0\x44\0o\0\x63\0k\0 \0(\0S\0i\0m\0u\0l\0\x61\0t\0o\0r\0)\0\0\0\0\0\xff\xff\xff\xff\0\0\0`\0\xff\xff\xff\xfb\0\0\0</span>$<span class="s2">\0M\0\x61\0i\0n\0\x44\0o\0\x63\0k\0 \0(\0\x41\0n\0\x61\0l\0y\0s\0t\0)\0\0\0\0\0\xff\xff\xff\xff\0\0\x1\x10\0\xff\xff\xff\0\0\0\x3\0\0\x3\x88\0\0\0\xd4\xfc\x1\0\0\0\x3\xfb\0\0\0,\0\x44\0\x61\0t\0\x61\0 \0\x42\0r\0o\0w\0s\0\x65\0r\0 \0(\0\x43\0r\0\x65\0\x61\0t\0o\0r\0)\0\0\0\0`\0\0\x3\x88\0\0\0L\0\xff\xff\xff\xfb\0\0\0\x18\0S\0o\0l\0v\0\x65\0 \0R\0\x65\0p\0o\0r\0t\0\0\0\0\0\xff\xff\xff\xff\0\0\0L\0\xff\xff\xff\xfb\0\0\0,\0\x44\0\x61\0t\0\x61\0 \0\x42\0r\0o\0w\0s\0\x65\0r\0 \0(\0\x41\0n\0\x61\0l\0y\0s\0t\0)\0\0\0\0\0\xff\xff\xff\xff\0\0\0L\0\xff\xff\xff\0\0\x1\x91\0\0\x1t\0\0\0\x4\0\0\0\x4\0\0\0\b\0\0\0\b\xfc\0\0\0\x3\0\0\0\0\0\0\0\x1\0\0\0.\0\x43\0r\0\x65\0\x61\0t\0o\0r\0 \0P\0h\0y\0s\0i\0\x63\0s\0 \0T\0o\0o\0l\0\x62\0\x61\0r\x3\0\0\0\0\xff\xff\xff\xff\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x2\0\0\0\x30\0\x43\0r\0\x65\0\x61\0t\0o\0r\0 \0G\0\x65\0o\0m\0\x65\0t\0r\0y\0 \0T\0o\0o\0l\0\x62\0\x61\0r\x3\0\0\0\0\xff\xff\xff\xff\0\0\0\0\0\0\0\0\0\0\0\x1e\0\x41\0n\0\x61\0l\0y\0s\0t\0 \0T\0o\0o\0l\0\x62\0\x61\0r\x2\0\0\0\0\xff\xff\xff\xff\0\0\0\0\0\0\0\0\0\0\0\x2\0\0\0\t\0\0\0\x18\0M\0\x61\0i\0n\0 \0T\0o\0o\0l\0\x42\0\x61\0r\x1\0\0\0\0\xff\xff\xff\xff\0\0\0\0\0\0\0\0\0\0\0\x18\0T\0i\0m\0\x65\0 \0T\0o\0o\0l\0\x62\0\x61\0r\x1\0\0\x1&gt;\xff\xff\xff\xff\0\0\0\0\0\0\0\0\0\0\0\&quot;\0V\0i\0\x65\0w\0 \0M\0o\0\x64\0\x65\0 \0T\0o\0o\0l\0\x62\0\x61\0r\x1\0\0\x2\f\xff\xff\xff\xff\0\0\0\0\0\0\0\0\0\0\0*\0G\0\x65\0o\0m\0\x65\0t\0r\0y\0 \0M\0o\0\x64\0\x65\0 \0T\0o\0o\0l\0\x62\0\x61\0r\x1\0\0\x3)\xff\xff\xff\xff\0\0\0\0\0\0\0\0\0\0\0\x1e\0U\0t\0i\0l\0i\0t\0y\0 \0T\0o\0o\0l\0\x62\0\x61\0r\0\0\0\0\0\xff\xff\xff\xff\0\0\0\0\0\0\0\0\0\0\0\x1a\0\x46\0i\0\x65\0l\0\x64\0 \0T\0o\0o\0l\0\x62\0\x61\0r\0\0\0\0\0\xff\xff\xff\xff\0\0\0\0\0\0\0\0\0\0\0</span>$<span class="s2">\0T\0\x65\0x\0t\0 \0L\0\x61\0\x62\0\x65\0l\0 \0T\0o\0o\0l\0\x62\0\x61\0r\0\0\0\0\0\xff\xff\xff\xff\0\0\0\0\0\0\0\0\0\0\0*\0P\0\x61\0r\0t\0i\0\x63\0l\0\x65\0 \0V\0i\0\x65\0w\0 \0T\0o\0o\0l\0\x62\0\x61\0r\0\0\0\0\0\xff\xff\xff\xff\0\0\0\0\0\0\0\0\0\0\0\xe\0\x43\0S\0\x65\0r\0v\0\x65\0r\x1\0\0\x3\x86\xff\xff\xff\xff\0\0\0\0\0\0\0\0)&quot;</span>
+
+<span class="o">[</span>Window%20Position<span class="o">]</span>
+Window%20Height<span class="o">=</span><span class="m">683</span>
+Window%20State<span class="o">=</span><span class="m">8</span>
+Window%20Width<span class="o">=</span><span class="m">1000</span>
+Window%20X%20Position<span class="o">=</span><span class="m">164</span>
+Window%20Y%20Position<span class="o">=</span><span class="m">31</span>
+
+<span class="o">[</span>Window%20Toolbar<span class="o">]</span>
+Visibility<span class="se">\C</span>reator%20Geometry%20Toolbar<span class="o">=</span><span class="nb">true</span>
+Visibility<span class="se">\C</span>reator%20Physics%20Toolbar<span class="o">=</span><span class="nb">true</span>
+Visibility<span class="se">\G</span>eometry%20Mode%20Toolbar<span class="o">=</span><span class="nb">true</span>
+</code></pre></div>
+<h4 id="_28">要修改</h4>
+<div class="highlight"><pre><span></span><code>/work/home/aclw9qseba/software/edem/EDEM_2018/EDEM_2018.conf
+/work/home/aclw9qseba/software/edem/EDEM_2018/edemrc
+/work/home/aclw9qseba/software/edem/EDEM_2018/bin/edem
+/work/home/aclw9qseba/software/edem/EDEM_2018/bin/edem-4.0.0
+/work/home/aclw9qseba/software/edem/EDEM_2018/bin/start-edem
+</code></pre></div>
+<h4 id="_29">图形脚本</h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J edem</span>
+<span class="c1">#SBATCH -p xahcnormal</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="c1">#SBATCH -c 32</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>vadmin26:16
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;yes&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>input.txt
+
+/work/home/acc90ozeg2/software/edem/EDEM_2018/bin/start-edem<span class="w"> </span>&lt;<span class="w"> </span>input.txt
+</code></pre></div>
+<h2 id="apdl">apdl</h2>
+<h3 id="_30">提交脚本</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -p hfacnormal04</span>
+<span class="c1">#SBATCH -N 2</span>
+<span class="c1">#SBATCH --ntasks-per-node=128</span>
+<span class="c1">#SBATCH --exclusive    ##独占节点</span>
+<span class="c1">#SBATCH -o %j.out   ##标准输出</span>
+<span class="c1">#SBATCH -e %j.err   ##错误日志</span>
+
+
+<span class="nv">WORK_DIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
+
+<span class="nv">EXEC</span><span class="o">=</span>/public/home/llfang/apprepo/mechanical/2022r1-none/app/v221/ansys/bin/mapdl
+<span class="nv">INPUT_FILE</span><span class="o">=</span><span class="si">${</span><span class="nv">WORK_DIR</span><span class="si">}</span>/ASIPP_Test_Case2.inp
+<span class="nv">HOSTFILE</span><span class="o">=</span><span class="k">$(</span>srun<span class="w"> </span>hostname<span class="w"> </span><span class="p">|</span>sort<span class="w"> </span><span class="p">|</span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="se">\a</span>wk<span class="w"> </span><span class="s1">&#39;{print $2 &quot;:&quot; $1}&#39;</span><span class="p">|</span><span class="se">\p</span>aste<span class="w"> </span>-s<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;:&quot;</span><span class="w"> </span>-<span class="k">)</span>
+
+<span class="nv">$EXEC</span><span class="w"> </span>-b<span class="w"> </span>-dis<span class="w"> </span>-mpi<span class="w"> </span>intelmpi<span class="w"> </span>-machines<span class="w"> </span><span class="nv">$HOSTFILE</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$INPUT_FILE</span><span class="w"> </span>-o<span class="w"> </span>output.log<span class="w"> </span>-dir<span class="w"> </span><span class="si">${</span><span class="nv">WORK_DIR</span><span class="si">}</span>
+</code></pre></div>
+<h2 id="comsol">comsol</h2>
+<h3 id="_31">图片无法加载</h3>
+<p>![[daddc2c6a0041f6b18089f84f1668572.png]]</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 缺库 在西安</span>
+/work/home/jsyadmin/L4/dwj/zlib/install/lib
+
+<span class="c1"># 环境设置</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/work/home/jsyadmin/L4/dwj/zlib/install/lib:<span class="nv">$LD_LIBRARY_PATH</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="mph">mph 无法加载</h3>
+<div class="highlight"><pre><span></span><code>mpi不能有中文，不支持，java加载的
+</code></pre></div>
+<h3 id="63">6.3</h3>
+<h4 id="_32">容器版本</h4>
+<ul>
+<li>vnc脚本
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J comsol    ##作业名</span>
+<span class="c1">#SBATCH -p xahcnormal   ##队列名</span>
+<span class="c1">#SBATCH -N 1   ##节点数</span>
+<span class="c1">#SBATCH --ntasks-per-node=1   ##每节点进程</span>
+<span class="c1">#SBATCH --cpus-per-task=64   ##每进程占用核数</span>
+
+<span class="c1">### module load apps/apptainer/1.2.4</span>
+
+<span class="nb">source</span><span class="w"> </span>/work/home/ack9hdkbj3/apprepo/comsol/6.3-singularity/scripts/env.sh
+<span class="nv">WDIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="w">       </span><span class="c1">##获取当前脚本所在路径</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WDIR</span><span class="w">           </span><span class="c1">##进入文件夹</span>
+
+<span class="nv">APP</span><span class="o">=</span><span class="nv">$PROGLIST</span><span class="w">   </span><span class="c1">##软件安装路径</span>
+<span class="c1">##################################################################</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>vadmin25:16
+singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="nv">$SIF</span><span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;export LD_LIBRARY_PATH=/work/home/ack9hdkbj3/apprepo/comsol/6.3-singularity/app/libXtst-1.2.3/libXtst-1.2.3/build/lib:</span><span class="nv">$LD_LIBRARY_PATH</span><span class="s2"> ; </span><span class="nv">$APP</span><span class="s2">&quot;</span>
+</code></pre></div></li>
+</ul>
+<blockquote>
+<p>[!NOTE] 缺的库
+<code>/public/home/jsyadmin/apprepo/comsol/6.3-singularity/app/libXtst-1.2.3</code> 在昆山下</p>
+</blockquote>
+<h2 id="tecplot">tecplot</h2>
+<h3 id="_33">安装配置</h3>
+<h4 id="2022-r-1">2022 R 1</h4>
+<p>![[Pasted image 20250628160017.png]]</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 西安</span>
+<span class="c1">## 启动</span>
+/work/home/jsyadmin/L4/liucheng/app/TECPLOT/tecplot2022R2/360ex_2022r2/bin/tec360
+
+<span class="c1">## 环境</span>
+module<span class="w"> </span>use<span class="w">  </span>/public/software/modules/base<span class="w"> </span>/public/software/modules/apps
+<span class="nb">source</span><span class="w"> </span>/work/home/jsyadmin/apprepo/tecplot/2021-none/scripts/env.sh
+</code></pre></div>
+<h2 id="nastran">nastran</h2>
+<h3 id="license_1">启动 license</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 2017</span>
+nohup<span class="w"> </span>/work/share/xinj002/sourcecode/nastran2017/Helium/lmgrd<span class="w"> </span>-c<span class="w"> </span>license.dat<span class="w"> </span>-l<span class="w"> </span><span class="m">20250624</span>.log<span class="w"> </span><span class="p">&amp;</span>
+
+<span class="c1"># 2020</span>
+文件破解
+</code></pre></div>
+<h3 id="_34">脚本</h3>
+<p>不指定memory 的话，默认节点的一半内存</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH -J nastran-job    ##指定作业名</span>
+<span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="c1">#SBATCH --cpus-per-task=16</span>
+<span class="c1">#SBATCH -p xhacnormalc    ##队列</span>
+<span class="c1">#SBATCH --exclusive</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">MSC_LICENSE_FILE</span><span class="o">=</span><span class="m">27500</span>@login01
+<span class="nv">nastran</span><span class="o">=</span><span class="s2">&quot;/work/share/xinj002/apprepo/bin/nast20171&quot;</span>
+
+<span class="nb">unset</span><span class="w"> </span>SLURM_GTIDS
+<span class="nb">export</span><span class="w"> </span><span class="nv">KMP_AFFINITY</span><span class="o">=</span>disabled
+
+<span class="nv">WDIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
+
+<span class="nv">data_file</span><span class="o">=</span><span class="nv">$WDIR</span>/plate_hole_static.bdf
+<span class="nv">hostlist</span><span class="o">=</span><span class="sb">`</span>scontrol<span class="w"> </span>show<span class="w"> </span>hostname<span class="w"> </span><span class="p">|</span><span class="w"> </span>paste<span class="w"> </span>-d:<span class="w"> </span>-s<span class="sb">`</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$hostlist</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$WDIR</span>/tmp/scratch
+<span class="nv">$nastran</span><span class="w"> </span><span class="nv">jid</span><span class="o">=</span><span class="nv">$data_file</span><span class="w"> </span><span class="nv">smp</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span><span class="w">  </span><span class="nv">hosts</span><span class="o">=</span><span class="nv">$hostlist</span><span class="w">  </span><span class="nv">memory</span><span class="o">=</span>5G<span class="w"> </span><span class="nv">memorymax</span><span class="o">=</span>100G<span class="w">   </span><span class="nv">sdir</span><span class="o">=</span><span class="nv">$WDIR</span>/tmp/scratch
+</code></pre></div>
+<h2 id="lsdyna">lsdyna</h2>
+<h3 id="mpi">mpi</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">FI_PROVIDER</span><span class="o">=</span>verbs
+
+<span class="c1"># mpi切换直接加载就行</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>compiler/intel/2017.5.239<span class="w">  </span>mpi/intelmpi/2017.4.239
+<span class="c1">## 注意目前高glibc队列无法适配 2018 2017 即一下的intelmpi环境</span>
+
+module<span class="w"> </span>load<span class="w"> </span>compiler/intel/2015.2.164<span class="w"> </span>mpi/intelmpi/5.0.2.044<span class="w"> </span>
+可以
+</code></pre></div>
+<h3 id="r5">r5</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 包</span>
+/public/home/jsyadmin/tanjj/soft/ls-dyna_mpp_s_R9_3_1_x64_centos65_ifort131_avx2_intelmpi-2018.zip
+
+<span class="c1"># 启动 </span>
+/work/home/acaumhgwu4/software/ls-dyna_mpp_s_R9_3_1_x64_centos65_ifort131_avx2_intelmpi-2018/ls-dyna_mpp_s_R9_3_1_x64_centos65_ifort131_avx2_intelmpi-2018
+
+<span class="c1"># license</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>compiler/intel/2017.5.239<span class="w">  </span>mpi/intelmpi/2017.4.239
+<span class="nb">export</span><span class="w"> </span><span class="nv">LSTC_LICENSE</span><span class="o">=</span>ansys
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANSYSLMD_LICENSE_FILE</span><span class="o">=</span>/work/home/acaumhgwu4/software/ls-dyna_mpp_s_R9_3_1_x64_centos65_ifort131_avx2_intelmpi-2018/shared_files/licensing/license.dat
+
+<span class="c1">## 或者</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">LSTC_LICENSE</span><span class="o">=</span>ansys
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANSYSLMD_LICENSE_FILE</span><span class="o">=</span><span class="m">27890</span>@license01
+</code></pre></div>
+<h3 id="2023-r-1">2023 r 1</h3>
+<div class="highlight"><pre><span></span><code>/work/home/acdnwvt7vw/apprepo/ansyslsdyna/2023r1-none/app/v231/ansys/bin/lsdyna231
+</code></pre></div>
+<h3 id="prepost">prepost</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 包</span>
+/public/home/jsyadmin/tanjj/soft/lsprepost-4.6.23-common-11Dec2019.tgz
+
+<span class="c1"># 启动</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/work/home/acaumhgwu4/software/lsprepost4.6_common/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+
+/work/home/acaumhgwu4/software/lsprepost4.6_common/lsprepost
+
+<span class="c1"># 用workbench的模板</span>
+</code></pre></div>
+<h3 id="oom_1">oom 内存溢出什么的</h3>
+<div class="highlight"><pre><span></span><code><span class="nv">在命令行参数添加了memory</span><span class="o">=</span>500M<span class="w"> </span><span class="nv">memory2</span><span class="o">=</span>300M
+</code></pre></div>
+<h3 id="_35">跨节点</h3>
+<p>smp 多线程求解只能单节点多线程  最大 16 进程 
+mmp 才可跨节点多进程</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J lsdyna</span>
+<span class="c1">#SBATCH -p kshcnormal</span>
+<span class="c1">#SBATCH -N 2</span>
+<span class="c1">#SBATCH --ntasks-per-node=32</span>
+
+<span class="nb">source</span><span class="w"> </span>/public/home/jsyadmin/apprepo/ansyslsdyna/2023r1-none/scripts/env.sh
+<span class="nv">WORK_DIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="w">    </span><span class="c1">##获取当前路径</span>
+
+<span class="nv">job_name</span><span class="o">=</span><span class="si">${</span><span class="nv">SLURM_JOB_NAME</span><span class="si">}</span>
+
+<span class="nv">INPUT_FILE</span><span class="o">=</span>input.k<span class="w">       </span><span class="c1">##输入文件</span>
+
+<span class="nv">machines</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>scontrol<span class="w"> </span>show<span class="w"> </span><span class="nv">hostnames</span><span class="o">=</span><span class="nv">$SLURM_JOB_NODELIST</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span><span class="nv">machines</span><span class="o">=</span><span class="nv">$machines</span>:<span class="nv">$i</span>:<span class="nv">$SLURM_NTASKS_PER_NODE</span>
+<span class="k">done</span>
+<span class="nv">machines</span><span class="o">=</span><span class="si">${</span><span class="nv">machines</span><span class="p">#:*</span><span class="si">}</span><span class="w">  </span><span class="c1">##获取节点列表</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$machines</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LSTC_MEMORY</span><span class="o">=</span>AUTO<span class="w"> </span><span class="c1">##内存自适应</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LSTC_RSH</span><span class="o">=</span>ssh
+
+
+<span class="nv">$PROGLIST</span><span class="w"> </span>-dis<span class="w"> </span>-lsdynampp<span class="w">  </span><span class="nv">ncpu</span><span class="o">=</span><span class="si">${</span><span class="nv">SLURM_NPROCS</span><span class="si">}</span><span class="w">   </span>-machines<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$machines</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">memory</span><span class="o">=</span>1G<span class="w"> </span><span class="nv">memory2</span><span class="o">=</span>300M<span class="w">  </span><span class="nv">i</span><span class="o">=</span><span class="nv">$INPUT_FILE</span><span class="w">  </span>&gt;<span class="p">&amp;</span><span class="w"> </span><span class="si">${</span><span class="nv">job_name</span><span class="si">}</span>.log<span class="w">   </span><span class="c1">#mpp多进程求解</span>
+
+<span class="c1">#$PROGLIST  ncpu=${SLURM_NPROCS}  i=$INPUT_FILE   memory=1G  &gt;&amp; ${job_name}.log  #smp多线程求解</span>
+</code></pre></div>
+<h2 id="cfx">CFX</h2>
+<h3 id="_36">图形启用并行</h3>
+<div class="highlight"><pre><span></span><code>在define 界面
+先设置各个节点及调用核数
+选择 mpi 分布式的
+large problem 勾选对内存有帮助
+
+太原适合 openmpi
+</code></pre></div>
+<h2 id="rocky">ROCKY</h2>
+<h3 id="_37">包</h3>
+<div class="highlight"><pre><span></span><code>/public/home/jsyadmin/liucheng/softpack/ROCKY_DEM<span class="w"> </span><span class="c1"># 昆山</span>
+
+<span class="nb">cd</span><span class="w"> </span>/public/home/aclt99e3fa/softwares/rocky2023/ESSS.Rocky.2023.R1.0.Linux.x64-SSQ/Linux
+tar<span class="w"> </span>-xjvf<span class="w"> </span>rocky-bin-23.1.0-linux64-ssq.tar.bz2<span class="w"> </span>
+</code></pre></div>
+<h3 id="_38">破解启动</h3>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># 2022及以下 </span>
+/work/home/jsyadmin/L4/dwj/2025ans/v251/rocky/Rocky<span class="w"> </span><span class="c1"># 启动</span>
+crack下覆盖
+选择文件esss_flex_SSQ.lic文件<span class="w"> </span><span class="c1"># Crack下</span>
+
+<span class="c1"># 2023以及以上</span>
+/work/home/jsyadmin/L4/dwj/2025ans/v251/rocky/Rocky<span class="w"> </span><span class="c1"># 启动</span>
+crack下覆盖
+选取ansys<span class="w"> </span>license所在节点
+
+<span class="c1"># rocky只支持单节点</span>
+</code></pre></div>
+- license
+ ![[Pasted image 20250627152627.png]]</p>
+<p>![[Pasted image 20250627152655.png]]
+![[Pasted image 20250627152723.png]]</p>
+<h3 id="fluent">耦合 fluent</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 2025版自动耦合</span>
+
+<span class="c1"># 其他版本设置以下路径 写入bashrc里</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWP_ROOT221</span><span class="o">=</span>/work/home/acby8x9bz4/app/v221
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANSYS231_DIR</span><span class="o">=</span>xxx/software/ansys_inc/v231<span class="w"> </span>
+</code></pre></div>
+<h4 id="_39">双向耦合计算</h4>
+<p>![[Pasted image 20250711173020.png]]
+![[Pasted image 20250711173029.png]]
+![[Pasted image 20250713170500.png]]</p>
+<p>跨节点要设置节点名和核数，启动 fluent 要 <code>-pib -mpi=intel2018</code></p>
+<h3 id="workbench">模板推荐使用 workbench 的</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 2025后都在大的安装包里了，license公用</span>
+
+/work/home/jsyadmin/L4/dwj/2025ans/v251/rocky/Rocky<span class="w"> </span><span class="c1"># 启动</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span>/../libstdc++.so.6<span class="w"> </span><span class="c1"># 缺东西的</span>
+</code></pre></div>
+<h2 id="matlab">matlab</h2>
+<h3 id="_40">并行</h3>
+<p>![[MATLAB-parfor并行设置(1).pdf]]
+<div class="highlight"><pre><span></span><code>matlab并行池是m文件里面调用的
+
+https://hpc.scut.edu.cn/docs/software/list/apps/MATLAB.html
+</code></pre></div></p>
+<p>请教下 tyhctest 队列申请 4 个节点 256 个核，应该怎么在 matlab 里设置这个</p>
+<p>![[Pasted image 20250624174411.png]]</p>
+<div class="highlight"><pre><span></span><code>https://ww2.mathworks.cn/help/matlab-parallel-server/customize-behavior-of-sample-plugin-scripts.html
+
+Name:Partition
+Value:tyhctest
+</code></pre></div>
+<h4 id="comsol-matlab">comsol 与 matlab</h4>
+<p>![[comsol与matlab联用.docx]]</p>
+<h3 id="gpu_1">gpu 调用</h3>
+<ul>
+<li>slurm 脚本
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -p xhhgnormal01</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH -n 8</span>
+<span class="c1">#SBATCH -J gpu_test</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+<span class="c1">#SBATCH -x c06r04</span>
+<span class="nv">jobid</span><span class="o">=</span><span class="nv">$SLURM_JOB_ID</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;current jobid is </span><span class="nv">$jobid</span><span class="s2">&quot;</span>
+<span class="c1">#source /work/home/erpang/apprepo/matlab/2024a-none/scripts/env.sh</span>
+<span class="nb">source</span><span class="w"> </span>/work/home/erpang/apprepo/matlab/2023b-none/scripts/env.sh
+module<span class="w"> </span>load<span class="w"> </span>nvidia/cuda/12.1
+<span class="nv">$PROGLIST</span><span class="w"> </span>-nodesktop<span class="w"> </span>-nosplash<span class="w">  </span>-nodisplay<span class="w"> </span>-r<span class="w"> </span>jsytest
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;DW_batch_1.slurm shut down, </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
+scancel<span class="w"> </span><span class="nv">$jobid</span>
+</code></pre></div></li>
+<li>m 文件
+<div class="highlight"><pre><span></span><code>clc
+
+<span class="nv">num_iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100000</span><span class="p">;</span>
+
+gpuDeviceCount<span class="o">(</span><span class="s2">&quot;available&quot;</span><span class="o">)</span>
+
+gpuDeviceTable
+
+canUseGPU
+
+<span class="nv">numGPUs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gpuDeviceCount<span class="o">(</span><span class="s2">&quot;available&quot;</span><span class="o">)</span><span class="p">;</span>
+%<span class="w"> </span>parpool<span class="o">(</span>numGPUs<span class="o">)</span><span class="p">;</span>
+parpool<span class="o">(</span><span class="s2">&quot;Processes&quot;</span>,numGPUs<span class="o">)</span><span class="p">;</span>
+
+<span class="nv">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">200000</span><span class="p">;</span>
+<span class="nv">numSimulations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">;</span>
+<span class="nv">numIterations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1000</span><span class="p">;</span>
+<span class="nv">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>zeros<span class="o">(</span>numSimulations,N,<span class="s2">&quot;gpuArray&quot;</span><span class="o">)</span><span class="p">;</span>
+<span class="nv">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gpuArray.linspace<span class="o">(</span><span class="m">0</span>,4,N<span class="o">)</span><span class="p">;</span>
+
+parfor<span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>:numSimulations
+<span class="w">    </span><span class="nv">D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gpuDevice<span class="p">;</span>
+<span class="w">    </span>fprintf<span class="o">(</span><span class="m">1</span>,<span class="s2">&quot;%i-th Simulations, Device %i has ComputeCapability %s \n&quot;</span>,<span class="w"> </span>...
+<span class="w">        </span>numSimulations,D.Index,D.ComputeCapability<span class="o">)</span>
+
+<span class="w">    </span>X<span class="o">(</span>i,:<span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>rand<span class="o">(</span><span class="m">1</span>,N,<span class="s2">&quot;gpuArray&quot;</span><span class="o">)</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nv">n</span><span class="o">=</span><span class="m">1</span>:numIterations
+<span class="w">        </span>X<span class="o">(</span>i,:<span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>r.*X<span class="o">(</span>i,:<span class="o">)</span>.*<span class="o">(</span><span class="m">1</span>-X<span class="o">(</span>i,:<span class="o">))</span><span class="p">;</span>
+<span class="w">    </span>end
+end
+
+%<span class="w"> </span>figure
+%<span class="w"> </span>plot<span class="o">(</span>r,X,<span class="s1">&#39;.&#39;</span>,MarkerSize<span class="o">=</span><span class="m">1</span><span class="o">)</span>
+%<span class="w"> </span>xlabel<span class="o">(</span><span class="s2">&quot;Growth Rate&quot;</span><span class="o">)</span>
+
+
+delete<span class="o">(</span>gcp<span class="o">(</span><span class="s2">&quot;nocreate&quot;</span><span class="o">))</span><span class="p">;</span>
+</code></pre></div></li>
+</ul>
+<h3 id="matlabmosek">matlab的Mosek 调用</h3>
+<ul>
+<li>参考 <code>https://zhuanlan.zhihu.com/p/565512257</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code>set-path<span class="w"> </span>里添加<span class="w"> </span>Mosek的路径到<span class="w">  </span>/mosek/10.0/toolbox/r2017a
+
+
+Mosekdiag<span class="w"> </span><span class="c1"># 验证是否成功</span>
+</code></pre></div>
+<h2 id="license_2">license</h2>
+<h3 id="_41">查询</h3>
+<ul>
+<li>
+<p>一般 license 服务都在
+<div class="highlight"><pre><span></span><code>chuser<span class="w"> </span>indu_soft_crk
+ssh<span class="w"> </span>login01
+ps<span class="w"> </span>-aux<span class="p">|</span>grep<span class="w"> </span>lmgrd<span class="w"> </span>
+</code></pre></div></p>
+</li>
+<li>
+<p>查询 license 是否正常
+<div class="highlight"><pre><span></span><code><span class="c1"># ssh至对应节点上</span>
+L4tool<span class="w"> </span>-b<span class="w"> </span>port
+</code></pre></div></p>
+</li>
+</ul>
+<h3 id="_42">启动方式（各中心）</h3>
+<p>![[副本license汇总—L4.xls]]</p>
+<h2 id="workbench_1">workbench</h2>
+<h3 id="_43">启动命令行无需添加什么参数</h3>
+<h3 id="maxwell">与maxwell 集成</h3>
+<p>在 maxwell 中
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/public/home/jsyadmin/apprepo/maxwell/2021r1-none/app/AnsysEM21.1/Linux64/scripts
+
+./IntegrateWithANSYS21.1.pl
+
+<span class="o">[</span>jsyadmin@vncserver01<span class="w"> </span>scripts<span class="o">]</span>$<span class="w"> </span>./IntegrateWithANSYS21.1.pl<span class="w"> </span>
+ANSYS<span class="w"> </span>Electromagnetics<span class="w"> </span><span class="m">21</span>.1:<span class="w"> </span>Modify<span class="w"> </span>Integration<span class="w"> </span>with<span class="w"> </span>ANSYS<span class="w"> </span><span class="m">21</span>.1
+<span class="o">===============================================================</span>
+Would<span class="w"> </span>you<span class="w"> </span>like<span class="w"> </span>to<span class="w"> </span>add<span class="w"> </span>or<span class="w"> </span>remove<span class="w"> </span>the<span class="w"> </span>integration<span class="w"> </span><span class="o">[</span>add<span class="p">|</span>remove<span class="p">|</span>quit<span class="o">]</span>?<span class="w"> </span>add<span class="w"> </span>
+***<span class="w"> </span>Invalid<span class="w"> </span>action<span class="w"> </span>YES.<span class="w">  </span>Please<span class="w"> </span>re-enter:<span class="w"> </span>add
+
+Please<span class="w"> </span>specify<span class="w"> </span>the<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>ANSYS<span class="w"> </span><span class="m">21</span>.1<span class="w"> </span>installation<span class="w"> </span>directory<span class="w"> </span><span class="o">(</span>q<span class="w"> </span>to<span class="w"> </span>quit<span class="o">)</span>
+&gt;<span class="w"> </span>/public/home/jsyadmin/apprepo/workbench/2021r1-none/app/v211
+
+Created:<span class="w"> </span>/public/home/jsyadmin/apprepo/workbench/2021r1-none/app/v211/commonfiles/registry/linx64/AnsoftPreferences.xml
+Created:<span class="w"> </span>/public/home/jsyadmin/apprepo/workbench/2021r1-none/app/v211/Addins/Configuration/Ansoft.xml
+
+Integration<span class="w"> </span>added.
+
+
+<span class="c1"># workbench的安装路径到v211那一层  /public/home/jsyadmin/apprepo/workbench/2021r1-none/app/v211</span>
+</code></pre></div></p>
+<p>测试：在 workbench 中，启动可见左侧功能树中有 <code>HFSS、maxwell2d、、、</code> 即成功</p>
+<h2 id="abaqus">abaqus</h2>
+<h3 id="abaqus_v-6-env">abaqus_v 6. env 文件影响</h3>
+<ul>
+<li>节点识别
+![[Pasted image 20250704175103.png]]</li>
+</ul>
+<div class="highlight"><pre><span></span><code>检查主目录下有没有abaqus_v6.env节点文件影响，直接删掉
+</code></pre></div>
+<ul>
+<li>报错 max_history_requests 限制</li>
+</ul>
+<div class="highlight"><pre><span></span><code>Error<span class="w"> </span><span class="k">in</span><span class="w"> </span>job<span class="w"> </span>Job-1-1:<span class="w"> </span>The<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span><span class="nb">history</span><span class="w"> </span>output<span class="w"> </span>requests<span class="w"> </span><span class="o">(</span><span class="m">100001</span><span class="o">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>this<span class="w"> </span>analysis<span class="w"> </span>step<span class="w"> </span>has<span class="w"> </span>exceeded<span class="w"> </span>10x<span class="w"> </span>the<span class="w"> </span>maximum<span class="w"> </span>value<span class="w"> </span>of<span class="w"> </span><span class="m">10000</span><span class="w"> </span>specified<span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>Abaqus<span class="w"> </span>environment<span class="w"> </span>variable<span class="w"> </span><span class="s1">&#39;max_history_requests.&#39;</span><span class="w"> </span>Reduce<span class="w"> </span>the<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>requests,<span class="w"> </span>increase<span class="w"> </span>the<span class="w"> </span>value<span class="w"> </span>of<span class="w"> </span>this<span class="w"> </span>variable,<span class="w"> </span>or<span class="w"> </span>deactivate<span class="w"> </span>this<span class="w"> </span><span class="nb">test</span><span class="w"> </span>by<span class="w"> </span>setting<span class="w"> </span><span class="s1">&#39;max_history_requests=0&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>abaqus_v6.env<span class="w"> </span>file.<span class="w"> </span>Significant<span class="w"> </span>performance<span class="w"> </span>problems<span class="w"> </span>may<span class="w"> </span>occur<span class="w"> </span><span class="k">if</span><span class="w"> </span>these<span class="w"> </span>requests<span class="w"> </span>are<span class="w"> </span>maintained.
+Job<span class="w"> </span>Job-1-1:<span class="w"> </span>Analysis<span class="w"> </span>Input<span class="w"> </span>File<span class="w"> </span>Processor<span class="w"> </span>aborted<span class="w"> </span>due<span class="w"> </span>to<span class="w"> </span>errors.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 主目录下写个abaqus_v6.env 可控制</span>
+<span class="nv">max_history_requests</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="c1"># 无限制 </span>
+
+<span class="nv">mp_mpi_implementation</span><span class="o">=</span>PMPI
+
+<span class="nv">mp_file_system</span><span class="o">=(</span>SHARED,<span class="w"> </span>LOCAL<span class="o">)</span>
+</code></pre></div>
+<h3 id="_44">双精度</h3>
+<div class="highlight"><pre><span></span><code><span class="nv">double</span><span class="o">=</span>both
+</code></pre></div>
+<h3 id="_45">算例过小</h3>
+<div class="highlight"><pre><span></span><code>算例过小，网格分块异常，计算错误，其他工业软件也通用
+</code></pre></div>
+<h3 id="_46">中文路径特殊字符</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 报错</span>
+Abaqus<span class="w"> </span>Error:<span class="w"> </span>License<span class="w"> </span><span class="k">for</span><span class="w"> </span>explicit<span class="w"> </span>with<span class="w"> </span><span class="nv">cpus</span><span class="o">=</span><span class="m">8</span><span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>available.
+
+<span class="c1"># 检查中文路径</span>
+</code></pre></div>
+<h3 id="dapl">dapl 报错</h3>
+<p>![[23d25bdbde3ac4099a564dbfd4415ef2 1.png]]</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">MPI_IC_ORDER</span><span class="o">=</span><span class="s2">&quot;uDAPL:TCP&quot;</span>
+</code></pre></div>
+<h3 id="abaqus-starccm">abaqus 和 starccm 联合</h3>
+<p>dlutzy 用户搞了半天</p>
+<p>![[Pasted image 20250617190812.png]]</p>
+<ul>
+<li>添加 abaqus 软件的 libABQSMACeeModeles. so
+![[Pasted image 20250617191510.png]]</li>
+</ul>
+<p><code>申请的核心数和实际 inp 运行的核心数要一致</code></p>
+<h3 id="_47">网格核心配比</h3>
+<div class="highlight"><pre><span></span><code>单核心3-5万网格
+</code></pre></div>
+<h3 id="_48">破解</h3>
+<div class="highlight"><pre><span></span><code>/work/home/aclb01ckwc/soft/ABAQUS2020/SIMULIA/EstProducts/2020/linux_a64/SMA/site/custom_v6.env
+
+
+<span class="c1"># Installation of Established Products 2020</span>
+
+<span class="c1"># Installation of Abaqus CAE 2020</span>
+<span class="c1"># Wed Oct 27 11:51:10 2021</span>
+<span class="nv">plugin_central_dir</span><span class="o">=</span><span class="s2">&quot;/work/home/jsyadmin/dwj/abaqus2020/app/ABAQUS2020/DassaultSystemes/SIMULIA/CAE/plugins/2020&quot;</span>
+<span class="nv">license_server_type</span><span class="o">=</span>FLEXNET
+<span class="nv">abaquslm_license_file</span><span class="o">=</span><span class="s2">&quot;27800@login01&quot;</span><span class="w">  </span><span class="c1"># 修改成服务节点</span>
+</code></pre></div>
+<h3 id="_49">启动</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">#2022之后图形启动</span>
+/work/home/jsyadmin/L4/dwj/2.28/abaqus2024/linux_a64/code/bin/SMALauncher
+<span class="c1">#之前</span>
+/work/home/jsyadmin/L4/dwj/2.28/abaqus2024/linux_a64/code/bin/ABQLauncher
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 西安启动</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w">  </span>mpi/intelmpi/2017.4.239<span class="w"> </span>compiler/gcc/9.3.0<span class="w">   </span>
+</code></pre></div>
+<h3 id="mpi_1">mpi</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 自带mpi路径</span>
+/work/home/jsyadmin/apprepo/abaqus/2019-none/app/abaqus2019/linux_a64/code/bin/SMAExternal/impi<span class="w"> </span>
+/work/home/jsyadmin/apprepo/abaqus/2019-none/app/abaqus2019/linux_a64/code/bin/SMAExternal/pmpi
+
+<span class="c1"># 配置文件</span>
+/work/home/jsyadmin/apprepo/abaqus/2019-none/app/abaqus2019/linux_a64/SMA/site/mpi_config.env<span class="w"> </span>
+
+<span class="c1"># 修改mpi</span>
+<span class="c1">## 修改自带的mpi类型</span>
+<span class="c1">### 脚本里</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;mp_mpi_implementation=IMPI&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>abaqus_v6.env<span class="w"> </span><span class="c1"># 用intelmpi</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;mp_mpi_implementation=PMPI&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>abaqus_v6.env<span class="w"> </span><span class="c1"># 用platformmpi</span>
+<span class="c1">### 手动修改 /work/home/jsyadmin/apprepo/abaqus/2019-none/app/abaqus2019/linux_a64/SMA/site/mpi_config.env</span>
+
+<span class="c1">## 使用集群系统的mpi</span>
+<span class="c1">### 1.要修改此配置文件</span>
+vim
+/work/home/jsyadmin/apprepo/abaqus/2019-none/app/abaqus2019/linux_a64/SMA/site/mpi_config.env<span class="w">  </span>
+
+<span class="c1">### 2.替换成集群的路径 intelmpi为例，ABA_PATH 改成 I_MPI_ROOT 后面的路径直到mpirun</span>
+<span class="nv">mp_mpirun_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span>PMPI:<span class="w"> </span>driverUtils.locateFile<span class="o">(</span>os.environ.get<span class="o">(</span><span class="s1">&#39;ABA_PATH&#39;</span>,<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="o">)</span>,<span class="w"> </span><span class="s1">&#39;pmpi/bin&#39;</span>,<span class="w"> </span><span class="s1">&#39;mpirun&#39;</span><span class="o">)</span>,
+<span class="w">             </span>IMPI:<span class="w"> </span>driverUtils.locateFile<span class="o">(</span>os.environ.get<span class="o">(</span><span class="s1">&#39;I_MPI_ROOT&#39;</span>,<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="o">)</span>,<span class="w"> </span><span class="s1">&#39;intel64/bin&#39;</span>,<span class="w"> </span><span class="s1">&#39;mpirun&#39;</span><span class="o">)</span>,
+<span class="w">                 </span>CMPI:<span class="w"> </span>driverUtils.locateFile<span class="o">(</span>os.environ.get<span class="o">(</span><span class="s1">&#39;ABA_PATH&#39;</span>,<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="o">)</span>,<span class="w"> </span><span class="s1">&#39;impi/bin&#39;</span>,<span class="w"> </span><span class="s1">&#39;mpirun&#39;</span><span class="o">)}</span>
+
+<span class="c1">### 3. 提交时需要在slurm脚本里 </span>
+module<span class="w"> </span>load<span class="w"> </span>mpi/intelmpi/2018.4.274
+</code></pre></div>
+<h3 id="6144">6144 启动脚本</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash </span>
+<span class="c1">#SBATCH -J abaqus_test   #作业名</span>
+<span class="c1">#SBATCH -p wzhctest </span>
+<span class="c1">#SBATCH -N 1   #节点数</span>
+<span class="c1">#SBATCH --ntasks-per-node=30 #每节点进程数</span>
+<span class="c1">#SBATCH -o out.%j    </span>
+<span class="c1">#SBATCH -e err.%j</span>
+
+<span class="nb">unset</span><span class="w"> </span>SLURM_GTIDS
+
+module<span class="w"> </span>purge
+<span class="nb">source</span><span class="w"> </span>../scripts/env.sh
+<span class="nb">export</span><span class="w"> </span><span class="nv">EXEC</span><span class="o">=</span><span class="nv">$PROGLIST</span>
+<span class="nv">WORK_DIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="w">     </span><span class="c1">#当前目录</span>
+<span class="nv">INPUT_FILE</span><span class="o">=</span>tracload2d.inp<span class="w">  </span><span class="c1">#输入文件</span>
+<span class="nv">job_name</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">INPUT_FILE</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F.<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="sb">`</span>
+<span class="c1">#USER_FILE=exa_fml_ortho_damage_umat.for    #fortran子程序</span>
+<span class="nv">LOG_FILE</span><span class="o">=</span>abaqus-test.log
+<span class="c1">#########################################################</span>
+
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WORK_DIR</span>
+<span class="nv">PROCS</span><span class="o">=</span><span class="nv">$SLURM_NPROCS</span>
+
+srun<span class="w"> </span>hostname<span class="p">|</span>sort<span class="p">|</span>uniq<span class="w"> </span>-c<span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>./hostfile_<span class="nv">$PROCS</span>
+<span class="nv">HOST_FILE</span><span class="o">=</span>./hostfile_<span class="nv">$PROCS</span>
+
+<span class="nv">NODELIST</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="k">for</span><span class="w"> </span>host<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>cat<span class="w"> </span><span class="nv">$HOST_FILE</span><span class="w"> </span><span class="p">|</span>uniq<span class="sb">`</span>
+<span class="k">do</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="si">${</span><span class="nv">NODELIST</span><span class="si">}</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nv">NODELIST</span><span class="o">=</span><span class="s2">&quot;[&#39;</span><span class="nv">$host</span><span class="s2">&#39;,</span><span class="nv">$SLURM_NTASKS_PER_NODE</span><span class="s2">]&quot;</span>
+<span class="w">  </span><span class="k">else</span>
+<span class="w">    </span><span class="nv">NODELIST</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$NODELIST</span><span class="s2">,[&#39;</span><span class="nv">$host</span><span class="s2">&#39;,</span><span class="nv">$SLURM_NTASKS_PER_NODE</span><span class="s2">]&quot;</span>
+<span class="w">  </span><span class="k">fi</span>
+<span class="k">done</span>
+
+cat<span class="w"> </span>&gt;<span class="w"> </span>abaqus_v6.env<span class="w"> </span>&lt;&lt;<span class="w"> </span>!
+<span class="nv">mp_host_list</span><span class="o">=[</span><span class="nv">$NODELIST</span><span class="o">]</span>
+<span class="nv">max_history_requests</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">mp_mpi_implementation</span><span class="o">=</span>PMPI<span class="w"> </span>
+<span class="nv">mp_file_system</span><span class="o">=(</span>SHARED,<span class="w"> </span>LOCAL<span class="o">)</span>
+!
+
+<span class="c1">############程序主命令</span>
+
+module<span class="w"> </span>load<span class="w"> </span>compiler/intel/2017.5.239
+
+<span class="nv">$EXEC</span><span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="si">${</span><span class="nv">job_name</span><span class="si">}</span><span class="w"> </span><span class="nv">input</span><span class="o">=</span><span class="si">${</span><span class="nv">INPUT_FILE</span><span class="si">}</span><span class="w"> </span><span class="nv">cpus</span><span class="o">=</span><span class="si">${</span><span class="nv">PROCS</span><span class="si">}</span><span class="w"> </span><span class="nv">mp_mode</span><span class="o">=</span>MPI<span class="w">   </span>int
+
+<span class="c1">#$EXEC job=${job_name} input=${INPUT_FILE}  cpus=${PROCS} user=$USER_FILE mp_mode=MPI int    #带子程序</span>
+
+<span class="c1">#$EXEC job=${job_name} input=${INPUT_FILE}  oldjob=job-2  cpus=${PROCS} mp_mode=MPI int    #重启动分析</span>
+
+<span class="nb">echo</span><span class="w"> </span>The<span class="w"> </span>end<span class="w"> </span><span class="nb">time</span><span class="w"> </span>is:<span class="w"> </span><span class="sb">`</span>date<span class="w"> </span>+<span class="s2">&quot;%Y-%m-%d %H:%M:%S&quot;</span><span class="sb">`</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span><span class="nv">$LOG_FILE</span>
+</code></pre></div>
+<h3 id="6144_1">6144 图形启动缺库</h3>
+<p>![[Pasted image 20250605235844.png]]
+<code>export LD_PRELOAD=/work/home/jsyadmin/L4/liucheng/tmp/libstdc++.so.5</code>  在西安下复制过去</p>
+<p>export LM_LICENSE_FILE=27800@license01
+export LD_PRELOAD=/work/home/handsomer5/lib/libstdc++.so.5</p>
+<h3 id="mpi_2">mpi 报错等</h3>
+<p>![[23d25bdbde3ac4099a564dbfd4415ef2 1.png]]</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">MPI_IC_ORDER</span><span class="o">=</span><span class="s2">&quot;uDAPL:TCP&quot;</span>
+</code></pre></div>
+<h2 id="vasp">vasp</h2>
+<ul>
+<li>
+<p><code>chgsum.pl</code> 加载
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>apps/vtstscripts/1033
+</code></pre></div></p>
+</li>
+<li>
+<p>赝势文件配置</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>~/.vaspkit
+
+<span class="c1"># 修改一下路径至真实</span>
+<span class="nv">VASP5</span><span class="w">                         </span><span class="o">=</span><span class="w">     </span>.TRUE.<span class="w">                         </span><span class="c1"># .TRUE. or .FALSE.; Set .FALSE. if you are using vasp.4.x</span>
+<span class="nv">LDA_PATH</span><span class="w">                      </span><span class="o">=</span><span class="w">     </span>~/POTCAR/LDA<span class="w">                   </span><span class="c1">#  Path of LDA potential</span>
+<span class="nv">PBE_PATH</span><span class="w">                      </span><span class="o">=</span><span class="w">     </span>/work/home/ac9omgachc/0630/PAW_GGA_PBE/potpaw_PBE<span class="w">                   </span><span class="c1">#  Path of PBE potential</span>
+<span class="nv">GGA_PATH</span><span class="w">                      </span><span class="o">=</span><span class="w">     </span>~/POTCAR/GGA<span class="w">                   </span><span class="c1">#  Path of PW91 potential</span>
+</code></pre></div>
+<ul>
+<li>oom</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="m">1</span>.一般可以独占队列，然后降低进程数，保证每进程的分配内存高点
+<span class="m">2</span>.如果没有设置<span class="w"> </span>NPAR<span class="w"> </span>和<span class="w"> </span>NCORE<span class="w"> </span>，能够设置的算例需要设置<span class="w"> </span>（INCAR文件中）
+</code></pre></div>
+<h2 id="nastran_1">nastran</h2>
+<ul>
+<li>license 指定
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SPLM_LICENSE_SERVER</span><span class="o">=</span>/work/home/llb2660481743/apprepo/nastran/2020-none/app/nastran/ugslmd_SSQ.dat
+</code></pre></div></li>
+</ul>
+<h2 id="ms">ms</h2>
+<h3 id="_50">扩展性</h3>
+<div class="highlight"><pre><span></span><code>老师，ms的加速瓶颈和您界面的参数有关，这个可能需要您根据算例进行一系列的扩展性测试，固定计算少量步数来确定最佳规模（16核数、32核数、64核数、128核数。。。）
+</code></pre></div>
+<h3 id="_51">平台查看运行状态</h3>
+<div class="highlight"><pre><span></span><code>/public/home/jsyadmin/apprepo/materials_studio/2028-linux/app/Materialsstudio28.1/etc/Gateway/root_default/dsd/jobs
+</code></pre></div>
+<h3 id="_52">网关重启</h3>
+<div class="highlight"><pre><span></span><code>ssh login 03
+cd apprepo/materials_studio/2023-linux/app/MaterialsStudio 23.1/etc/Gateway/
+ls
+ ./gwrestart 
+</code></pre></div>
+<h2 id="hfss">hfss</h2>
+<ul>
+<li>
+<p>跨节点
+![[Pasted image 20250516102009.png]]
+![[Pasted image 20250516102033.png]]</p>
+</li>
+<li>
+<p>监控作业
+先手动 sbatch 提交作业，图形监控
+![[Pasted image 20250516103645.png]]
+![[Pasted image 20250516103712.png]]
+选 ade 文件监控</p>
+</li>
+<li>
+<p>打不开上层目录
+<div class="highlight"><pre><span></span><code>麻烦给山东5区用户 acpapajmou 加一下acl权限，setfacl -m u:acpapajmou:r-x /public/home
+</code></pre></div></p>
+</li>
+</ul>
+<h2 id="fluent-fluent">fluent-不止 fluent</h2>
+<h3 id="gpu_2">gpu 加速</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J fluent    ##作业名</span>
+<span class="c1">#SBATCH -p dzagnormal    ##队列</span>
+<span class="c1">#SBATCH -N 1    ##申请计算节点数</span>
+<span class="c1">##SBATCH -n 64</span>
+<span class="c1">#SBATCH --ntasks-per-node=8   ##每节点进程数</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+
+<span class="nb">source</span><span class="w"> </span>/work/home/jsyadmin/apprepo/fluent/2024r1-none/scripts/env.sh
+<span class="nb">export</span><span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>mlu4:1
+<span class="nv">WORK_DIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="w">    </span><span class="c1">##获取当前路径</span>
+<span class="nv">FLUENT_VERSION</span><span class="o">=</span>3ddp<span class="w">   </span><span class="c1">## [ 3d | 3ddp | 2d | 2ddp ]</span>
+<span class="c1">#INPUT_FILE=${WORK_DIR}/cartest.jou     ##jou文件</span>
+
+<span class="c1">### optional and advance parameters</span>
+<span class="nv">IBSTAT</span><span class="o">=</span><span class="sb">`</span>ibstat<span class="p">|</span>grep<span class="w"> </span>^CA<span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$IBSTAT</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span><span class="s2">&quot;mlx&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">   </span><span class="nv">OPTIONAL</span><span class="o">=</span><span class="s2">&quot;-pinfiniband -mpi=intel &quot;</span>
+<span class="k">elif</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$IBSTAT</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span><span class="s2">&quot;hfi&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="k">then</span>
+<span class="w">   </span><span class="nv">OPTIONAL</span><span class="o">=</span><span class="s2">&quot;-pmpi-auto-selected -mpi=intel -ssh -affinity=core&quot;</span>
+<span class="k">else</span>
+<span class="w">   </span><span class="nv">OPTIONAL</span><span class="o">=</span><span class="s2">&quot;-mpi=intel &quot;</span>
+<span class="k">fi</span>
+<span class="c1">#########################################################</span>
+
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WORK_DIR</span>
+
+<span class="c1">####################################形成节点文件</span>
+<span class="nv">PROCS</span><span class="o">=</span><span class="nv">$SLURM_NPROCS</span><span class="w">  </span><span class="c1">##总进程数</span>
+srun<span class="w"> </span>hostname<span class="p">|</span>sort<span class="p">|</span>uniq<span class="w"> </span>-c<span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $2&quot;:&quot;$1}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>./hostfile_<span class="nv">$PROCS</span>
+<span class="nv">HOST_FILE</span><span class="o">=</span>./hostfile_<span class="nv">$PROCS</span>
+<span class="c1">####################################</span>
+
+<span class="nv">$PROGLIST</span><span class="w">  </span><span class="nv">$FLUENT_VERSION</span><span class="w"> </span>-t<span class="nv">$PROCS</span><span class="w"> </span>-gpgpu<span class="o">=</span><span class="m">1</span><span class="w"> </span>-cnf<span class="o">=</span><span class="nv">$HOST_FILE</span><span class="w">  </span><span class="nv">$OPTIONAL</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="c1"># -gpgpu=1 1是开启 0是关</span>
+<span class="c1">#$PROGLIST -g $FLUENT_VERSION -t$PROCS -cnf=$HOST_FILE -i $INPUT_FILE $OPTIONAL 2&gt;&amp;1    ##正式运行软件命令</span>
+</code></pre></div>
+<p>手册参考：https://zhuanlan.zhihu.com/p/662171124</p>
+<h3 id="dcv">dcv 图形启动设置</h3>
+<ul>
+<li>dcv  <code>-pib 3ddp -mpi=intel2018</code>
+![[Pasted image 20250518095454.png]]</li>
+</ul>
+<p>![[Pasted image 20250518102842.png]]</p>
+<h3 id="_53">一些配置</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">#dcv</span>
+-pib<span class="w"> </span>3ddp<span class="w"> </span>-mpi<span class="o">=</span>intel2018<span class="w"> </span><span class="c1">#23及以后</span>
+parallel<span class="w"> </span>setting那边选shared<span class="w"> </span>memory
+
+<span class="c1">#默认</span>
+-pinfiniband<span class="w"> </span>3ddp<span class="w"> </span>-mpi<span class="o">=</span>intel2018
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">FLUENT_INTEL_MPI_VERSION</span><span class="o">=</span><span class="m">2018</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">KMP_AFFINITY</span><span class="o">=</span>disabled
+
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">UCX_NET_DEVICES</span><span class="o">=</span>mlx5_0:1
+<span class="nb">export</span><span class="w"> </span><span class="nv">UCX_IB_PCI_BW</span><span class="o">=</span>mlx5_0:100Gbs
+<span class="nb">export</span><span class="w"> </span><span class="nv">UCX_TLS</span><span class="o">=</span>dc_mlx5,rc_mlx5
+
+<span class="c1"># ibface..</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">UCX_IB_ADDR_TYPE</span><span class="o">=</span>ib_global
+
+<span class="c1"># intelmpi 老版本mpi2017、2018版本用</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_FABRICS</span><span class="o">=</span>shm:dapl
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_DAPL_UD</span><span class="o">=</span><span class="nb">enable</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_FALLBACK_DEVICE</span><span class="o">=</span>disable
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_DAPL_UD_PROVIDER</span><span class="o">=</span>ofa-v2-mlx5_0-1u
+
+
+<span class="c1">#  amd的可能不要 比较新的机器 合肥 opa 的不用加-pinfiniband</span>
+
+<span class="c1">#指定intel版本 # 2023及往后用 </span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">FLUENT_INTEL_MPI_VERSION</span><span class="o">=</span><span class="m">2018</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>换集群的mpi
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>compiler/devtoolset/7.3.1<span class="w"> </span>mpi/hpcx/gcc-7.3.1
+<span class="nb">export</span><span class="w"> </span><span class="nv">HPCX_HOME</span><span class="o">=</span>/opt/hpc/software/mpi/hpcx/v2.11.0/gcc-7.3.1
+</code></pre></div>
+<h3 id="2025">2025 版本</h3>
+<div class="highlight"><pre><span></span><code>西安下安装了
+可能会缺的库
+/work/home/jsyadmin/L4/dwj/2025ans/v251/fluent/lib/lnamd64/external
+
+/work/home/jsyadmin/L4/dwj/2025ans.tgz
+</code></pre></div>
+<h3 id="udf">udf 使用</h3>
+<div class="highlight"><pre><span></span><code>https://mp.weixin.qq.com/s/u9gJvN7Bz9QWRfGrtQ091Q
+</code></pre></div>
+<h3 id="_54">报错</h3>
+<div class="highlight"><pre><span></span><code>Error<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>fluent<span class="err">&#39;</span>:<span class="w"> </span>double<span class="w"> </span>free<span class="w"> </span>or<span class="w"> </span>corruption<span class="w"> </span><span class="o">(</span>!prev<span class="o">)</span>:<span class="w"> </span>0x00000000e9ebc190<span class="w"> </span>***<span class="w"> </span>
+这个报错之前遇到的经验是独占然后缩小核数可能可以解决
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>eval:<span class="w"> </span>unbound<span class="w"> </span>variable
+symbol<span class="w"> </span>%setluate-aerodamping-monitor
+Error<span class="w"> </span>encountered<span class="w"> </span><span class="k">in</span><span class="w"> </span>critical<span class="w"> </span>code<span class="w"> </span>section
+<span class="w"> </span>The<span class="w"> </span>fluent<span class="w"> </span>process<span class="w"> </span>could<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>started.
+
+<span class="c1"># 解决</span>
+vi看下输入文件里的信息呢，cas里的，如果是h5格式的，用h5dump先解压
+
+或者是网格分组错误，概率性问题，重新提交就行
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>自适应网格报错
+关闭什么自适应的开关
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Writing<span class="w"> </span>to<span class="w"> </span>j03r2n01:<span class="s2">&quot;/work/home/acjvnnnyg1/02clean_chemistry/case/cleanmap/clean_map0721_1rn-1-00150.cas.h5&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>NOO
+DE0<span class="w"> </span>mode<span class="w"> </span>and<span class="w"> </span>compression<span class="w"> </span>level<span class="w"> </span><span class="m">1</span><span class="w"> </span>...
+<span class="w">  </span>Writing<span class="w"> </span>mesh<span class="w"> </span>...
+j11r4n04:UCM:9e37:c30aa700:<span class="w"> </span><span class="m">1890905250</span><span class="w"> </span>us<span class="o">(</span><span class="m">1890905250</span><span class="w"> </span>us!!!<span class="o">)</span>:<span class="w"> </span>dapl<span class="w"> </span>async_event<span class="w"> </span>QP<span class="w"> </span><span class="o">(</span>0x91752e0<span class="o">)</span><span class="w"> </span>Event<span class="w"> </span><span class="m">3</span>
+mlx5:<span class="w"> </span>j03r2n01:<span class="w"> </span>got<span class="w"> </span>completion<span class="w"> </span>with<span class="w"> </span>error:
+<span class="m">00000000</span><span class="w"> </span><span class="m">00000000</span><span class="w"> </span><span class="m">00000000</span><span class="w"> </span><span class="m">00000000</span>
+<span class="m">00000000</span><span class="w"> </span><span class="m">00000000</span><span class="w"> </span><span class="m">00000000</span><span class="w"> </span><span class="m">00000000</span>
+000000b9<span class="w"> </span><span class="m">00000000</span><span class="w"> </span><span class="m">00000000</span><span class="w"> </span><span class="m">00000000</span>
+<span class="m">00000000</span><span class="w"> </span><span class="m">00008813</span><span class="w"> </span>100076ab<span class="w"> </span>008ae4d3
+j03r2n01:UCM:d600:37cc880:<span class="w"> </span><span class="m">1890740163</span><span class="w"> </span>us<span class="o">(</span><span class="m">1890740163</span><span class="w"> </span>us!!!<span class="o">)</span>:<span class="w"> </span>DTO<span class="w"> </span>completion<span class="w"> </span>ERR:<span class="w"> </span>status<span class="w"> </span><span class="m">10</span>,<span class="w"> </span>op<span class="w"> </span>Invalid<span class="w"> </span>DTO<span class="w"> </span>OP?,<span class="w"> </span>venn
+dor_err<span class="w"> </span>0x88<span class="w"> </span>-<span class="w"> </span><span class="m">0</span>.0.0.0
+<span class="o">[</span><span class="m">35</span>:j03r2n01<span class="o">][</span>../../src/mpid/ch3/channels/nemesis/netmod/dapl/dapl_poll_rc.c:1374<span class="o">]</span><span class="w"> </span>Intel<span class="w"> </span>MPI<span class="w"> </span>fatal<span class="w"> </span>error:<span class="w"> </span>ofa-v2-mm
+lx5_0-1u<span class="w"> </span>DTO<span class="w"> </span>operation<span class="w"> </span>posted<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="o">[</span><span class="m">305</span>:j11r4n04<span class="o">]</span><span class="w"> </span>completed<span class="w"> </span>with<span class="w"> </span>error.<span class="w"> </span><span class="nv">status</span><span class="o">=</span>0x6.<span class="w"> </span><span class="nv">cookie</span><span class="o">=</span>0x40131
+<span class="o">[</span><span class="m">35</span>:j03r2n01<span class="o">]</span><span class="w"> </span>unexpected<span class="w"> </span>DAPL<span class="w"> </span>connection<span class="w"> </span>event<span class="w"> </span>0x4006<span class="w"> </span>from<span class="w"> </span><span class="m">305</span>
+Fatal<span class="w"> </span>error<span class="w"> </span><span class="k">in</span><span class="w"> </span>PMPI_Waitall:<span class="w"> </span>Internal<span class="w"> </span>MPI<span class="w"> </span>error!,<span class="w"> </span>error<span class="w"> </span>stack:
+PMPI_Waitall<span class="o">(</span><span class="m">405</span><span class="o">)</span>........:<span class="w"> </span>MPI_Waitall<span class="o">(</span><span class="nv">count</span><span class="o">=</span><span class="m">32</span>,<span class="w"> </span><span class="nv">req_array</span><span class="o">=</span>0x7ffd26c21c40,<span class="w"> </span><span class="nv">status_array</span><span class="o">=</span>0x7ffd26c21740<span class="o">)</span><span class="w"> </span>failed
+MPIR_Waitall_impl<span class="o">(</span><span class="m">221</span><span class="o">)</span>...:<span class="w"> </span>fail<span class="w"> </span>failed
+PMPIDI_CH3I_Progress<span class="o">(</span><span class="m">850</span><span class="o">)</span>:<span class="w"> </span>fail<span class="w"> </span>failed
+<span class="o">(</span>unknown<span class="o">)()</span>:<span class="w"> </span>Internal<span class="w"> </span>MPI<span class="w"> </span>error!
+<span class="w">    </span><span class="m">63975710</span><span class="w"> </span>cells,<span class="w">     </span><span class="m">8</span><span class="w"> </span>zones<span class="w"> </span>...
+<span class="w">   </span><span class="m">306049680</span><span class="w"> </span>faces,<span class="w">    </span><span class="m">50</span><span class="w"> </span>zones<span class="w"> </span>...
+<span class="w"> </span>The<span class="w"> </span>fluent<span class="w"> </span>process<span class="w"> </span>could<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>started
+
+<span class="c1"># 解决</span>
+<span class="c1"># 存储ib 超时，退费</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 报错 cas.h5导入正常，dat.h5报错如下</span>
+
+Reading<span class="w"> </span>from<span class="w"> </span>node198:<span class="s2">&quot;/public/home/ac1lvbdbfj/FTL/3D_2D/3D/620w_4.2_6000_510_0.6/caseA.dat.h5&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>NODE0<span class="w"> </span>mode<span class="w"> </span>...
+HDF5-DIAG:<span class="w"> </span>Error<span class="w"> </span>detected<span class="w"> </span><span class="k">in</span><span class="w"> </span>HDF5<span class="w"> </span><span class="o">(</span><span class="m">1</span>.12.2<span class="o">)</span><span class="w"> </span>MPI-process<span class="w"> </span><span class="m">0</span>:
+<span class="w">  </span><span class="c1">#000: /home2/cfx5test/TFSAgents/milce7cfxbld03.ansys.com/_work/_tool/.conan/data/hdf5/1.12.2/thirdparty/stable/build/2de328b9b7ee746673e43fb810561a50286bc510/hdf5-1.12.2/src/H5F.c line 620 in H5Fopen(): unable to open file</span>
+<span class="w">    </span>major:<span class="w"> </span>File<span class="w"> </span>accessibility
+<span class="w">    </span>minor:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span>open<span class="w"> </span>file
+
+<span class="c1"># 解决 </span>
+<span class="o">(</span>pyfluent<span class="o">)</span><span class="w"> </span><span class="o">[</span>ac1lvbdbfj@login02<span class="w"> </span>620w_4.2_6000_510_0.6<span class="o">]</span>$<span class="w"> </span>h5dump<span class="w">  </span>-H<span class="w"> </span>caseA.dat.h5
+h5dump<span class="w"> </span>error:<span class="w"> </span>unable<span class="w"> </span>to<span class="w"> </span>open<span class="w"> </span>file<span class="w"> </span><span class="s2">&quot;caseA.dat.h5&quot;</span>
+<span class="c1"># hd5dump 也报错（pyfluent里带）</span>
+<span class="c1"># 就是.dat.h5文件损坏了</span>
+</code></pre></div>
+<h3 id="tip">使用 tip</h3>
+<div class="highlight"><pre><span></span><code>1.合肥、华北A区opa网络不能设置为IB
+2.23、24以上要选择intel2018
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="m">1</span>.<span class="w"> </span><span class="m">192</span><span class="w"> </span><span class="m">193</span><span class="w"> </span>201等几个fluent版本没事不加命令行参数跳出软件调参界面，fluent提交模板限制
+<span class="m">2</span>.<span class="w"> </span>可用<span class="w"> </span>workbench<span class="w"> </span>或者<span class="w"> </span>cfx<span class="w"> </span>的提交模板代替
+<span class="m">3</span>.<span class="w"> </span>hostfile<span class="w"> </span>也要手动去选下
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 卡死</span>
+目录下创建<span class="w"> </span>check-fluent<span class="w"> </span>文件
+
+<span class="c1"># 退出</span>
+目录下创建<span class="w"> </span>exit-fluent<span class="w"> </span>文件
+</code></pre></div>
+<h2 id="cfd_1">cfd++</h2>
+<h3 id="_55">内存限制</h3>
+<p>![[Pasted image 20250515224525.png]]
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/work/home/ac0g1wbtzx/CFD++14.1_Linux64/CFD++14.1_Linux64/METACOMP/amd64/mcfdenv.sh<span class="w"> </span>
+
+修改其中
+<span class="nb">export</span><span class="w"> </span><span class="nv">MCFD_PROCMEM</span><span class="o">=</span>200G
+</code></pre></div></p>
+<h2 id="starccm">starccm</h2>
+<h3 id="mpi_3">mpi 切换</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 加载openmpi intel不推荐</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>compiler/devtoolset/7.3.1<span class="w"> </span>mpi/openmpi/4.1.1/gcc-7.3.1
+
+<span class="c1"># 要设置下 $OPENMPI_DIR 这个变量</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENMPI_DIR</span><span class="o">=</span>/work/share/caeri_dom/software/openmpi/openmpi
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/<span class="nv">$OPENMPI_DIR</span>/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$OPENMPI_DIR</span>/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/work/share/caeri_dom/software/openmpi/hwloc/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/work/share/caeri_dom/software/openmpi/hwloc/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+
+<span class="c1">## 1402 汽车研究院的openmpi在 /work/home/jsyadmin/tanjj/share/openmpi.zip 乌镇</span>
+
+<span class="c1"># 启动参数调用</span>
+-mpi<span class="w"> </span>openmpi<span class="w">  </span><span class="c1"># 等效 -mpidriver openmpi </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_FABRICS</span><span class="o">=</span>shm:ofa<span class="w">  </span><span class="c1"># intelmpi通信设置</span>
+</code></pre></div>
+<h3 id="_56">报错</h3>
+<h4 id="_57">图形输出卡死</h4>
+<ul>
+<li>LLVM ERROR: Do not know how to split the result of this operator! </li>
+<li>java. lang. OutOfMemoryError: Java heap space ![[4fb1be947188f8a9f604cb0fe6497e2f.png]]</li>
+</ul>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>.portal/job_portal.var<span class="w">  </span><span class="c1">#中第二行加入 或模板中命令行参数添加</span>
+<span class="nv">GAP_CMD_OPTION_WEB</span><span class="o">=</span><span class="s1">&#39;-mesa -mpidriver openmpi -jvmargs -Xmx80g&#39;</span><span class="w"> </span><span class="c1"># -mpi 与 -mpidriver 等效</span>
+<span class="c1"># -rr 是 ​​重启（Restart Run）​​ 选项，用于从之前的 ​​检查点文件（Checkpoint File）​​ 恢复仿真。它会加载最后一次保存的 .sim 或 .mdl 文件继续计算。</span>
+<span class="c1"># -jvmargs -Xmx20g 是设置Java虚拟机最大堆内存为20GB</span>
+</code></pre></div>
+<h4 id="sim">载入 sim 异常</h4>
+<p>![[Pasted image 20250515150002.png]]
+![[Pasted image 20250515150228.png]]
+<div class="highlight"><pre><span></span><code><span class="c1">#目录下有中文特殊字符，包括得检查home目录</span>
+</code></pre></div></p>
+<h4 id="starccm-1502007oversized-message-may-imply-too-few-parallel-processes-are-being-used">starccm+ 15.02.007西安多节点报错：oversized message may imply too few parallel processes are being used</h4>
+<p>![[Pasted image 20250530133740.png]]</p>
+<div class="highlight"><pre><span></span><code>思路/解决：starccm+自带mpi类型有intelmpi、platform、openmpi三类，在跨节点多核心运行时，通常因为mpi选择错误出现报错。目前没有总结出严谨唯一的答案，根据经验大致列出方法。
+
+<span class="m">1</span>、starccm+13及更早版本
+
+①不支持openmpi，可使用自带intelmpi，命令行参数添加：
+
+&gt;&gt;&gt;-mpidriver<span class="w"> </span>intel
+
+②或者使用自带platform，命令行参数添加：
+
+&gt;&gt;&gt;-mpidriver<span class="w"> </span>platform<span class="w"> </span>-mppflags<span class="w"> </span><span class="s2">&quot;-srq&quot;</span>
+
+<span class="m">2</span>、starccm+14到starccm+17
+
+①starccm+14-17默认是intelmpi启动，可能出现各类并行问题，内置openmpi与集群IB兼容又较差，因此通常选择module或者用户自己安装的openmpi（注意四starccm+14是openmpi3）
+
+&gt;&gt;&gt;module<span class="w"> </span>purge
+
+&gt;&gt;&gt;module<span class="w"> </span>load<span class="w"> </span>compiler/gcc/9.3.0
+
+&gt;&gt;&gt;module<span class="w"> </span>load<span class="w"> </span>mpi/openmpi/4.1.5/gcc-9.3.0
+
+&gt;&gt;&gt;export<span class="w"> </span><span class="nv">OMPI_HOME</span><span class="o">=</span>/public/software/mpi/openmpi/4.1.5/gcc-9.3.0
+
+&gt;&gt;&gt;export<span class="w"> </span><span class="nv">OPENMPI_DIR</span><span class="o">=</span>/public/software/mpi/openmpi/4.1.5/gcc-9.3.0
+
+&gt;&gt;&gt;-mpidriver<span class="w"> </span>openmpi
+
+②当然starccm+15.02.007也可以使用自带的platform来解决并行问题，命令行参数添加：
+
+&gt;&gt;&gt;-mpidriver<span class="w"> </span>platform<span class="w"> </span>-mppflags<span class="w"> </span><span class="s2">&quot;-srq&quot;</span>
+
+<span class="m">3</span>、starccm+17、18
+
+starccm+17、18乌镇用户出现并行问题，仍然考虑采用module或者用户自己安装的openmpi，有时需要添加通信参数
+
+&gt;&gt;&gt;module<span class="w"> </span>purge
+
+&gt;&gt;&gt;module<span class="w"> </span>load<span class="w"> </span>compiler/gcc/9.3.0
+
+&gt;&gt;&gt;module<span class="w"> </span>load<span class="w"> </span>mpi/openmpi/4.1.5/gcc-9.3.0
+
+&gt;&gt;&gt;export<span class="w"> </span><span class="nv">OMPI_HOME</span><span class="o">=</span>/public/software/mpi/openmpi/4.1.5/gcc-9.3.0
+
+&gt;&gt;&gt;export<span class="w"> </span><span class="nv">OPENMPI_DIR</span><span class="o">=</span>/public/software/mpi/openmpi/4.1.5/gcc-9.3.0
+
+&gt;&gt;&gt;-mpidriver<span class="w"> </span>openmpi<span class="w"> </span>-mppflags<span class="w"> </span><span class="s2">&quot;--mca btl self,tcp --mca btl_tcp_if_include ib0&quot;</span>（不到万不得已不加）
+
+<span class="m">4</span>、starccm+19（也叫240xxx版本，参考知识库脚本）
+
+①为解决glibc问题，现在通常用singularity打开，可选择openmpi
+
+②或者也可选择自带intelmpi，在singularity<span class="w"> </span>exec启动后添加
+
+&gt;&gt;&gt;export<span class="w"> </span><span class="nv">FI_PROVIDER</span><span class="o">=</span>verbs
+
+&gt;&gt;&gt;-mpidriver<span class="w"> </span>intel
+</code></pre></div>
+<h4 id="_58">启动错误</h4>
+<div class="highlight"><pre><span></span><code>-mpi<span class="w"> </span>openmpi40<span class="w">  </span><span class="c1">#乌镇starccm1806启动推荐</span>
+</code></pre></div>
+<h3 id="starccm_1">starccm 启动调试</h3>
+<ul>
+<li>启动前的检查文件
+<div class="highlight"><pre><span></span><code>/public/home/jsyadmin/apprepo/starccmplus/19.02.009-null/app/19.02.009-R8/STAR-CCM+19.02.009-R8/star/bin/starenv
+</code></pre></div></li>
+<li></li>
+</ul>
+<h2 id="_59">高版本软件</h2>
+<p><code>starccm+24、abaqus 2025 comsol6.3</code> </p>
+<div class="highlight"><pre><span></span><code>各位同事注意，如遇到客户需要使用 fluent2025、starccm+19.02、comsol6.3、abaqus2024 以上版本，涉及跨节点高版本 glibc 的需求（comsol 6.3 目前不需要跨节点，单节点可以用镜像启动，不一定强制使用专属队列），可以引导销售和客户开通乌镇 wzhcnormal04 队列，不再开通西安 xahcnormal02 队列，配置与西安一致，7285单路 32 核，128G 内存。
+</code></pre></div>
+<p><code>glibc版本查命令：ldd --version</code></p>
+<h1 id="_60">基础信息查询</h1>
+<h2 id="_61">计算资源查询<a href="https://www.scnet.cn/help/docs/mainsite/hpc/cmd/basic-information/#%E8%AE%A1%E7%AE%97%E8%B5%84%E6%BA%90%E6%9F%A5%E8%AF%A2">​</a></h2>
+<ol>
+<li>查询可使用计算队列</li>
+</ol>
+<p><code>whichpartition</code> #查询可使用计算队列</p>
+<ol>
+<li>查询计算节点核心数</li>
+</ol>
+<p><code>sinfo -p tyhctest -o "%n %c"</code> #查询tyhctest队列计算节点核心数 ，<code>tyhctest</code> 可替换为其他队列名称</p>
+<ol>
+<li>查询计算节点内存</li>
+</ol>
+<p><code>sinfo -p tyhctest -o "%n %m"</code> #查询tyhctest队列计算节点内存大小 ，tyhctest可替换为其他队列名称</p>
+<h2 id="_62">存储资源查询<a href="https://www.scnet.cn/help/docs/mainsite/hpc/cmd/basic-information/#%E5%AD%98%E5%82%A8%E8%B5%84%E6%BA%90%E6%9F%A5%E8%AF%A2">​</a></h2>
+<p><code>df -h ~</code> #查询账号的存储资源占用情况</p>
+<p><img alt="4.png" src="https://www.scnet.cn/help/docs/mainsite/assets/4.BcRs3ZKn.png" /></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Filesystem</td>
+<td>系统文件</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>主目录总存储</td>
+</tr>
+<tr>
+<td>Used</td>
+<td>已使用存储</td>
+</tr>
+<tr>
+<td>Avail</td>
+<td>可使用存储</td>
+</tr>
+<tr>
+<td>Use%</td>
+<td>存储使用率</td>
+</tr>
+<tr>
+<td>Mounted on</td>
+<td>挂载位置</td>
+</tr>
+</tbody>
+</table>
+<p>备注：计算过程中存储不足可能会导致作业运行失败，可在个人中心设置存储资源预警，及时扩充存储，以保障作业正常运行</p>
+<h2 id="_63">账号限制查询<a href="https://www.scnet.cn/help/docs/mainsite/hpc/cmd/basic-information/#%E8%B4%A6%E5%8F%B7%E9%99%90%E5%88%B6%E6%9F%A5%E8%AF%A2">​</a></h2>
+<p><code>sacctmgr show assoc -P Format=Account,User,GrpSubmit,GrpTRES</code> #查询账号限制 ，并以特定格式打印</p>
+<p><img alt="5.png" src="https://www.scnet.cn/help/docs/mainsite/assets/5.C4aVzyri.png" /></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account</td>
+<td>主账户</td>
+</tr>
+<tr>
+<td>User</td>
+<td>使用账户</td>
+</tr>
+<tr>
+<td>GrpSubmit</td>
+<td>提交作业数限制</td>
+</tr>
+<tr>
+<td>GrpJobs</td>
+<td>运行资源数限制</td>
+</tr>
+<tr>
+<td>GrpTRES</td>
+<td>可使用资源限制（包括CPU,DCU以及GPU）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>备注：若只有团队主账户显示资源有限，子账户各类限额均不显示，则表示与主账户的限额一致</p>
+</blockquote>
+<h1 id="slurm">slurm</h1>
+<h2 id="slurm_1">模板 slurm</h2>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH -J test # 作业名</span>
+<span class="c1">#SBATCH -p xahcnormal # 队列名</span>
+<span class="c1">#SBATCH -N 3 # 节点个数</span>
+<span class="c1">#SBATCH -n 64 # 总核数</span>
+<span class="c1">#SBATCH --ntasks-per-node=60  # 进程</span>
+<span class="c1">#SBATCH --cpus-per-task=8  # 线程</span>
+<span class="c1">#SBATCH --comment={appType:STARCCM_PLUS,appVersion:17.04.008-1789946212517220353,appVersionName:17.04.008,appShopId:1786991862996054017,submitWay:portal}</span>
+<span class="c1">#SBATCH -o std.out.%j</span>
+<span class="c1">#SBATCH -e std.err.%j</span>
+<span class="c1">#SBATCH --exclusive</span>
+<span class="c1">#SBATCH --time 72:00:00</span>
+<span class="c1">#SBATCH --mem=300G</span>
+<span class="c1">#SBATCH -w node1 # 指定节点</span>
+<span class="c1">#SBATCH -x node1 # 排除节点</span>
+
+<span class="c1">#SBATCH --constraint=&quot;32core&quot;   # tyhcnormal、xahcnormal、wzhcnormal，三个混合队列 的独占要注意，你本想独占单路，因为未加导致独占到双路</span>
+
+<span class="c1">#SBATCH --ntasks-per-node=2 # 每节点起多少进程，需要和dcu数量保持一致</span>
+<span class="c1">#SBATCH --cpus-per-task=8 # 每进程使用多少核</span>
+<span class="c1">#SBATCH --gres=gpu:2</span>
+
+<span class="nb">ulimit</span><span class="w"> </span>-s<span class="w"> </span>unlimited
+
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="nv">$SLURM_NPROCS</span><span class="w"> </span>rhoCentralFoam<span class="w">  </span>-parallel
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/work/home/indu_soft_crk/license/license_dat/cst2022/LinuxAMD64:<span class="nv">$LD_LIBRARY_PATH</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>
+</code></pre></div>
+<h2 id="_64">使用</h2>
+<ol>
+<li>
+<p>查看历史作业所使用的节点
+<div class="highlight"><pre><span></span><code>sacct<span class="w"> </span>-j<span class="w"> </span><span class="m">88893068</span><span class="w"> </span>-o<span class="w"> </span>node%100
+</code></pre></div></p>
+</li>
+<li>
+<p>指定单双路机器
+<div class="highlight"><pre><span></span><code><span class="c1">#SBATCH --constraint=&quot;32core&quot;  # 西安、乌镇 hcnormal</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>提升作业优先级
+<div class="highlight"><pre><span></span><code>scontrol<span class="w"> </span>top<span class="w"> </span>&lt;jobid&gt;
+</code></pre></div></p>
+</li>
+<li>
+<p>查看作业运行详情
+<div class="highlight"><pre><span></span><code>seff<span class="w">  </span>jobid
+</code></pre></div></p>
+</li>
+<li>
+<p>查看节点
+<div class="highlight"><pre><span></span><code>sinfo<span class="w"> </span>-p<span class="w"> </span>xahcnormal<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%P %D %t %f %N&quot;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>查看单双路
+<div class="highlight"><pre><span></span><code>sinfo<span class="w"> </span>-p<span class="w"> </span>xahcnormal<span class="w"> </span>-lN<span class="w"> </span>--noheader<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>idle<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>32core<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span><span class="c1"># 单路的</span>
+sinfo<span class="w"> </span>-p<span class="w"> </span>xahcnormal<span class="w"> </span>-lN<span class="w"> </span>--noheader<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>idle<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>64core<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span><span class="c1"># 双路的</span>
+</code></pre></div></p>
+</li>
+</ol>
+<h2 id="sbatch">sbatch</h2>
+<h3 id="_65">常用命令选项</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-J，-job-name=&lt;jobname&gt;</code></td>
+<td>赋予作业的作业名为<code>&lt;jobname&gt;</code></td>
+</tr>
+<tr>
+<td><code>-n 或 --ntasks=number</code></td>
+<td>指定要运行的任务数，默认每个任务一个处理器核，仅对作业起作用，不对作业步起作用。</td>
+</tr>
+<tr>
+<td><code>-N 或 --nodes=nnodes</code></td>
+<td>请求为作业分配<code>nnodes</code>个节点。如果作业的请求节点个数超出了分区中配置的节点数目，作业将被拒绝。</td>
+</tr>
+<tr>
+<td><code>-p 或 --partition=partition_name</code></td>
+<td>在指定分区中分配资源。如未指定，则在系统默认分区中分配资源。</td>
+</tr>
+<tr>
+<td><code>-ntasks-per-node</code></td>
+<td>指定每个节点运行进程数</td>
+</tr>
+<tr>
+<td><code>-cpu_per_task=&lt;count&gt;</code></td>
+<td>指定任务需要的处理器数目</td>
+</tr>
+<tr>
+<td><code>-c 或 --cpus-per-task=ncpus</code></td>
+<td>作业步的每个任务需要 <code>ncpus</code> 个处理器核。若未指定该选项，则默认为每个任务分配一个处理器核。</td>
+</tr>
+<tr>
+<td><code>-t</code></td>
+<td>指定作业执行时间，若超过该时间，作业将会被杀死。时间格式为：<code>minutes、minutes:seconds、hours:minutes:seconds、days-hours、days-hours:minutes</code>和<code>days-hours:minutes:seconds</code>。</td>
+</tr>
+<tr>
+<td><code>-o</code></td>
+<td>指定作业标准输出文件的名称，不能使用shell环境变量</td>
+</tr>
+<tr>
+<td><code>-e</code></td>
+<td>指定作业标准错误输出文件的名称，不能使用shell环境变量</td>
+</tr>
+<tr>
+<td><code>-w 或 --nodelist=nodenamelist</code></td>
+<td>请求指定的节点名称列表。列表可以用逗号分隔的节点名或节点范围（如 h02r1n[00-19]）指定。</td>
+</tr>
+<tr>
+<td><code>--mem=&lt;size[units]&gt;</code></td>
+<td>指定作业在每个节点使用的内存限制。</td>
+</tr>
+<tr>
+<td><code>-d, --dependency=&lt;dependency_list&gt;</code></td>
+<td>作业依赖关系设置</td>
+</tr>
+<tr>
+<td><code>--exclusive</code></td>
+<td>作业独占节点，作业运行过程中不允许其他作业使用节点，即使节点核心未用满。</td>
+</tr>
+<tr>
+<td><code>--gres=&lt;list&gt;</code></td>
+<td>指定每个节点使用的通用资源名称及数量 eg：<code>--gres=gpu:2</code> 表示本作业使用gpu卡，且每个节点使用2卡</td>
+</tr>
+<tr>
+<td><code>-x，-exclude=&lt;host1,host2,…or filename&gt;</code></td>
+<td>在特定<code>&lt;host1,host2&gt;</code>节点或filename文件中指定的节点上运行。</td>
+</tr>
+<tr>
+<td><code>-ntasks-per-socket=&lt;ntasks&gt;</code></td>
+<td>每颗CPU运行<code>&lt;ntasks&gt;</code>个任务，需与<code>-n，-ntasks=&lt;number&gt;</code>配合，并自动绑定<code>&lt;ntasks&gt;</code>个任务到每颗CPU。仅对作业起作用，不对作业步起作用。</td>
+</tr>
+<tr>
+<td><code>--mem-per-cpu=&lt;size&gt;</code></td>
+<td>分配的CPU需要的最小内存</td>
+</tr>
+<tr>
+<td><code>-no-requeue</code></td>
+<td>任何情况下都不重新运行</td>
+</tr>
+<tr>
+<td><code>-h, --help</code></td>
+<td>查看帮助说明</td>
+</tr>
+<tr>
+<td>## 作业环境变量</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+<th>类型</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SLURM_JOB_ID</code></td>
+<td>作业id，即作业调度系统为作业分配的作业号，可用于bjobs等命令</td>
+<td>数值</td>
+<td>hostfile=" ma.$SLURM_JOB_ID" 使用$SLURM_JOB_ID定义machinefile，指定mpi节点文件</td>
+</tr>
+<tr>
+<td><code>SLURM_JOB_NAME</code></td>
+<td>作业名称，即-J 选项指定的名称</td>
+<td>字符串</td>
+<td>mkdir ${SLURM_JOB_NAME} 根据作业名称创建临时工作目录</td>
+</tr>
+<tr>
+<td><code>SLURM_JOB_NUM_NODES</code></td>
+<td>作业分配到的节点总数</td>
+<td>数值</td>
+<td>echo $SLURM_JOB_NUM_NODES</td>
+</tr>
+<tr>
+<td><code>SLURM_JOB_NODELIST</code></td>
+<td>作业被分配到的节点列表</td>
+<td>字符串</td>
+<td>echo $SLURM_JOB_NODELIST</td>
+</tr>
+<tr>
+<td><code>SLURM_JOB_PARTITION</code></td>
+<td>作业被分配到的队列名</td>
+<td>字符串</td>
+<td>echo $SLURM_JOB_PARTITION</td>
+</tr>
+</tbody>
+</table>
+<h2 id="squeue">squeue 查询</h2>
+<div class="highlight"><pre><span></span><code>查某个计算用户：
+
+全部作业使用的核心（含排队）：squeue -u  计算用户 -o %C |sed &quot;1d&quot;|awk &#39;{for(i=1;i&lt;=NF;i++) sum+=$i;print sum}&#39;|tail -n 1
+
+全部运行状态作业使用的核心：squeue -u  计算用户 -t R -o %C |sed &quot;1d&quot;|awk &#39;{for(i=1;i&lt;=NF;i++) sum+=$i;print sum}&#39;|tail -n 1
+
+查某个计算用户的团队账号：
+
+全部作业使用的核心（含排队）squeue -A  团队账号 -o %C |sed &quot;1d&quot;|awk &#39;{for(i=1;i&lt;=NF;i++) sum+=$i;print sum}&#39;|tail -n 1
+
+全部运行状态作业使用的核心：squeue -A  团队账号 -t R -o %C |sed &quot;1d&quot;|awk &#39;{for(i=1;i&lt;=NF;i++) sum+=$i;print sum}&#39;|tail -n 1
+
+squeue -o &#39;%.18i %.12P %.18j %.12u %.12T %.12M %.16l %.6D %.6C %.6od %R &#39; -p kshcnormal
+</code></pre></div>
+<h1 id="_66">机器</h1>
+<h2 id="dcu">dcu</h2>
+<ul>
+<li>异构加速卡2 显存32GB-双精度的名称 <code>dcu z100L</code></li>
+<li>
+<p>集群 dcu 二代三代卡，现在如果有资源尽量推荐 k100 ai 的，组件适配性上也会好一些
+![[fcc74d79b85e600d834abafad89c7b6f.png]]</p>
+</li>
+<li>
+<p>教程
+<div class="highlight"><pre><span></span><code>对于新用户，可以提供以下参考内容：
+
+<span class="m">1</span>.<span class="w"> </span>开发者社区上光源镜像链接：
+
+https://sourcefind.cn/
+
+<span class="m">2</span>.<span class="w"> </span>DCU<span class="w"> </span>GitLab仓库链接：
+
+https://developer.sourcefind.cn/codes/modelzoo
+
+<span class="m">3</span>.<span class="w"> </span>conda环境自主构建的提供以下链接：
+
+•DTK下载地址：（需要和裸金属上的操作系统对应）
+
+https://download.sourcefind.cn:65024/1/main
+
+•DAS（DCU-AI<span class="w"> </span>移植软件）：<span class="w"> </span>（需要和DTK版本对应）
+
+https://download.sourcefind.cn:65024/4/main/
+
+•DTK介绍文档：（每个版本中包含一个Document目录）
+
+https://download.sourcefind.cn:65024/1/main/DTK-25.04/Document
+
+•DCU编程介绍：
+
+https://developer.sourcefind.cn/gitbook/dcu_developer/DeveloperGuide/dcu_programming/DCU_programming_prefix.html
+</code></pre></div></p>
+</li>
+<li>
+<p>dcu 跨节点 rccl 报错
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_SOCKET_IFNAME</span><span class="o">=</span>ib0<span class="w">  </span><span class="c1"># nccl创建通讯组需要socket通信  </span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_IB_HCA</span><span class="o">=</span>mlx5_0<span class="w"> </span><span class="c1">#指定的NCCL通信网口</span>
+</code></pre></div></p>
+</li>
+</ul>
+<h1 id="_67">镜像</h1>
+<h2 id="_68">现成的一些沙盒</h2>
+<p>sif 转沙盒需要 root</p>
+<div class="highlight"><pre><span></span><code>/work/home/jsyadmin/liuting/software/funannotate<span class="w"> </span><span class="c1">#乌镇</span>
+</code></pre></div>
+<h2 id="docker-sif">docker 包转 sif</h2>
+<div class="highlight"><pre><span></span><code>singularity build solids4foam.sif docker-archive://20250414-solids4foam_v2.0_may_codeserver.tar
+</code></pre></div>
+<h2 id="singularity-openfoam">singularity 运行 openfoam</h2>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J test  # 作业名称</span>
+<span class="c1">#SBATCH -p xahcnormal #指定分区</span>
+<span class="c1">#SBATCH -N 1 #请求1个节点</span>
+<span class="c1">#SBATCH --ntasks-per-node=1 #每个节点1个任务</span>
+<span class="c1">##SBATCH -c 32 #每个任务32个线程</span>
+
+<span class="c1">#-J test：作业名称</span>
+<span class="c1">#-p xahctest：指定分区</span>
+<span class="c1">#-N 1：请求1个节点</span>
+<span class="c1">#--ntasks-per-node=1：每个节点1个任务</span>
+<span class="c1">#-c 32：每个任务32个CPU核心</span>
+
+<span class="c1">#source ../scripts/env.sh</span>
+<span class="c1">#source /work/home/jsyadmin/L4/wys/shangcheng/sci_package_supplement/202503/openfoam/openfoam7_adapter_precice2.5.0_package/scripts/env.sh</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">COMMAND</span><span class="o">=</span><span class="s2">&quot;</span>
+<span class="s2">cd fluid-bottom-openfoam</span>
+<span class="s2">./run.sh &amp;&gt; log1 &amp;</span>
+
+<span class="s2">cd ..</span>
+<span class="s2">cd fluid-top-openfoam</span>
+<span class="s2">./run.sh &amp;&gt; log2 &amp;</span>
+
+<span class="s2">cd ..</span>
+<span class="s2">cd solid-calculix</span>
+<span class="s2">./run.sh &amp;&gt; log3 &amp;</span>
+
+<span class="s2">wait</span>
+<span class="s2">&quot;</span>
+
+srun<span class="w"> </span>--mpi<span class="o">=</span>pmix_v3<span class="w"> </span>singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-B<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">WHERE_IS_SIF</span><span class="si">}</span><span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">singularity exec -B </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">WHERE_IS_SIF</span><span class="si">}</span><span class="s2"> bash -c &quot;</span>
+<span class="nb">source</span><span class="w"> </span>/opt/openfoam7/etc/bashrc
+<span class="nv">$COMMAND</span>
+<span class="s2">&quot;</span>
+</code></pre></div>
+<h2 id="root">容器中 root 转普通</h2>
+<div class="highlight"><pre><span></span><code>su<span class="w"> </span>xxx
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

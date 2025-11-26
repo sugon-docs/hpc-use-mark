@@ -1,0 +1,1754 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>安装 - hpc-use-mark</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="hpc-use-mark" class="md-header__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hpc-use-mark
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              安装
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="hpc-use-mark" class="md-nav__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    hpc-use-mark
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    软件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    软件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abaqus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    abaqus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ansysem%20hfss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ansysem hfss
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apdl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    apdl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autodyna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    autodyna
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ccx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ccx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CFD%2B%2B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFD++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CFX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemkin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    chemkin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comsol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    comsol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../converge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    converge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpfd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cpfd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    edem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fdtd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fdtd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feko
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fidelityCharles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fidelityCharles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fluent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IBAMR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBAMR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../noe" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    科学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    气象
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    异构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    智能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集群
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    集群
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Styling your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    非集群tip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#starccm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        starccm
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="starccm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网格配比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一些指令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mpi 切换
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报错
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starccm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        starccm 启动调试
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">安装</h1>
+<ul>
+<li>高版本
+<div class="highlight"><pre><span></span><code><span class="c1"># 用sif环境</span>
+./STAR-CCM+2510_007_linux-x86_64-2.28_clang17.0.aol<span class="w"> </span>-i<span class="w"> </span>console<span class="w">  </span>-DINSTALL_LICENSING<span class="o">=</span><span class="nb">false</span><span class="w"> </span>
+</code></pre></div></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 19.06 镜像 昆山 </span>
+/public/home/jsyadmin/tanjj/paks/starccm/build/1906/1906_2.sif
+
+<span class="c1"># 20.06 安装好的 昆山</span>
+/public/home/jsyadmin/tanjj/paks/starccm/build/2006
+
+<span class="c1"># 测试算例 昆山 ~/apprepo/starccmplus/19.02.009-null/case/test.sim</span>
+rayfile-c<span class="w"> </span>-a<span class="w"> </span>ksefile.hpccube.com<span class="w"> </span>-P<span class="w"> </span><span class="m">65245</span><span class="w"> </span>-u<span class="w"> </span>jsyadmin<span class="w"> </span>-w<span class="w"> </span>9380ec0f4bf330072f-4360-4ec3-a813-76d5f1f67556<span class="w"> </span>-no-meta<span class="w"> </span>-symbolic-links<span class="w"> </span>follow<span class="w"> </span>-retry<span class="w"> </span><span class="m">10</span><span class="w"> </span>-retrytimeout<span class="w"> </span><span class="m">30</span><span class="w"> </span>-o<span class="w"> </span>download<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;/apprepo/starccmplus/19.02.009-null/case/test.sim&#39;</span><span class="w"> </span>-d<span class="w"> </span>.
+</code></pre></div>
+<h2 id="starccm">starccm</h2>
+<h3 id="_2">网格配比</h3>
+<div class="highlight"><pre><span></span><code><span class="m">10</span>-20w<span class="w"> </span>每个核心
+</code></pre></div>
+<h3 id="_3">一些指令</h3>
+<div class="highlight"><pre><span></span><code>-mesa<span class="w"> </span>-mpidriver<span class="w"> </span>openmpi<span class="w">  </span>-jvmargs<span class="w"> </span>-Xmx20g<span class="w">  </span>-mpiflags<span class="w"> </span><span class="s2">&quot;-mca btl &#39;^vader,tcp,openib,uct&#39;  -mca pml ucx -x UCX_TLS=self,sm,rc_x&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>🔧 ​<strong>​参数详细解析​</strong>​</p>
+</blockquote>
+<ol>
+<li>
+<p>​<strong>​<code>-mca btl '^vader,tcp,openib,uct'</code>​</strong>​</p>
+<ul>
+<li>
+<p>​<strong>​功能​</strong>​：禁用指定的MPI传输模块（BTL, Byte Transfer Layer）。</p>
+<ul>
+<li>
+<p><code>vader</code>：Linux共享内存通信（可能因内存竞争导致性能下降）。</p>
+</li>
+<li>
+<p><code>tcp</code>：TCP/IP网络传输（延迟高，适合备用而非高性能场景）。</p>
+</li>
+<li>
+<p><code>openib</code>/<code>uct</code>：InfiniBand驱动（若集群未正确配置RDMA，可能引发通信失败）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>​<strong>​目的​</strong>​：排除低效或不稳定的传输方式，强制使用更优选项（如UCX）</p>
+</li>
+</ul>
+</li>
+<li>
+<p>​<strong>​<code>-mca pml ucx</code>​</strong>​</p>
+<ul>
+<li>
+<p>​<strong>​功能​</strong>​：指定使用​<strong>​UCX（Unified Communication X）​</strong>​作为点对点通信层（PML）。</p>
+</li>
+<li>
+<p>​<strong>​优势​</strong>​：UCX专为高性能网络（如InfiniBand、RoCE）优化，支持RDMA（远程直接内存访问），显著降低延迟并提升吞吐量</p>
+<p>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>​<strong>​<code>-x UCX_TLS=self,sm,rc_x</code>​</strong>​</p>
+<ul>
+<li>
+<p>​<strong>​功能​</strong>​：设置UCX的传输层协议（TLS, Transport Layer Selector）。</p>
+<ul>
+<li>
+<p><code>self</code>：进程内通信（同一节点内）。</p>
+</li>
+<li>
+<p><code>sm</code>：共享内存通信（跨进程同节点）。</p>
+</li>
+<li>
+<p><code>rc_x</code>：基于可靠连接（RC）的InfiniBand传输（跨节点）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>​<strong>​目的​</strong>​：精细化控制通信路径，避免冗余协议栈，提升效率</p>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>​应用场景与作用​​</p>
+</blockquote>
+<ul>
+<li>
+<p>​<strong>​高性能计算集群​</strong>​：</p>
+<p>在配备InfiniBand/RDMA的HPC集群中（如Azure A8/A9实例</p>
+<p>），此配置可最大化利用硬件加速通信，减少CPU开销，尤其适用于大规模网格（&gt;1亿单元）的CFD模拟</p>
+</li>
+<li>
+<p>​<strong>​兼容性调优​</strong>​：</p>
+<p>排除<code>openib</code>和<code>tcp</code>可避免因驱动未安装或网络配置错误导致的MPI初始化失败（常见于混合集群环境）</p>
+</li>
+<li>
+<p>​<strong>​性能优化​</strong>​：</p>
+<p>UCX相比传统BTL模块，在InfiniBand上可实现​<strong>​80%+的并行效率​</strong>​（即使扩展至数千核）</p>
+</li>
+</ul>
+<h3 id="mpi">mpi 切换</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 加载openmpi intel不推荐</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>compiler/devtoolset/7.3.1<span class="w"> </span>mpi/openmpi/4.1.1/gcc-7.3.1
+
+<span class="c1"># 要设置下 $OPENMPI_DIR 这个变量</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENMPI_DIR</span><span class="o">=</span>/work/share/caeri_dom/software/openmpi/openmpi
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/<span class="nv">$OPENMPI_DIR</span>/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$OPENMPI_DIR</span>/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+
+<span class="c1">## 1402 汽车研究院的openmpi在 /work/home/jsyadmin/tanjj/share/openmpi.zip 乌镇</span>
+
+<span class="c1"># 启动参数调用</span>
+-mpi<span class="w"> </span>openmpi<span class="w">  </span><span class="c1"># 等效 -mpidriver openmpi </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_FABRICS</span><span class="o">=</span>shm:ofa<span class="w">  </span><span class="c1"># intelmpi通信设置</span>
+</code></pre></div>
+<h3 id="_4">报错</h3>
+<ul>
+<li>
+<p>图形输出卡死</p>
+</li>
+<li>
+<p>LLVM ERROR: Do not know how to split the result of this operator! </p>
+</li>
+<li>java. lang. OutOfMemoryError: Java heap space ![[4fb1be947188f8a9f604cb0fe6497e2f.png]]</li>
+</ul>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>.portal/job_portal.var<span class="w">  </span><span class="c1">#中第二行加入 或模板中命令行参数添加</span>
+<span class="nv">GAP_CMD_OPTION_WEB</span><span class="o">=</span><span class="s1">&#39;-mesa -mpidriver openmpi -jvmargs -Xmx80g&#39;</span><span class="w"> </span>
+
+<span class="c1"># -mpi 与 -mpidriver 等效</span>
+<span class="c1"># -rr 是 ​​重启（Restart Run）​​ 选项，用于从之前的 ​​检查点文件（Checkpoint File）​​ 恢复仿真。它会加载最后一次保存的 .sim 或 .mdl 文件继续计算。</span>
+<span class="c1"># -jvmargs -Xmx20g 是设置Java虚拟机最大堆内存为20GB  不能超过节点内存的一半</span>
+</code></pre></div>
+<ul>
+<li>
+<p>载入 sim 异常
+![[Pasted image 20250515150002.png]]
+![[Pasted image 20250515150228.png]]
+<div class="highlight"><pre><span></span><code><span class="c1">#目录下有中文特殊字符，包括得检查home目录</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>starccm+ 15.02.007 西安多节点报错：oversized message may imply too few parallel processes are being used
+![[Pasted image 20250530133740.png]]</p>
+</li>
+<li>
+<p>作业计算保存报错</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>Maximum<span class="w"> </span>Temperature<span class="w"> </span>limited<span class="w"> </span>to<span class="w"> </span><span class="m">2000</span><span class="w"> </span>on<span class="w"> </span><span class="m">2</span><span class="w"> </span>faces<span class="w"> </span>on<span class="w"> </span>wall-disable-prism
+<span class="w">          </span><span class="m">6000</span><span class="w">   </span><span class="m">5</span>.844480e-04<span class="w">   </span><span class="m">4</span>.642958e-06<span class="w">   </span><span class="m">4</span>.223778e-05<span class="w">   </span><span class="m">3</span>.850826e-05<span class="w">   </span><span class="m">1</span>.060195e+00<span class="w">   </span><span class="m">3</span>.895600e-09<span class="w">   </span><span class="m">1</span>.133139e-07<span class="w">      </span><span class="m">1</span>.000000e+00<span class="w">   </span><span class="m">4</span>.543310e+02<span class="w">   </span><span class="m">2</span>.545623e+02<span class="w">   </span><span class="m">3</span>.519360e+02<span class="w">   </span><span class="m">4</span>.452091e+02<span class="w">   </span><span class="m">3</span>.848454e+02<span class="w">   </span><span class="m">3</span>.324304e+02<span class="w">       </span><span class="m">4</span>.989065e+04<span class="w">             </span><span class="m">6</span>.946475e+01<span class="w">             </span><span class="m">6</span>.827270e+01<span class="w">     </span><span class="m">8</span>.999028e+01<span class="w">                  </span><span class="m">1</span>.110740e+04<span class="w">                    </span><span class="m">2</span>.259624e+04<span class="w">   </span><span class="m">9</span>.770112e+02<span class="w">          </span>-1.464697e+00<span class="w">        </span><span class="m">1</span>.105696e+00<span class="w">       </span><span class="m">2</span>.733956e+00
+Auto<span class="w"> </span>save:<span class="w"> </span>/work/home/ac0wb5ny6n/A_CT/test/new-mesh-daojiao-retai-power-four-ture@06000.sim
+Saving:<span class="w"> </span>/work/home/ac0wb5ny6n/A_CT/test/new-mesh-daojiao-retai-power-four-ture@06000.sim...Error:<span class="w"> </span>basic_filebuf::underflow<span class="w"> </span>error<span class="w"> </span>reading<span class="w"> </span>the<span class="w"> </span>file:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
+
+
+<span class="c1"># 原始文件.sim被修改移动了</span>
+</code></pre></div>
+<ul>
+<li>mpi</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>pml_ucx.c:309<span class="w">  </span>Error:<span class="w"> </span>Failed<span class="w"> </span>to<span class="w"> </span>create<span class="w"> </span>UCP<span class="w"> </span>worker
+
+<span class="w"> </span>可能是mpi版本问题，考虑切换外部openmpi，在starccm+脚本或模板高级参数添加：
+
+&gt;&gt;&gt;export<span class="w"> </span><span class="nv">MPI_ROOT</span><span class="o">=</span><span class="w"> </span>/public/software/mpi/openmpi/openmpi-4.1.5<span class="w"> </span><span class="c1">#自己找到集群的openmpi路径</span>
+
+&gt;&gt;&gt;export<span class="w"> </span><span class="nv">OMPI_HOME</span><span class="o">=</span><span class="nv">$MPI_ROOT</span>
+
+&gt;&gt;&gt;export<span class="w"> </span><span class="nv">OPENMPI_DIR</span><span class="o">=</span><span class="nv">$MPI_ROOT</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>思路/解决：starccm+自带mpi类型有intelmpi、platform、openmpi三类，在跨节点多核心运行时，通常因为mpi选择错误出现报错。目前没有总结出严谨唯一的答案，根据经验大致列出方法。
+
+<span class="m">1</span>、starccm+13及更早版本
+
+①不支持openmpi，可使用自带intelmpi，命令行参数添加：
+
+&gt;&gt;&gt;-mpidriver<span class="w"> </span>intel
+
+②或者使用自带platform，命令行参数添加：
+
+&gt;&gt;&gt;-mpidriver<span class="w"> </span>platform<span class="w"> </span>-mppflags<span class="w"> </span><span class="s2">&quot;-srq&quot;</span>
+
+<span class="m">2</span>、starccm+14到starccm+17
+
+①starccm+14-17默认是intelmpi启动，可能出现各类并行问题，内置openmpi与集群IB兼容又较差，因此通常选择module或者用户自己安装的openmpi（注意四starccm+14是openmpi3）
+
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>compiler/gcc/9.3.0<span class="w"> </span>mpi/openmpi/openmpi-4.1.5-gcc9.3.0<span class="w"> </span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_HOME</span><span class="o">=</span>/public/software/mpi/openmpi/openmpi-4.1.5<span class="w"> </span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENMPI_DIR</span><span class="o">=</span>/public/software/mpi/openmpi/openmpi-4.1.5<span class="w"> </span>
+-mpidriver<span class="w"> </span>openmpi
+
+②当然starccm+15.02.007也可以使用自带的platform来解决并行问题，命令行参数添加：
+
+&gt;&gt;&gt;-mpidriver<span class="w"> </span>platform<span class="w"> </span>-mppflags<span class="w"> </span><span class="s2">&quot;-srq&quot;</span>
+
+<span class="m">3</span>、starccm+17、18
+
+starccm+17、18乌镇用户出现并行问题，仍然考虑采用module或者用户自己安装的openmpi，有时需要添加通信参数
+
+&gt;&gt;&gt;module<span class="w"> </span>purge
+
+&gt;&gt;&gt;module<span class="w"> </span>load<span class="w"> </span>compiler/gcc/9.3.0
+
+&gt;&gt;&gt;module<span class="w"> </span>load<span class="w"> </span>mpi/openmpi/4.1.5/gcc-9.3.0
+
+&gt;&gt;&gt;export<span class="w"> </span><span class="nv">OMPI_HOME</span><span class="o">=</span>/public/software/mpi/openmpi/openmpi-4.1.5<span class="w"> </span>
+
+&gt;&gt;&gt;export<span class="w"> </span><span class="nv">OPENMPI_DIR</span><span class="o">=</span>/public/software/mpi/openmpi/openmpi-4.1.5<span class="w"> </span>
+
+&gt;&gt;&gt;-mpidriver<span class="w"> </span>openmpi<span class="w"> </span>-mppflags<span class="w"> </span><span class="s2">&quot;--mca btl self,tcp --mca btl_tcp_if_include ib0&quot;</span>（不到万不得已不加）
+
+<span class="m">4</span>、starccm+19（也叫240xxx版本，参考知识库脚本）
+
+①为解决glibc问题，现在通常用singularity打开，可选择openmpi
+
+②或者也可选择自带intelmpi，在singularity<span class="w"> </span>exec启动后添加
+
+&gt;&gt;&gt;export<span class="w"> </span><span class="nv">FI_PROVIDER</span><span class="o">=</span>verbs<span class="w"> </span><span class="c1">#是用于设置 libfabric（一种用于高性能网络的通信中间件库）的环境变量，指定使用 verbs 作为底层网络提供者（provider）</span>
+
+&gt;&gt;&gt;-mpidriver<span class="w"> </span>intel
+</code></pre></div>
+<ul>
+<li>
+<p>启动错误
+<div class="highlight"><pre><span></span><code>-mpi<span class="w"> </span>openmpi40<span class="w">  </span><span class="c1">#乌镇starccm1806启动推荐</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>通信
+<div class="highlight"><pre><span></span><code><span class="c1"># 报错 dc_mlx5.c:1155 UCX ERROR dc interface can have at most 15 dcis (requested: 16)</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">UCX_TLS</span><span class="o">=</span>rc,<span class="w"> </span>sm
+</code></pre></div></p>
+</li>
+<li>
+<p>图形查看日志
+<div class="highlight"><pre><span></span><code><span class="c1"># 图形日志查看</span>
+<span class="c1"># 计算节点上</span>
+/tmp/output1762335793903
+
+<span class="c1"># 或者</span>
+~/.star-20.02.007/var/log/
+</code></pre></div></p>
+</li>
+<li>
+<p>server 链接<br />
+<div class="highlight"><pre><span></span><code><span class="c1"># 链接server</span>
+打开的界面可以实时监控，可以暂停保存，修改相关设置再保存模型。但是，若暂停之后重新计算，虽然计算所占用的资源还是最开始的后台作业节点，但此时关闭图形界面，则会停掉server，计算终止。因此建议暂停修改设置后，保存新的sim文件，重新提交后台计算作业
+</code></pre></div>
+![[Pasted image 20251106135920.png]] ![[Pasted image 20251106135929.png]]</p>
+</li>
+<li>
+<p>渲染</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>-mpi<span class="w"> </span>intel<span class="w"> </span>-rr<span class="w"> </span>dcv3
+</code></pre></div>
+<ul>
+<li>
+<p>java 运行
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J XJrotorV00A00</span>
+<span class="c1">#SBATCH -p tyhcnormal</span>
+<span class="c1">#SBATCH -N 2</span>
+<span class="c1">#SBATCH --ntasks-per-node=60</span>
+<span class="c1">#SBATCH --exclusive</span>
+
+<span class="nv">WDIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="w">        </span><span class="c1">#获取当前目录</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WDIR</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">CDLMD_LICENSE_FILE</span><span class="o">=</span><span class="s2">&quot;/work/home/acvu1y291c/software/starccm-install/18.04.009/license.dat&quot;</span>
+
+<span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;/work/home/acvu1y291c/software/starccm-install/18.04.009/STAR-CCM+18.04.009/star/bin/starccm+ -power -mesa&quot;</span>
+
+<span class="nv">NP</span><span class="o">=</span><span class="nv">$SLURM_NPROCS</span>
+
+<span class="nv">INPUT_FILE</span><span class="o">=</span>N5000RPMV00A00@00480.sim
+<span class="nv">SCRIPT_FILE</span><span class="o">=</span>timestepANDstop.java,run<span class="w">  </span><span class="c1"># run 是相当于 又传了一个指令给starccm+可执行文件</span>
+
+<span class="nv">NNODE</span><span class="o">=</span><span class="sb">`</span>srun<span class="w"> </span>hostname<span class="w"> </span><span class="p">|</span>sort<span class="w"> </span><span class="p">|</span>uniq<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="sb">`</span>
+<span class="nv">LOG_FILE</span><span class="o">=</span><span class="nv">$WDIR</span>/job_<span class="si">${</span><span class="nv">NP</span><span class="si">}</span>c_<span class="si">${</span><span class="nv">NNODE</span><span class="si">}</span>n_<span class="nv">$SLURM_JOB_ID</span>.log
+<span class="nv">HOSTFILE</span><span class="o">=</span><span class="nv">$WDIR</span>/hosts_<span class="nv">$SLURM_JOB_ID</span>
+srun<span class="w"> </span>hostname<span class="w"> </span><span class="p">|</span>sort<span class="w"> </span><span class="p">|</span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{printf &quot;%s:%s\n&quot;,$2,$1}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$HOSTFILE</span>
+
+<span class="c1">#$APP $INPUT_FILE -batch -machinefile $HOSTFILE -np $NP -rsh ssh  -mpidriver  openmpi  2&gt;&amp;1</span>
+<span class="nv">$APP</span><span class="w"> </span><span class="nv">$INPUT_FILE</span><span class="w"> </span>-batch<span class="w"> </span><span class="nv">$SCRIPT_FILE</span><span class="w"> </span>-machinefile<span class="w"> </span><span class="nv">$HOSTFILE</span><span class="w"> </span>-np<span class="w"> </span><span class="nv">$NP</span><span class="w"> </span>-rsh<span class="w"> </span>ssh<span class="w">  </span>-mpi<span class="w"> </span>openmpi40<span class="w">  </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>glibc
+<div class="highlight"><pre><span></span><code><span class="c1"># 西安</span>
+<span class="c1">#SBATCH --comment={glibcVersion:2.28}  </span>
+<span class="c1">#SBATCH --exclusive </span>
+starccm1906<span class="w">  </span>不要用高版本的<span class="w"> </span>-mpi<span class="w"> </span>openmpi40
+starccm2006<span class="w"> </span>-mpi<span class="w"> </span>openmpi<span class="w"> </span>
+</code></pre></div></p>
+</li>
+</ul>
+<p>![[b88a5219dafebcfca7bfcad7d2792292.png]]
+<div class="highlight"><pre><span></span><code>-mpi<span class="w"> </span>openmpi40<span class="w"> </span>-fabric<span class="w"> </span>UCX<span class="w"> </span><span class="c1"># 图形 走ucx通信</span>
+
+<span class="c1"># env里加下面这些识别不了 得加在starccm+可执行文件里</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_pml</span><span class="o">=</span>ucx
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMPI_MCA_btl</span><span class="o">=</span>^openib
+<span class="nb">export</span><span class="w"> </span><span class="nv">UCX_TLS</span><span class="o">=</span>rc,dc_x,ud
+<span class="nb">export</span><span class="w"> </span><span class="nv">UCX_NET_DEVICES</span><span class="o">=</span>mlx5_0:1
+<span class="nb">export</span><span class="w"> </span><span class="nv">UCX_IB_PCI_BW</span><span class="o">=</span>mlx5_0:100Gbs
+</code></pre></div></p>
+<h3 id="starccm_1">starccm 启动调试</h3>
+<ul>
+<li>启动前的检查文件
+<div class="highlight"><pre><span></span><code>/public/home/jsyadmin/apprepo/starccmplus/19.02.009-null/app/19.02.009-R8/STAR-CCM+19.02.009-R8/star/bin/starenv
+</code></pre></div></li>
+</ul>
+<h1 id="_5">脚本</h1>
+<h2 id="_6">命令行</h2>
+<ul>
+<li>
+<p>普通
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J test   #作业名</span>
+<span class="c1">#SBATCH -p pxxx  #队列名</span>
+<span class="c1">#SBATCH -N 4    #节点数</span>
+<span class="c1">#SBATCH -n 512  #进程数</span>
+<span class="c1">#SBATCH --ntasks-per-node=128     #每节点进程数</span>
+<span class="c1">#SBATCH --ntasks-per-socket=16     #一般取每节点进程数的八分之一</span>
+<span class="c1">#SBATCH --cpus-per-task=1     #每进程占用核心数</span>
+<span class="c1">##SBATCH --exclusive</span>
+<span class="c1">#SBATCH -o %j.out</span>
+<span class="c1">#SBATCH -e %j.err</span>
+
+date
+
+<span class="nv">WDIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="w">        </span><span class="c1">#获取当前目录</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WDIR</span>
+
+<span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;/public/home/acervf3klc/soft/16.04.007/16.04.007/STAR-CCM+16.04.007/star/bin/starccm+ -power -mesa&quot;</span><span class="w">   </span><span class="c1">#软件安装路径</span>
+<span class="nv">INPUT_FILE</span><span class="o">=</span><span class="nv">$WDIR</span>/test_0829.sim<span class="w">      </span><span class="c1">#输入sim文件</span>
+<span class="c1">#SCRIPT_FILE=$WDIR/ccm.java    #输入java文件</span>
+<span class="c1">##################################################################</span>
+
+<span class="nv">NP</span><span class="o">=</span><span class="nv">$SLURM_NPROCS</span>
+<span class="nv">NNODE</span><span class="o">=</span><span class="sb">`</span>srun<span class="w"> </span>hostname<span class="w"> </span><span class="p">|</span>sort<span class="w"> </span><span class="p">|</span>uniq<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="sb">`</span><span class="w"> </span>
+<span class="nv">LOG_FILE</span><span class="o">=</span><span class="nv">$WDIR</span>/job_<span class="si">${</span><span class="nv">NP</span><span class="si">}</span>c_<span class="si">${</span><span class="nv">NNODE</span><span class="si">}</span>n_<span class="nv">$SLURM_JOB_ID</span>.log<span class="w"> </span>
+<span class="nv">HOSTFILE</span><span class="o">=</span><span class="nv">$WDIR</span>/hosts_<span class="nv">$SLURM_JOB_ID</span>
+srun<span class="w"> </span>hostname<span class="w"> </span><span class="p">|</span>sort<span class="w"> </span><span class="p">|</span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{printf &quot;%s:%s\n&quot;,$2,$1}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$HOSTFILE</span>
+
+module<span class="w"> </span>purge
+<span class="c1">###############运行主程序</span>
+<span class="c1">#$APP $INPUT_FILE -batch $SCRIPT_FILE -machinefile $HOSTFILE -np $NP -rsh ssh  -mpidriver intel  2&gt;&amp;1</span>
+<span class="nv">$APP</span><span class="w"> </span><span class="nv">$INPUT_FILE</span><span class="w"> </span>-batch<span class="w"> </span>-machinefile<span class="w"> </span><span class="nv">$HOSTFILE</span><span class="w"> </span>-np<span class="w"> </span><span class="nv">$NP</span><span class="w"> </span>-rsh<span class="w"> </span>ssh<span class="w">  </span>-mpidriver<span class="w"> </span>intel<span class="w"> </span>-fabricverbose<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w">  </span>
+</code></pre></div></p>
+</li>
+<li>
+<p>镜像
+<div class="highlight"><pre><span></span><code><span class="c1"># 镜像版 /work/home/jsyadmin/L4/dwj/2502/bin/starccm.sif 西安</span>
+
+<span class="c1">#!/bin/bash</span>
+<span class="c1">#SBATCH -J STAR</span>
+<span class="c1">#SBATCH -p xahcnormal</span>
+<span class="c1">#SBATCH -N 4</span>
+<span class="c1">#SBATCH --ntasks-per-node=20</span>
+<span class="c1">#SBATCH --exclusive</span>
+<span class="nv">WDIR</span><span class="o">=</span><span class="nv">$PWD</span>
+<span class="c1">##输入文件</span>
+<span class="nv">INPUT_FILE</span><span class="o">=</span><span class="nv">$WDIR</span>/Water-HVAC-106-M2-20250226-base-SPH.sim
+<span class="c1">##执行命令</span>
+<span class="nv">WDIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WDIR</span>
+
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w">  </span>singularity/3.7.3
+
+<span class="nv">APP</span><span class="o">=</span>/opt/Siemens/20.02.007-R8/STAR-CCM+20.02.007-R8/star/bin/starccm+
+<span class="nb">export</span><span class="w"> </span><span class="nv">CDLMD_LICENSE_FILE</span><span class="o">=</span>/opt/Siemens/license.dat
+<span class="nv">NP</span><span class="o">=</span><span class="nv">$SLURM_NPROCS</span>
+<span class="nv">NNODE</span><span class="o">=</span><span class="sb">`</span>srun<span class="w"> </span>hostname<span class="w"> </span><span class="p">|</span>sort<span class="w"> </span><span class="p">|</span>uniq<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="sb">`</span>
+<span class="nv">LOG_FILE</span><span class="o">=</span><span class="nv">$WDIR</span>/job_<span class="si">${</span><span class="nv">NP</span><span class="si">}</span>c_<span class="si">${</span><span class="nv">NNODE</span><span class="si">}</span>n_<span class="nv">$SLURM_JOB_ID</span>.log
+<span class="nv">HOSTFILE</span><span class="o">=</span><span class="nv">$WDIR</span>/hosts_<span class="nv">$SLURM_JOB_ID</span>
+srun<span class="w"> </span>hostname<span class="w"> </span><span class="p">|</span>sort<span class="w"> </span><span class="p">|</span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{printf &quot;%s:%s\n&quot;,$2,$1}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$HOSTFILE</span>
+singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>/work/home/jsyadmin/L4/dwj/2502/pytorch_2.sif<span class="w"> </span><span class="nv">$APP</span><span class="w"> </span>-licpath<span class="w"> </span>/opt/Siemens/license.dat<span class="w"> </span><span class="nv">$INPUT_FILE</span><span class="w"> </span>-batch<span class="w"> </span><span class="nv">$SCRIPT_FILE</span><span class="w"> </span>-machinefile<span class="w"> </span><span class="nv">$HOSTFILE</span><span class="w"> </span>-np<span class="w"> </span><span class="nv">$NP</span><span class="w"> </span>-rsh<span class="w"> </span>ssh<span class="w">   </span>-mpidriver<span class="w"> </span>intel<span class="w"> </span>-fabricverbose<span class="w"> </span>
+
+<span class="w"> </span>-locale<span class="w"> </span>zh<span class="w"> </span><span class="c1">#中文</span>
+
+<span class="c1"># 写到bashrc里</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_PIN_DOMAIN</span><span class="o">=</span>numa
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANS_NODEPCHECK</span><span class="o">=</span><span class="m">1</span>
+module<span class="w"> </span>load<span class="w">  </span>singularity/3.7.3
+</code></pre></div></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>/work/home/jsyadmin/L4/dwj/2502/2506.sif<span class="w">  </span><span class="c1"># 西安 </span>
+/work/home/jsyadmin/L4/dwj/2502/2506.dat<span class="w">   </span><span class="c1"># license</span>
+/work/home/jsyadmin/L4/dwj/2502/starccm+2506<span class="w"> </span><span class="c1"># 启动脚本</span>
+
+<span class="c1"># 脚本如下</span>
+<span class="c1">#!/bin/bash</span>
+
+module<span class="w"> </span>load<span class="w"> </span>singularity/3.7.3
+singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>/work/home/jsyadmin/L4/dwj/2502/2506.sif<span class="w">  </span>/opt/Siemens/20.04.007-R8/STAR-CCM+20.04.007-R8/star/bin/starccm+<span class="w"> </span>-licpath<span class="w"> </span>/work/home/jsyadmin/L4/dwj/2502/2506.dat<span class="w"> </span>-mpidriver<span class="w"> </span>intel<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+
+
+
+module<span class="w"> </span>load<span class="w"> </span>singularity/3.7.3
+singularity<span class="w"> </span><span class="nb">exec</span><span class="w">  </span>/work/home/acerwhubx5/apprepo/starccmplus/19.06.008-none/app/1906_2.sif<span class="w"> </span>/opt/Siemens/19.06.008/STAR-CCM+19.06.008-R8/star/bin/starccm+<span class="w"> </span>-licpath<span class="w"> </span>/work/home/acerwhubx5/apprepo/starccmplus/19.06.008-none/app/license.dat<span class="w"> </span>-mpidriver<span class="w"> </span>intel<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+</code></pre></div>
+<h2 id="_7">图形启动</h2>
+<ul>
+<li>普通的</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J STAR    #作业名</span>
+<span class="c1">#SBATCH -p hfacnormal01 #队列名</span>
+<span class="c1">#SBATCH -N 1    #节点数</span>
+<span class="c1">#SBATCH -n 64  #进程数</span>
+<span class="c1">#SBATCH --ntasks-per-node=64     #每节点进程数</span>
+<span class="c1">#SBATCH --ntasks-per-socket=8     #一般取每节点进程数的八分之一</span>
+<span class="c1">#SBATCH --cpus-per-task=1     #每进程占用核心数</span>
+<span class="c1">#SBATCH --exclusive</span>
+<span class="c1">#SBATCH -o %j.out</span>
+<span class="c1">#SBATCH -e %j.err</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>imgr8:65<span class="w">     </span><span class="c1">#软件图形窗口号</span>
+
+date
+
+<span class="nv">WDIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="w">        </span><span class="c1">#获取当前目录</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WDIR</span>
+
+<span class="nv">APP</span><span class="o">=</span><span class="s2">&quot;/public/home/acervf3klc/soft/16.02.008/16.02.008/STAR-CCM+16.02.008/star/bin/starccm+ -power -mesa&quot;</span><span class="w">   </span><span class="c1">#软件安装路径</span>
+<span class="c1">#INPUT_FILE=$WDIR/test.sim      #输入sim文件</span>
+<span class="c1">#SCRIPT_FILE=$WDIR/HPCrun.java    #输入java文件</span>
+<span class="c1">##################################################################</span>
+
+<span class="nv">NP</span><span class="o">=</span><span class="nv">$SLURM_NPROCS</span>
+<span class="nv">NNODE</span><span class="o">=</span><span class="sb">`</span>srun<span class="w"> </span>hostname<span class="w"> </span><span class="p">|</span>sort<span class="w"> </span><span class="p">|</span>uniq<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="sb">`</span><span class="w"> </span>
+<span class="nv">LOG_FILE</span><span class="o">=</span><span class="nv">$WDIR</span>/job_<span class="si">${</span><span class="nv">NP</span><span class="si">}</span>c_<span class="si">${</span><span class="nv">NNODE</span><span class="si">}</span>n_<span class="nv">$SLURM_JOB_ID</span>.log<span class="w"> </span>
+<span class="nv">HOSTFILE</span><span class="o">=</span><span class="nv">$WDIR</span>/hosts_<span class="nv">$SLURM_JOB_ID</span>
+srun<span class="w"> </span>hostname<span class="w"> </span><span class="p">|</span>sort<span class="w"> </span><span class="p">|</span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{printf &quot;%s:%s\n&quot;,$2,$1}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$HOSTFILE</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_FABRICS</span><span class="o">=</span>shm:dapl
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_DAPL_UD</span><span class="o">=</span><span class="nb">enable</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_FALLBACK_DEVICE</span><span class="o">=</span>disable
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_DAPL_UD_PROVIDER</span><span class="o">=</span>ofa-v2-mlx5_0-1u
+
+<span class="c1">###############运行主程序</span>
+<span class="c1">#$APP $INPUT_FILE -batch $SCRIPT_FILE -machinefile $HOSTFILE -np $NP -rsh ssh  -mpidriver intel  2&gt;&amp;1</span>
+<span class="c1">#$APP $INPUT_FILE -batch -machinefile $HOSTFILE -np $NP -rsh ssh  -mpidriver intel 2&gt;&amp;1  </span>
+<span class="nv">$APP</span><span class="w">  </span>-machinefile<span class="w"> </span><span class="nv">$HOSTFILE</span><span class="w"> </span>-np<span class="w"> </span><span class="nv">$NP</span><span class="w"> </span>-rsh<span class="w"> </span>ssh<span class="w">  </span>-mpidriver<span class="w"> </span>intel
+</code></pre></div>
+<ul>
+<li>镜像版本</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 写到bashrc里</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_PIN_DOMAIN</span><span class="o">=</span>numa
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANS_NODEPCHECK</span><span class="o">=</span><span class="m">1</span>
+module<span class="w"> </span>load<span class="w">  </span>singularity/3.7.3
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># 可执行脚本</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/public/software/apps/apptainer/1.2.4/bin:<span class="nv">$PATH</span>
+
+/public/software/apps/apptainer/1.2.4/bin/singularity<span class="w"> </span><span class="nb">exec</span><span class="w">  </span>/work/home/acvex07mam/apprepo/starccmplus/20.02.007-R8/app/pytorch_2.sif<span class="w"> </span>/opt/Siemens/20.02.007-R8/STAR-CCM+20.02.007-R8/star/bin/starccm+<span class="w">  </span>-licpath<span class="w"> </span>/opt/Siemens/license.dat<span class="w">  </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

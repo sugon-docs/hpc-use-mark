@@ -1,0 +1,1605 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>常规使用 - hpc-use-mark</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="hpc-use-mark" class="md-header__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hpc-use-mark
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              常规使用
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="hpc-use-mark" class="md-nav__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    hpc-use-mark
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    软件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    软件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/abaqus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    abaqus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/ansysem%20hfss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ansysem hfss
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/apdl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    apdl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/autodyna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    autodyna
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/ccx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ccx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/CFD%2B%2B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFD++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/CFX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/chemkin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    chemkin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/comsol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    comsol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/converge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    converge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/cpfd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cpfd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/CST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/edem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    edem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/fdtd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fdtd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/feko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feko
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/fidelityCharles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fidelityCharles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/fluent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fluent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%BD%AF%E4%BB%B6%E7%9B%B8%E5%85%B3/%E5%B7%A5%E7%A8%8B/IBAMR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBAMR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../noe" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    科学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    气象
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    异构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    智能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集群
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    集群
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Styling your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    非集群tip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解压
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eshell-10-mb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eshell 小文件上下传（10 MB）
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">常规使用</h1>
+<h2 id="_2">解压</h2>
+<p>7z
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>p7zip/9.20.1
+7z<span class="w"> </span>x<span class="w"> </span>file.7z
+</code></pre></div></p>
+<h2 id="eshell-10-mb">eshell 小文件上下传（10 MB）</h2>
+<div class="highlight"><pre><span></span><code>rz<span class="w"> </span><span class="c1">#上传</span>
+sz<span class="w"> </span>xxx<span class="w"> </span><span class="c1">#下载</span>
+</code></pre></div>
+<h1 id="_3">机器节点相关</h1>
+<h2 id="_4">各中心编译节点</h2>
+<p>![[83c0a11b38b57a9c891f4a3f1088269b.png]]</p>
+<h2 id="_5">查看资源利用率</h2>
+<h3 id="cpu">查看 cpu、内存利用率</h3>
+<p>ssh 计算节点，执行 <code>top -u username</code> 查看 cpu 利用率，当每核利用率越接近 100%，代表利用率越高；执行 <code>free -h</code> 查看内存利用情况，当 used 越接近 total 大小，越容易内存溢出。</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>mabing@login06<span class="w"> </span>lammps-test<span class="o">]</span>$<span class="w"> </span>ls
+<span class="k">in</span>.silica<span class="w">  </span>isi500.data<span class="w">  </span>lammps.slurm
+<span class="o">[</span>mabing@login06<span class="w"> </span>lammps-test<span class="o">]</span>$<span class="w"> </span>cat<span class="w"> </span>lammps.slurm<span class="w"> </span>
+<span class="c1">#!/bin/bash</span>
+<span class="c1">#SBATCH -J lammps</span>
+<span class="c1">#SBATCH -p xahcnormal</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH -n 8</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>lammps/23Jun2022-intel_21
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">8</span><span class="w"> </span>lmp_mpi<span class="w"> </span>-i<span class="w"> </span><span class="k">in</span>.silica
+<span class="o">[</span>mabing@login06<span class="w"> </span>lammps-test<span class="o">]</span>$<span class="w"> </span>sbatch<span class="w"> </span>lammps.slurm<span class="w"> </span>
+Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">27593262</span>
+<span class="o">[</span>mabing@login06<span class="w"> </span>lammps-test<span class="o">]</span>$<span class="w"> </span>squeue
+<span class="w">             </span>JOBID<span class="w"> </span>PARTITION<span class="w">      </span>NAME<span class="w">           </span>USER<span class="w">           </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+<span class="w">          </span><span class="m">27593262</span><span class="w"> </span>xahcnormal<span class="w">     </span>lammps<span class="w">         </span>mabing<span class="w">          </span>R<span class="w">       </span><span class="m">0</span>:03<span class="w">      </span><span class="m">1</span><span class="w"> </span>b02r4n06
+<span class="o">[</span>mabing@login06<span class="w"> </span>lammps-test<span class="o">]</span>$<span class="w"> </span>ssh<span class="w"> </span>b02r4n06
+top<span class="w"> </span>-<span class="w"> </span><span class="m">20</span>:57:18<span class="w"> </span>up<span class="w"> </span><span class="m">9</span><span class="w"> </span>days,<span class="w"> </span><span class="m">21</span>:13,<span class="w">  </span><span class="m">1</span><span class="w"> </span>user,<span class="w">  </span>load<span class="w"> </span>average:<span class="w"> </span><span class="m">31</span>.90,<span class="w"> </span><span class="m">27</span>.79,<span class="w"> </span><span class="m">24</span>.78
+Tasks:<span class="w"> </span><span class="m">838</span><span class="w"> </span>total,<span class="w">  </span><span class="m">33</span><span class="w"> </span>running,<span class="w"> </span><span class="m">805</span><span class="w"> </span>sleeping,<span class="w">   </span><span class="m">0</span><span class="w"> </span>stopped,<span class="w">   </span><span class="m">0</span><span class="w"> </span>zombie
+%Cpu<span class="o">(</span>s<span class="o">)</span>:<span class="w"> </span><span class="m">96</span>.4<span class="w"> </span>us,<span class="w">  </span><span class="m">3</span>.6<span class="w"> </span>sy,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>ni,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>id,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>wa,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>hi,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>si,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>st
+KiB<span class="w"> </span>Mem<span class="w"> </span>:<span class="w"> </span><span class="m">13176091</span>+total,<span class="w"> </span><span class="m">23336808</span><span class="w"> </span>free,<span class="w"> </span><span class="m">28969952</span><span class="w"> </span>used,<span class="w"> </span><span class="m">79454144</span><span class="w"> </span>buff/cache
+KiB<span class="w"> </span>Swap:<span class="w"> </span><span class="m">16775164</span><span class="w"> </span>total,<span class="w"> </span><span class="m">16675324</span><span class="w"> </span>free,<span class="w">    </span><span class="m">99840</span><span class="w"> </span>used.<span class="w"> </span><span class="m">10036424</span>+avail<span class="w"> </span>Mem
+<span class="w">  </span>PID<span class="w"> </span>USER<span class="w">      </span>PR<span class="w">  </span>NI<span class="w">    </span>VIRT<span class="w">    </span>RES<span class="w">    </span>SHR<span class="w"> </span>S<span class="w">  </span>%CPU<span class="w"> </span>%MEM<span class="w">     </span>TIME+<span class="w"> </span>COMMAND
+<span class="m">11214</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">1738096</span><span class="w"> </span><span class="m">243972</span><span class="w">  </span><span class="m">33016</span><span class="w"> </span>R<span class="w">  </span><span class="m">99</span>.7<span class="w">  </span><span class="m">0</span>.2<span class="w">   </span><span class="m">4</span>:05.40<span class="w"> </span>lmp_mpi
+<span class="m">11216</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">1753688</span><span class="w"> </span><span class="m">266328</span><span class="w">  </span><span class="m">32848</span><span class="w"> </span>R<span class="w">  </span><span class="m">99</span>.7<span class="w">  </span><span class="m">0</span>.2<span class="w">   </span><span class="m">4</span>:04.73<span class="w"> </span>lmp_mpi
+<span class="m">11217</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">1738156</span><span class="w"> </span><span class="m">247992</span><span class="w">  </span><span class="m">32892</span><span class="w"> </span>R<span class="w">  </span><span class="m">99</span>.7<span class="w">  </span><span class="m">0</span>.2<span class="w">   </span><span class="m">4</span>:05.88<span class="w"> </span>lmp_mpi
+<span class="m">11223</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">1738552</span><span class="w"> </span><span class="m">247612</span><span class="w">  </span><span class="m">32600</span><span class="w"> </span>R<span class="w">  </span><span class="m">99</span>.7<span class="w">  </span><span class="m">0</span>.2<span class="w">   </span><span class="m">4</span>:04.90<span class="w"> </span>lmp_mpi
+<span class="m">11220</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">1753468</span><span class="w"> </span><span class="m">262140</span><span class="w">  </span><span class="m">32904</span><span class="w"> </span>R<span class="w">  </span><span class="m">99</span>.3<span class="w">  </span><span class="m">0</span>.2<span class="w">   </span><span class="m">4</span>:06.62<span class="w"> </span>lmp_mpi
+<span class="m">11221</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">1738484</span><span class="w"> </span><span class="m">243612</span><span class="w">  </span><span class="m">32788</span><span class="w"> </span>R<span class="w">  </span><span class="m">99</span>.3<span class="w">  </span><span class="m">0</span>.2<span class="w">   </span><span class="m">4</span>:05.56<span class="w"> </span>lmp_mpi
+<span class="m">11222</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">1753660</span><span class="w"> </span><span class="m">260092</span><span class="w">  </span><span class="m">32796</span><span class="w"> </span>R<span class="w">  </span><span class="m">99</span>.3<span class="w">  </span><span class="m">0</span>.2<span class="w">   </span><span class="m">4</span>:04.70<span class="w"> </span>lmp_mpi
+<span class="m">11213</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">1752084</span><span class="w"> </span><span class="m">260724</span><span class="w">  </span><span class="m">32996</span><span class="w"> </span>R<span class="w">  </span><span class="m">98</span>.0<span class="w">  </span><span class="m">0</span>.2<span class="w">   </span><span class="m">4</span>:05.15<span class="w"> </span>lmp_mpi
+<span class="m">13730</span><span class="w"> </span>mabing<span class="w">    </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w">  </span><span class="m">179172</span><span class="w">   </span><span class="m">3632</span><span class="w">   </span><span class="m">2060</span><span class="w"> </span>R<span class="w">   </span><span class="m">0</span>.3<span class="w">  </span><span class="m">0</span>.0<span class="w">   </span><span class="m">0</span>:00.84<span class="w"> </span>top
+
+<span class="o">[</span>mabing@b02r4n06<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>free<span class="w"> </span>-h
+<span class="w">              </span>total<span class="w">        </span>used<span class="w">        </span>free<span class="w">      </span>shared<span class="w">  </span>buff/cache<span class="w">   </span>available
+Mem:<span class="w">           </span>125G<span class="w">         </span>27G<span class="w">         </span>22G<span class="w">        </span>304M<span class="w">         </span>75G<span class="w">         </span>95G
+Swap:<span class="w">           </span>15G<span class="w">         </span>97M<span class="w">         </span>15G
+<span class="o">[</span>mabing@b02r4n06<span class="w"> </span>~<span class="o">]</span>$
+</code></pre></div>
+<h3 id="_6">查看加速卡、显存利用率 <a href="https://www.scnet.cn/help/docs/mainsite/hpc/cmd/skills/resource-usage/#_2-%E6%9F%A5%E7%9C%8B%E5%8A%A0%E9%80%9F%E5%8D%A1%E3%80%81%E6%98%BE%E5%AD%98%E5%88%A9%E7%94%A8%E7%8E%87">​</a></h3>
+<p><strong>型号 nvidia RTX 3080，加载 nvidia/cuda/11.4，<code>watch nvidia-smi</code> 查看利用率</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>mabing@e01r04<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>watch<span class="w"> </span>nvidia-smi
+Sun<span class="w"> </span>Jan<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">18</span>:56:27<span class="w"> </span><span class="m">2025</span>
++---------------------------------------------------------------------------------------+
+<span class="p">|</span><span class="w"> </span>NVIDIA-SMI<span class="w"> </span><span class="m">530</span>.41.03<span class="w">              </span>Driver<span class="w"> </span>Version:<span class="w"> </span><span class="m">530</span>.41.03<span class="w">    </span>CUDA<span class="w"> </span>Version:<span class="w"> </span><span class="m">12</span>.1<span class="w">     </span><span class="p">|</span>
+<span class="p">|</span>-----------------------------------------+----------------------+----------------------+
+<span class="p">|</span><span class="w"> </span>GPU<span class="w">  </span>Name<span class="w">                  </span>Persistence-M<span class="p">|</span><span class="w"> </span>Bus-Id<span class="w">        </span>Disp.A<span class="w"> </span><span class="p">|</span><span class="w"> </span>Volatile<span class="w"> </span>Uncorr.<span class="w"> </span>ECC<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>Fan<span class="w">  </span>Temp<span class="w">  </span>Perf<span class="w">            </span>Pwr:Usage/Cap<span class="p">|</span><span class="w">         </span>Memory-Usage<span class="w"> </span><span class="p">|</span><span class="w"> </span>GPU-Util<span class="w">  </span>Compute<span class="w"> </span>M.<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w">                                         </span><span class="p">|</span><span class="w">                      </span><span class="p">|</span><span class="w">               </span>MIG<span class="w"> </span>M.<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="o">=========================================</span>+<span class="o">======================</span>+<span class="o">======================</span><span class="p">|</span>
+<span class="p">|</span><span class="w">   </span><span class="m">0</span><span class="w">  </span>NVIDIA<span class="w"> </span>GeForce<span class="w"> </span>RTX<span class="w"> </span><span class="m">3080</span><span class="w">         </span>On<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">00000000</span>:67:00.0<span class="w"> </span>Off<span class="w"> </span><span class="p">|</span><span class="w">                  </span>N/A<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span><span class="m">30</span>%<span class="w">   </span>37C<span class="w">    </span>P2<span class="w">              </span>105W<span class="w"> </span>/<span class="w"> </span>320W<span class="p">|</span><span class="w">    </span>266MiB<span class="w"> </span>/<span class="w"> </span>10240MiB<span class="w"> </span><span class="p">|</span><span class="w">     </span><span class="m">90</span>%<span class="w">      </span>Default<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w">                                         </span><span class="p">|</span><span class="w">                      </span><span class="p">|</span><span class="w">                  </span>N/A<span class="w"> </span><span class="p">|</span>
++-----------------------------------------+----------------------+----------------------+
+
++---------------------------------------------------------------------------------------+
+<span class="p">|</span><span class="w"> </span>Processes:<span class="w">                                                                            </span><span class="p">|</span>
+<span class="p">|</span><span class="w">  </span>GPU<span class="w">   </span>GI<span class="w">   </span>CI<span class="w">        </span>PID<span class="w">   </span>Type<span class="w">   </span>Process<span class="w"> </span>name<span class="w">                            </span>GPU<span class="w"> </span>Memory<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w">        </span>ID<span class="w">   </span>ID<span class="w">                                                             </span>Usage<span class="w">      </span><span class="p">|</span>
+<span class="p">|</span><span class="o">=======================================================================================</span><span class="p">|</span>
+<span class="p">|</span><span class="w">    </span><span class="m">0</span><span class="w">   </span>N/A<span class="w">  </span>N/A<span class="w">      </span><span class="m">7894</span><span class="w">      </span>C<span class="w">   </span>lmp_mpi<span class="w">                                     </span>264MiB<span class="w"> </span><span class="p">|</span>
++---------------------------------------------------------------------------------------+
+</code></pre></div>
+<p><strong>型号 Z 100，加载 compiler/dtk/24.04.1，<code>watch hy-smi</code> 查看利用率</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>mabing@e07r1n06<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>watch<span class="w"> </span>hy-smi
+Every<span class="w"> </span><span class="m">2</span>.0s:<span class="w"> </span>hy-smi<span class="w">                     </span>Sun<span class="w"> </span>Jan<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">19</span>:13:48<span class="w"> </span><span class="nv">2025</span>
+
+<span class="o">============================</span><span class="w"> </span>System<span class="w"> </span>Management<span class="w"> </span><span class="nv">Interface</span><span class="w"> </span><span class="o">=============================</span>
+<span class="o">======================================================================================</span>
+DCU<span class="w">     </span>Temp<span class="w">     </span>AvgPwr<span class="w">     </span>Perf<span class="w">     </span>PwrCap<span class="w">     </span>VRAM%<span class="w">      </span>DCU%<span class="w">      </span>Mode
+<span class="m">0</span><span class="w">       </span><span class="m">51</span>.0C<span class="w">    </span><span class="m">75</span>.0W<span class="w">      </span>auto<span class="w">     </span><span class="m">300</span>.0W<span class="w">     </span><span class="m">18</span>%<span class="w">         </span><span class="m">96</span>%<span class="w">       </span>N/A
+<span class="o">======================================================================================</span>
+<span class="o">===================================</span><span class="w"> </span>End<span class="w"> </span>of<span class="w"> </span>SMI<span class="w"> </span><span class="nv">Log</span><span class="w"> </span><span class="o">===================================</span>
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code>hy-smi<span class="w">   </span><span class="c1"># 对于旧集群</span>
+rocm-smi<span class="w"> </span><span class="c1"># 对于二代卡</span>
+</code></pre></div>
+![[Pasted image 20250411091723.png]]</p>
+<h2 id="_7">软件耗时</h2>
+<p>![[Pasted image 20250411094439.png]]</p>
+<h1 id="slurm">slurm</h1>
+<p>官方指令指南：<code>https://slurm.schedmd.com/man_index.html</code>
+三方：<code>https://linyuqiz.github.io/iknow-docs/operate-system/software-install/linux/slurm/commands.html</code>
+![[slurm-userguide.pdf]]</p>
+<h2 id="salloc">salloc 申请资源</h2>
+<p><div class="highlight"><pre><span></span><code><span class="o">[</span>yuki@login02<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>salloc<span class="w"> </span>-p<span class="w"> </span>kshcnormal<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>
+salloc:<span class="w"> </span>Pending<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">47416155</span>
+salloc:<span class="w"> </span>job<span class="w"> </span><span class="m">47416155</span><span class="w"> </span>queued<span class="w"> </span>and<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resources
+salloc:<span class="w"> </span>job<span class="w"> </span><span class="m">47416155</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>allocated<span class="w"> </span>resources
+salloc:<span class="w"> </span>Granted<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">47416155</span>
+salloc:<span class="w"> </span>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resource<span class="w"> </span>configuration
+salloc:<span class="w"> </span>Nodes<span class="w"> </span>a02r1n14<span class="w"> </span>are<span class="w"> </span>ready<span class="w"> </span><span class="k">for</span><span class="w"> </span>job
+</code></pre></div>
+​</p>
+<h2 id="_8">计算资源查询 ​</h2>
+<ol>
+<li>查询可使用计算队列</li>
+</ol>
+<p><code>whichpartition</code> #查询可使用计算队列</p>
+<ol>
+<li>查询计算节点核心数</li>
+</ol>
+<p><code>sinfo -p tyhctest -o "%n %c"</code> #查询tyhctest队列计算节点核心数 ，<code>tyhctest</code> 可替换为其他队列名称</p>
+<ol>
+<li>查询计算节点内存</li>
+</ol>
+<p><code>sinfo -p tyhctest -o "%n %m"</code> #查询tyhctest队列计算节点内存大小 ，tyhctest可替换为其他队列名称</p>
+<h2 id="_9">存储资源查询<a href="https://www.scnet.cn/help/docs/mainsite/hpc/cmd/basic-information/#%E5%AD%98%E5%82%A8%E8%B5%84%E6%BA%90%E6%9F%A5%E8%AF%A2">​</a></h2>
+<p><code>df -h ~</code> #查询账号的存储资源占用情况</p>
+<p><img alt="4.png" src="https://www.scnet.cn/help/docs/mainsite/assets/4.BcRs3ZKn.png" /></p>
+<blockquote>
+<p>备注：若只有团队主账户显示资源有限，子账户各类限额均不显示，则表示与主账户的限额一致</p>
+</blockquote>
+<h2 id="_10">使用</h2>
+<ol>
+<li>sacct</li>
+</ol>
+<div class="highlight"><pre><span></span><code>sacct<span class="w"> </span>-j<span class="w"> </span><span class="m">88893068</span><span class="w"> </span>-o<span class="w"> </span>node%100<span class="w"> </span><span class="c1"># 看节点 %后面代表显示的多少</span>
+sacct<span class="w"> </span>-j<span class="w"> </span><span class="m">88893068</span><span class="w"> </span>-o<span class="w"> </span>command%100<span class="w"> </span><span class="c1"># 看指令 %后面代表显示的多少</span>
+</code></pre></div>
+<ol>
+<li>指定单双路机器</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1">#SBATCH --constraint=&quot;32core&quot;  # 西安、乌镇 hcnormal</span>
+</code></pre></div>
+<ol>
+<li>作业优先级</li>
+</ol>
+<div class="highlight"><pre><span></span><code>scontrol<span class="w"> </span>top<span class="w"> </span>&lt;jobid&gt;<span class="w"> </span><span class="c1"># 提升作业优先级</span>
+scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">jobid</span><span class="o">=</span>&lt;jobid&gt;<span class="w"> </span><span class="nv">nice</span><span class="o">=</span><span class="m">10000</span>
+<span class="c1"># nice值范围与效果值越大，作业优先级越低。具体有效范围需遵循系统策略</span>
+</code></pre></div>
+<ol>
+<li>查看作业运行详情</li>
+</ol>
+<div class="highlight"><pre><span></span><code>seff<span class="w">  </span>jobid
+</code></pre></div>
+<ol>
+<li>查看节点</li>
+</ol>
+<div class="highlight"><pre><span></span><code>sinfo<span class="w"> </span>-p<span class="w"> </span>xahcnormal<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%P %D %t %f %N&quot;</span>
+</code></pre></div>
+<ol>
+<li>查看单双路空闲多少</li>
+</ol>
+<div class="highlight"><pre><span></span><code>sinfo<span class="w"> </span>-p<span class="w"> </span>xahcnormal<span class="w"> </span>-lN<span class="w"> </span>--noheader<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>idle<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>32core<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span><span class="c1"># 单路的</span>
+sinfo<span class="w"> </span>-p<span class="w"> </span>xahcnormal<span class="w"> </span>-lN<span class="w"> </span>--noheader<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>idle<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>64core<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span><span class="c1"># 双路的</span>
+</code></pre></div>
+<h2 id="sbatch">sbatch</h2>
+<h3 id="_11">常用命令选项</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-J，-job-name=&lt;jobname&gt;</code></td>
+<td>赋予作业的作业名为<code>&lt;jobname&gt;</code></td>
+</tr>
+<tr>
+<td><code>-n 或 --ntasks=number</code></td>
+<td>指定要运行的任务数，默认每个任务一个处理器核，仅对作业起作用，不对作业步起作用。</td>
+</tr>
+<tr>
+<td><code>-N 或 --nodes=nnodes</code></td>
+<td>请求为作业分配<code>nnodes</code>个节点。如果作业的请求节点个数超出了分区中配置的节点数目，作业将被拒绝。</td>
+</tr>
+<tr>
+<td><code>-p 或 --partition=partition_name</code></td>
+<td>在指定分区中分配资源。如未指定，则在系统默认分区中分配资源。</td>
+</tr>
+<tr>
+<td><code>-ntasks-per-node</code></td>
+<td>指定每个节点运行进程数</td>
+</tr>
+<tr>
+<td><code>-cpu_per_task=&lt;count&gt;</code></td>
+<td>指定任务需要的处理器数目</td>
+</tr>
+<tr>
+<td><code>-c 或 --cpus-per-task=ncpus</code></td>
+<td>作业步的每个任务需要 <code>ncpus</code> 个处理器核。若未指定该选项，则默认为每个任务分配一个处理器核。</td>
+</tr>
+<tr>
+<td><code>-t</code></td>
+<td>指定作业执行时间，若超过该时间，作业将会被杀死。时间格式为：<code>minutes、minutes:seconds、hours:minutes:seconds、days-hours、days-hours:minutes</code>和<code>days-hours:minutes:seconds</code>。</td>
+</tr>
+<tr>
+<td><code>-o</code></td>
+<td>指定作业标准输出文件的名称，不能使用shell环境变量</td>
+</tr>
+<tr>
+<td><code>-e</code></td>
+<td>指定作业标准错误输出文件的名称，不能使用shell环境变量</td>
+</tr>
+<tr>
+<td><code>-w 或 --nodelist=nodenamelist</code></td>
+<td>请求指定的节点名称列表。列表可以用逗号分隔的节点名或节点范围（如 h02r1n[00-19]）指定。</td>
+</tr>
+<tr>
+<td><code>--mem=&lt;size[units]&gt;</code></td>
+<td>指定作业在每个节点使用的内存限制。</td>
+</tr>
+<tr>
+<td><code>-d, --dependency=&lt;dependency_list&gt;</code></td>
+<td>作业依赖关系设置</td>
+</tr>
+<tr>
+<td><code>--exclusive</code></td>
+<td>作业独占节点，作业运行过程中不允许其他作业使用节点，即使节点核心未用满。</td>
+</tr>
+<tr>
+<td><code>--gres=&lt;list&gt;</code></td>
+<td>指定每个节点使用的通用资源名称及数量 eg：<code>--gres=gpu:2</code> 表示本作业使用gpu卡，且每个节点使用2卡</td>
+</tr>
+<tr>
+<td><code>-x，-exclude=&lt;host1,host2,…or filename&gt;</code></td>
+<td>在特定<code>&lt;host1,host2&gt;</code>节点或filename文件中指定的节点上运行。</td>
+</tr>
+<tr>
+<td><code>-ntasks-per-socket=&lt;ntasks&gt;</code></td>
+<td>每颗CPU运行<code>&lt;ntasks&gt;</code>个任务，需与<code>-n，-ntasks=&lt;number&gt;</code>配合，并自动绑定<code>&lt;ntasks&gt;</code>个任务到每颗CPU。仅对作业起作用，不对作业步起作用。</td>
+</tr>
+<tr>
+<td><code>--mem-per-cpu=&lt;size&gt;</code></td>
+<td>分配的CPU需要的最小内存</td>
+</tr>
+<tr>
+<td><code>-no-requeue</code></td>
+<td>任何情况下都不重新运行</td>
+</tr>
+<tr>
+<td><code>-h, --help</code></td>
+<td>查看帮助说明</td>
+</tr>
+<tr>
+<td>## 作业环境变量</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+<th>类型</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SLURM_JOB_ID</code></td>
+<td>作业id，即作业调度系统为作业分配的作业号，可用于bjobs等命令</td>
+<td>数值</td>
+<td>hostfile=" ma.$SLURM_JOB_ID" 使用$SLURM_JOB_ID定义machinefile，指定mpi节点文件</td>
+</tr>
+<tr>
+<td><code>SLURM_JOB_NAME</code></td>
+<td>作业名称，即-J 选项指定的名称</td>
+<td>字符串</td>
+<td>mkdir ${SLURM_JOB_NAME} 根据作业名称创建临时工作目录</td>
+</tr>
+<tr>
+<td><code>SLURM_JOB_NUM_NODES</code></td>
+<td>作业分配到的节点总数</td>
+<td>数值</td>
+<td>echo $SLURM_JOB_NUM_NODES</td>
+</tr>
+<tr>
+<td><code>SLURM_JOB_NODELIST</code></td>
+<td>作业被分配到的节点列表</td>
+<td>字符串</td>
+<td>echo $SLURM_JOB_NODELIST</td>
+</tr>
+<tr>
+<td><code>SLURM_JOB_PARTITION</code></td>
+<td>作业被分配到的队列名</td>
+<td>字符串</td>
+<td>echo $SLURM_JOB_PARTITION</td>
+</tr>
+<tr>
+<td>### squeue 查询</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><div class="highlight"><pre><span></span><code>查某个计算用户：
+
+全部作业使用的核心（含排队）：squeue -u  计算用户 -o %C |sed &quot;1d&quot;|awk &#39;{for(i=1;i&lt;=NF;i++) sum+=$i;print sum}&#39;|tail -n 1
+
+全部运行状态作业使用的核心：squeue -u  计算用户 -t R -o %C |sed &quot;1d&quot;|awk &#39;{for(i=1;i&lt;=NF;i++) sum+=$i;print sum}&#39;|tail -n 1
+
+查某个计算用户的团队账号：
+
+全部作业使用的核心（含排队）squeue -A  团队账号 -o %C |sed &quot;1d&quot;|awk &#39;{for(i=1;i&lt;=NF;i++) sum+=$i;print sum}&#39;|tail -n 1
+
+全部运行状态作业使用的核心：squeue -A  团队账号 -t R -o %C |sed &quot;1d&quot;|awk &#39;{for(i=1;i&lt;=NF;i++) sum+=$i;print sum}&#39;|tail -n 1
+
+squeue -o &#39;%.18i %.12P %.18j %.12u %.12T %.12M %.16l %.6D %.6C %.6od %R &#39; -p kshcnormal
+</code></pre></div></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="dcu">机器dcu</h2>
+<ul>
+<li>异构加速卡2 显存32GB-双精度的名称 dcu z100L</li>
+<li>集群 dcu 二代三代卡，现在如果有资源尽量推荐 k100 ai 的，组件适配性上也会好一些
+![[fcc74d79b85e600d834abafad89c7b6f.png]]</li>
+<li>教程</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>对于新用户，可以提供以下参考内容：
+
+<span class="m">1</span>.<span class="w"> </span>开发者社区上光源镜像链接：
+
+https://sourcefind.cn/
+
+<span class="m">2</span>.<span class="w"> </span>DCU<span class="w"> </span>GitLab仓库链接：
+
+https://developer.sourcefind.cn/codes/modelzoo
+
+<span class="m">3</span>.<span class="w"> </span>conda环境自主构建的提供以下链接：
+
+•DTK下载地址：（需要和裸金属上的操作系统对应）
+https://download.sourcefind.cn:65024/1/main
+
+•DAS（DCU-AI<span class="w"> </span>移植软件）：<span class="w"> </span>（需要和DTK版本对应）
+
+https://download.sourcefind.cn:65024/4/main/
+
+•DTK介绍文档：（每个版本中包含一个Document目录）
+
+https://download.sourcefind.cn:65024/1/main/DTK-25.04/Document
+
+•DCU编程介绍：
+
+https://developer.sourcefind.cn/gitbook/dcu_developer/DeveloperGuide/dcu_programming/DCU_programming_prefix.html
+</code></pre></div>
+- dcu 跨节点 rccl 报错</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_SOCKET_IFNAME</span><span class="o">=</span>ib0<span class="w">  </span><span class="c1"># nccl创建通讯组需要socket通信  </span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_IB_HCA</span><span class="o">=</span>mlx5_0<span class="w"> </span><span class="c1">#指定的NCCL通信网口</span>
+</code></pre></div>
+<ul>
+<li>反向查看筛查用户的节点进程
+<div class="highlight"><pre><span></span><code>ps<span class="w"> </span>axu<span class="w"> </span><span class="p">|</span><span class="w"> </span>egrep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;root|jsheng&quot;</span>
+</code></pre></div></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

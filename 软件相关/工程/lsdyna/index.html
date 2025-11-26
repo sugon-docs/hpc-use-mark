@@ -1,0 +1,1616 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Lsdyna - hpc-use-mark</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lsdyna" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="hpc-use-mark" class="md-header__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hpc-use-mark
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lsdyna
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="hpc-use-mark" class="md-nav__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    hpc-use-mark
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    软件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    软件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abaqus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    abaqus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ansysem%20hfss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ansysem hfss
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apdl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    apdl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autodyna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    autodyna
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ccx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ccx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CFD%2B%2B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFD++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CFX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemkin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    chemkin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comsol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    comsol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../converge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    converge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpfd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cpfd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    edem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fdtd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fdtd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feko
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fidelityCharles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fidelityCharles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fluent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IBAMR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBAMR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../noe" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    科学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    气象
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    异构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    智能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集群
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    集群
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Styling your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    非集群tip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lsdyna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lsdyna
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="lsdyna">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mpi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mpi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        r5
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2023-r1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2023 r1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        破解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="破解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prepost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        prepost
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报错
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        脚本
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="脚本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        跨节点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        批量
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h2 id="lsdyna">lsdyna</h2>
+<ul>
+<li>ansysdyna 可以换成 lsdyna 的模板
+<div class="highlight"><pre><span></span><code><span class="c1"># 2024 2023 可执行文件</span>
+/work/home/ac8ezf79f3/app/ansyslsdyna-2024r1/v241/ansys/bin/linx64/lsdyna_sp_mpp.e
+
+<span class="c1"># 小齿轮启动环境</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>mpi/intelmpi/2021.3.0
+<span class="nb">export</span><span class="w"> </span><span class="nv">LSTC_LICENSE</span><span class="o">=</span>ansys
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANSYSLMD_LICENSE_FILE</span><span class="o">=</span><span class="m">27890</span>@tylogin01
+
+<span class="c1"># memory=1G memory2=300M 不要设置太多，会报错</span>
+</code></pre></div></li>
+</ul>
+<h3 id="mpi">mpi</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">FI_PROVIDER</span><span class="o">=</span>verbs
+
+<span class="c1"># mpi切换直接加载就行</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>compiler/intel/2017.5.239<span class="w">  </span>mpi/intelmpi/2017.4.239
+<span class="c1">## 注意目前高glibc队列无法适配 2018 2017 即一下的intelmpi环境</span>
+
+module<span class="w"> </span>load<span class="w"> </span>compiler/intel/2015.2.164<span class="w"> </span>mpi/intelmpi/5.0.2.044<span class="w"> </span>
+可以
+</code></pre></div>
+<h3 id="r5">r5</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 包</span>
+/public/home/jsyadmin/tanjj/soft/ls-dyna_mpp_s_R9_3_1_x64_centos65_ifort131_avx2_intelmpi-2018.zip
+
+<span class="c1"># 启动 </span>
+/work/home/acaumhgwu4/software/ls-dyna_mpp_s_R9_3_1_x64_centos65_ifort131_avx2_intelmpi-2018/ls-dyna_mpp_s_R9_3_1_x64_centos65_ifort131_avx2_intelmpi-2018
+
+<span class="c1"># license</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>compiler/intel/2017.5.239<span class="w">  </span>mpi/intelmpi/2017.4.239
+<span class="nb">export</span><span class="w"> </span><span class="nv">LSTC_LICENSE</span><span class="o">=</span>ansys
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANSYSLMD_LICENSE_FILE</span><span class="o">=</span>/work/home/acaumhgwu4/software/ls-dyna_mpp_s_R9_3_1_x64_centos65_ifort131_avx2_intelmpi-2018/shared_files/licensing/license.dat
+
+<span class="c1">## 或者</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">LSTC_LICENSE</span><span class="o">=</span>ansys
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANSYSLMD_LICENSE_FILE</span><span class="o">=</span><span class="m">27890</span>@license01
+</code></pre></div>
+<h3 id="2023-r1">2023 r1</h3>
+<div class="highlight"><pre><span></span><code>/work/home/acdnwvt7vw/apprepo/ansyslsdyna/2023r1-none/app/v231/ansys/bin/lsdyna231
+</code></pre></div>
+<h2 id="_1">破解</h2>
+<div class="highlight"><pre><span></span><code>ls-dyna_mpp_s_r10_0_118302_x64_redhat54_ifort160_sse2_intelmpi-413
+cp<span class="w"> </span>/xx/ansys2020R2/shared_files/<span class="w"> </span>.<span class="w"> </span>-r
+</code></pre></div>
+<h3 id="prepost">prepost</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 包</span>
+/public/home/jsyadmin/tanjj/soft/lsprepost-4.6.23-common-11Dec2019.tgz<span class="w"> </span><span class="c1"># 昆山</span>
+
+<span class="c1"># 启动</span>
+
+
+<span class="c1"># 可执行文件</span>
+/work/home/acaumhgwu4/software/lsprepost4.6_common/lsprepost
+<span class="c1">## 这个版本缺库的话有</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/public/home/jsyadmin/tanjj/soft/lsprepost4.6_common/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+
+/work/home/aghuangzhiwei/apprepo/ansyslsdyna/2021r1-none/app/v211/ansys/bin/lsprepost
+<span class="c1">#  如果这个版本缺openjpeg库的话在</span>
+/public/home/jsyadmin/tanjj/paks/openjepg/openjpeg-origin-install.zip<span class="w"> </span><span class="c1"># 昆山</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/public/home/jsyadmin/tanjj/paks/openjepg/openjpeg-master/install/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
+
+<span class="c1"># 用workbench的模板</span>
+</code></pre></div>
+<h1 id="_2">使用</h1>
+<div class="highlight"><pre><span></span><code><span class="nv">r</span><span class="o">=</span>d3dump<span class="w"> </span><span class="c1"># 重启动</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>mpirun<span class="w"> </span>-np<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_NPROCS</span><span class="si">}</span><span class="w"> </span><span class="nv">$APP</span><span class="w"> </span><span class="nv">memory</span><span class="o">=</span><span class="si">${</span><span class="nv">MEMORY</span><span class="si">}</span>M<span class="w"> </span><span class="nv">memory2</span><span class="o">=</span><span class="si">${</span><span class="nv">MEMORY2</span><span class="si">}</span>M<span class="w"> </span><span class="nv">i</span><span class="o">=</span><span class="nv">$WORK_DIR</span>/<span class="nv">$Filename</span><span class="w"> </span><span class="nv">o</span><span class="o">=</span><span class="nv">$OUTPUT_FILE</span><span class="w"> </span><span class="nv">$CMD_OPTION_WEB</span><span class="w">  </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+
+<span class="c1"># 不加 o= 会默认输出 d3hsp 文件 日志</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>在<span class="w"> </span>LS-DYNA<span class="w"> </span>仿真软件中，d3plot<span class="w"> </span>文件是非常重要的输出文件之一，它通常以二进制格式存储模拟过程中的结果数据。d3plot<span class="w"> </span>文件主要用于记录仿真中节点位移、单元应力、应变等信息，常用于后处理时生成云图和动画来展示仿真结果。
+
+以下是关于<span class="w"> </span>d3plot<span class="w"> </span>文件的几个要点：
+
+<span class="m">1</span>.<span class="w"> </span>**用途**
+
+d3plot<span class="w"> </span>文件通常用于记录<span class="w"> </span>LS-DYNA<span class="w"> </span>仿真中的瞬态数据，包括结构变形、应力应变分布、速度等信息。它可以按照预设的时间间隔生成一系列<span class="w"> </span>d3plot<span class="w"> </span>文件（如<span class="w"> </span>d3plot、d3plot01、d3plot02<span class="w"> </span>等），每个文件包含多个仿真状态<span class="w"> </span>。
+
+<span class="m">2</span>.<span class="w"> </span>**文件格式**
+
+d3plot<span class="w"> </span>文件是二进制文件，不是直接可读的文本格式。由于其存储的是大量仿真数据，因此可以通过<span class="w"> </span>LS-PrePost<span class="w"> </span>等后处理工具来打开和查看这些文件。用户还可以通过自定义程序或开源库（如<span class="w"> </span>ls-reader）来读取文件中的数据<span class="w"> </span>。
+
+<span class="m">3</span>.<span class="w"> </span>**文件处理**
+
+为了更方便地处理<span class="w"> </span>d3plot<span class="w"> </span>文件，有些工具可以将<span class="w"> </span>d3plot<span class="w"> </span>文件转换为其他格式，比如将其转换为<span class="w"> </span>HDF5<span class="w"> </span>格式，以便于数据的进一步分析和处理<span class="w"> </span>。LS-PrePost<span class="w"> </span>还支持直接加载<span class="w"> </span>d3plot<span class="w"> </span>文件，进行数据的后处理与可视化<span class="w"> </span>。
+
+<span class="m">4</span>.<span class="w"> </span>**文件限制**
+
+LS-DYNA<span class="w"> </span>中有对生成<span class="w"> </span>d3plot<span class="w"> </span>文件数量的限制，默认最多可生成<span class="w"> </span><span class="m">1000</span><span class="w"> </span>个<span class="w"> </span>d3plot<span class="w"> </span>文件。如果仿真生成的文件超过了这个数量，可以通过修改配置文件来突破该限制<span class="w"> </span>。
+
+通过正确处理和分析<span class="w"> </span>d3plot<span class="w"> </span>文件，工程师可以深入了解仿真中结构的动态行为，评估设计的性能和安全性。
+</code></pre></div>
+<ul>
+<li>dp 3 plot
+![[Pasted image 20251117120225.png]]</li>
+</ul>
+<div class="highlight"><pre><span></span><code>结果文件，会输出
+</code></pre></div>
+<ul>
+<li>网格量查看
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>number<span class="w"> </span>d3hsp<span class="w"> </span>-ir<span class="w"> </span>
+
+<span class="w">  </span>number<span class="w"> </span>of<span class="w"> </span>solid<span class="w"> </span>elements.......................<span class="w"> </span><span class="m">1040000</span>
+</code></pre></div></li>
+</ul>
+<h2 id="_3">报错</h2>
+<ul>
+<li>oom 内存溢出什么的</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nv">在命令行参数添加了memory</span><span class="o">=</span>500M<span class="w"> </span><span class="nv">memory2</span><span class="o">=</span>300M<span class="w"> </span>
+
+<span class="c1"># memory1通常使用内存的 30%到 70%。</span>
+<span class="c1"># memory2通常使用 memory1分配后剩余内存的 20%到 40%</span>
+<span class="c1"># https://blog.sina.com.cn/s/blog_88337d960101e86e.html</span>
+</code></pre></div>
+<ul>
+<li>高版本 glibc 队列不适配，段错误
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LD_PRELOAD</span><span class="o">=</span>/work/home/jshadmin/tanjj/TEST/lsdyna/0805/test-1/my.so<span class="w">  </span><span class="c1"># 伟伟哥的适配库 西安 </span>
+
+<span class="c1"># wzacnormal 高glibc队列 用 intel2021 往上的mpi lsdyna R12 可以</span>
+</code></pre></div></li>
+</ul>
+<h2 id="_4">脚本</h2>
+<h3 id="_5">跨节点</h3>
+<p>smp 多线程求解只能单节点多线程最大 16 进程 
+mmp 才可跨节点多进程</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J lsdyna</span>
+<span class="c1">#SBATCH -p kshcnormal</span>
+<span class="c1">#SBATCH -N 2</span>
+<span class="c1">#SBATCH --ntasks-per-node=32</span>
+
+<span class="nb">source</span><span class="w"> </span>/public/home/jsyadmin/apprepo/ansyslsdyna/2023r1-none/scripts/env.sh
+<span class="nv">WORK_DIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="w">    </span><span class="c1">##获取当前路径</span>
+
+<span class="nv">job_name</span><span class="o">=</span><span class="si">${</span><span class="nv">SLURM_JOB_NAME</span><span class="si">}</span>
+
+<span class="nv">INPUT_FILE</span><span class="o">=</span>input.k<span class="w">       </span><span class="c1">##输入文件</span>
+
+<span class="nv">machines</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>scontrol<span class="w"> </span>show<span class="w"> </span><span class="nv">hostnames</span><span class="o">=</span><span class="nv">$SLURM_JOB_NODELIST</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span><span class="nv">machines</span><span class="o">=</span><span class="nv">$machines</span>:<span class="nv">$i</span>:<span class="nv">$SLURM_NTASKS_PER_NODE</span>
+<span class="k">done</span>
+<span class="nv">machines</span><span class="o">=</span><span class="si">${</span><span class="nv">machines</span><span class="p">#:*</span><span class="si">}</span><span class="w">  </span><span class="c1">##获取节点列表</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$machines</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LSTC_MEMORY</span><span class="o">=</span>AUTO<span class="w"> </span><span class="c1">##内存自适应</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LSTC_RSH</span><span class="o">=</span>ssh
+
+
+<span class="nv">$PROGLIST</span><span class="w"> </span>-dis<span class="w"> </span>-lsdynampp<span class="w">  </span><span class="nv">ncpu</span><span class="o">=</span><span class="si">${</span><span class="nv">SLURM_NPROCS</span><span class="si">}</span><span class="w">   </span>-machines<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$machines</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">memory</span><span class="o">=</span>1G<span class="w"> </span><span class="nv">memory2</span><span class="o">=</span>300M<span class="w">  </span><span class="nv">i</span><span class="o">=</span><span class="nv">$INPUT_FILE</span><span class="w">  </span>&gt;<span class="p">&amp;</span><span class="w"> </span><span class="si">${</span><span class="nv">job_name</span><span class="si">}</span>.log<span class="w">   </span><span class="c1">#mpp多进程求解</span>
+
+<span class="c1">#$PROGLIST  ncpu=${SLURM_NPROCS}  i=$INPUT_FILE   memory=1G  &gt;&amp; ${job_name}.log  #smp多线程求解</span>
+</code></pre></div>
+<h2 id="_6">批量</h2>
+<div class="highlight"><pre><span></span><code><span class="m">01</span><span class="w"> </span><span class="m">02</span><span class="w"> </span><span class="m">03</span><span class="w"> </span>lsdyna.slurm<span class="w">  </span>work.sh
+
+./work.sh
+</code></pre></div>
+<ul>
+<li>
+<p>work.sh
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash </span>
+<span class="c1">#SBATCH -J lsdyna    # 此行将被命令行覆盖，可删除或保留</span>
+<span class="c1">#SBATCH -p wzacnormal   ##队列</span>
+<span class="c1">#SBATCH -N 1   ##申请计算节点数</span>
+<span class="c1">#SBATCH --ntasks-per-node=8   ##每节点进程数</span>
+<span class="c1">#SBATCH --cpus-per-task=1    ##每进程占用核心数</span>
+
+module<span class="w"> </span>purge
+<span class="nb">source</span><span class="w"> </span>/work/home/acq8z3i3r5/apprepo/lsdyna/r10.single-null/scripts/env.sh
+
+<span class="c1"># 从脚本的第一个参数获取输入文件名[1,4](@ref)</span>
+<span class="nv">INPUT_FILE</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">        </span><span class="c1">##输入文件</span>
+<span class="c1"># 从输入文件名推导出作业名（去掉.key后缀）</span>
+<span class="nv">JOB_NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">INPUT_FILE</span><span class="p">%.key</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="nv">WORK_DIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="w">    </span><span class="c1">##获取当前路径</span>
+<span class="c1"># 使用推导出的作业名作为输出文件的一部分</span>
+<span class="nv">OUTPUT_FILE</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORK_DIR</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">JOB_NAME</span><span class="si">}</span><span class="s2">.out&quot;</span>
+
+<span class="nv">machines</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>scontrol<span class="w"> </span>show<span class="w"> </span><span class="nv">hostnames</span><span class="o">=</span><span class="nv">$SLURM_JOB_NODELIST</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span><span class="nv">machines</span><span class="o">=</span><span class="nv">$machines</span>:<span class="nv">$i</span>:<span class="nv">$SLURM_NTASKS_PER_NODE</span>
+<span class="k">done</span>
+<span class="nv">machines</span><span class="o">=</span><span class="si">${</span><span class="nv">machines</span><span class="p">#:*</span><span class="si">}</span><span class="w">  </span><span class="c1">##获取节点列表</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$machines</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LSTC_MEMORY</span><span class="o">=</span>AUTO<span class="w"> </span><span class="c1">##内存自适应</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_PIN_DOMAIN</span><span class="o">=</span>numa
+<span class="nb">export</span><span class="w"> </span><span class="nv">LSTC_RSH</span><span class="o">=</span>ssh
+<span class="c1">###############intel mpi相关参数</span>
+mpirun<span class="w"> </span><span class="nv">$PROGLIST</span><span class="w"> </span><span class="nv">i</span><span class="o">=</span><span class="nv">$INPUT_FILE</span><span class="w"> </span><span class="nv">memory</span><span class="o">=</span>200m
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;运行成功 准备移动到 ~/SampleFiles_goal/</span><span class="si">${</span><span class="nv">SLURM_JOB_NAME</span><span class="si">}</span><span class="s2">-</span><span class="si">${</span><span class="nv">SLURM_JOB_ID</span><span class="si">}</span><span class="s2"> 目录下 &quot;</span>
+<span class="w">    </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/SampleFiles_goal/<span class="si">${</span><span class="nv">SLURM_JOB_NAME</span><span class="si">}</span>-<span class="si">${</span><span class="nv">SLURM_JOB_ID</span><span class="si">}</span>
+<span class="w">    </span>mv<span class="w"> </span><span class="nv">$WORK_DIR</span>/*<span class="w">  </span>~/SampleFiles_goal/<span class="si">${</span><span class="nv">SLURM_JOB_NAME</span><span class="si">}</span>-<span class="si">${</span><span class="nv">SLURM_JOB_ID</span><span class="si">}</span>/
+<span class="w">    </span>rm<span class="w"> </span>-fr<span class="w"> </span><span class="nv">$WORK_DIR</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;移动完成&quot;</span><span class="w"> </span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;运行失败&quot;</span>
+<span class="k">fi</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>lsdyna.slurm 运行成功会移动到另一个目录
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># 通用批量提交LS-DYNA作业脚本</span>
+<span class="c1"># 在当前目录运行，自动处理所有子目录</span>
+
+<span class="c1"># 设置slurm脚本名称（根据您的实际文件名修改）</span>
+<span class="nv">SLURM_SCRIPT</span><span class="o">=</span><span class="s2">&quot;lsdyna.slurm&quot;</span>
+
+<span class="c1"># 检查slurm脚本是否存在</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SLURM_SCRIPT</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;错误：找不到slurm脚本 </span><span class="nv">$SLURM_SCRIPT</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="c1"># 遍历所有子目录</span>
+<span class="k">for</span><span class="w"> </span>dir<span class="w"> </span><span class="k">in</span><span class="w"> </span>*/<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="c1"># 获取目录名</span>
+<span class="w">    </span><span class="nv">dir_name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">dir</span><span class="p">%/</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;处理目录: </span><span class="nv">$dir_name</span><span class="s2">&quot;</span>
+
+<span class="w">    </span><span class="c1"># 复制slurm脚本到子目录</span>
+<span class="w">    </span>cp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SLURM_SCRIPT</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$dir</span><span class="s2">&quot;</span>
+
+<span class="w">    </span><span class="c1"># 进入目录</span>
+<span class="w">    </span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$dir</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="k">continue</span>
+
+<span class="w">    </span><span class="c1"># 查找所有.key文件并提交作业</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span>keyfile<span class="w"> </span><span class="k">in</span><span class="w"> </span>*.key<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$keyfile</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">            </span><span class="c1"># 使用.key文件的名称（不含后缀）作为作业名</span>
+<span class="w">            </span><span class="nv">job_name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">keyfile</span><span class="p">%.key</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;为输入文件 </span><span class="nv">$keyfile</span><span class="s2"> 提交作业，作业名为: </span><span class="nv">$job_name</span><span class="s2">&quot;</span>
+
+<span class="w">            </span><span class="c1"># 直接通过sbatch命令传递作业名和输入文件参数，不再需要临时脚本</span>
+<span class="w">            </span>sbatch<span class="w"> </span>--job-name<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$job_name</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SLURM_SCRIPT</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$keyfile</span><span class="s2">&quot;</span>
+<span class="w">        </span><span class="k">fi</span>
+<span class="w">    </span><span class="k">done</span>
+
+<span class="w">    </span><span class="c1"># 返回上级目录</span>
+<span class="w">    </span><span class="nb">cd</span><span class="w"> </span>..
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;----------------------------------------&quot;</span>
+<span class="k">done</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;所有作业提交完成！&quot;</span>
+</code></pre></div></p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

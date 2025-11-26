@@ -1,0 +1,1864 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Openfoam - hpc-use-mark</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="hpc-use-mark" class="md-header__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hpc-use-mark
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Openfoam
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="hpc-use-mark" class="md-nav__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    hpc-use-mark
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    软件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    软件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abaqus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    abaqus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ansysem%20hfss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ansysem hfss
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apdl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    apdl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autodyna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    autodyna
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ccx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ccx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CFD%2B%2B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFD++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CFX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemkin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    chemkin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comsol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    comsol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../converge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    converge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpfd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cpfd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    edem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fdtd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fdtd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feko
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fidelityCharles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fidelityCharles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fluent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IBAMR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBAMR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../noe" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    科学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    气象
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    异构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    智能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集群
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    集群
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Styling your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    非集群tip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 安装相关
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 .1 自身安装
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 .1 自身安装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 求解器编译改造
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 脚本相关
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 脚本相关">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-singularity-openfoam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 singularity 运行 openfoam
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 FAQ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mpi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mpi
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h2 id="1">1 安装相关</h2>
+<h2 id="1-1">1 .1 自身安装</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># ofv13 安装好了的</span>
+/public/home/jsyadmin/tanjj/paks/of/13/build<span class="w">  </span><span class="c1"># 昆山</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>/../OpenFOAM-6/etc/bashrc<span class="w"> </span>里
+
+<span class="c1"># 修改安装位置变量</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">FOAM_INST_DIR</span><span class="o">=</span><span class="nv">$MY_INSTALL_PATH</span>
+
+<span class="c1">#update the shell environment</span>
+wmSET<span class="w"> </span><span class="nv">$FOAM_SETTINGS</span>
+
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WM_PROJECT_DIR</span><span class="w"> </span><span class="c1"># 即回到OpenFoam-2.3.1</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># v2.3.1</span>
+
+<span class="c1"># 链接</span>
+https://openfoamwiki.net/index.php/Installation/Linux/OpenFOAM-2.3.1/CentOS_SL_RHEL#CentOS_7.0
+
+<span class="c1">##  软连接一下mpi</span>
+ln<span class="w"> </span>-s<span class="w"> </span>/usr/bin/mpicc.openmpi<span class="w"> </span>OpenFOAM-2.3.1/bin/mpicc
+ln<span class="w"> </span>-s<span class="w"> </span>/usr/bin/mpirun.openmpi<span class="w"> </span>OpenFOAM-2.3.1/bin/mpirun
+
+<span class="c1">## 加载自己编译的openmpi要注意下面这些变量</span>
+module<span class="w"> </span>purge
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/usr/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/lib/gcc/x86_64-redhat-linux/4.8.5:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/32:<span class="nv">$LD_LIBRARY_PATH</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">MPI_ROOT</span><span class="o">=</span>/gpfs/software/apps/openmpi/4.0.3/install
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$MPI_ROOT</span>/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$MPI_ROOT</span>/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LIBRARY_PATH</span><span class="o">=</span><span class="nv">$MPI_ROOT</span>/lib:<span class="nv">$LIBRARY_PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">INCLUDE</span><span class="o">=</span><span class="nv">$MPI_ROOT</span>/include:<span class="nv">$MPI_ROOT</span>/include/openmpi:<span class="nv">$INCLUDE</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CPATH</span><span class="o">=</span><span class="nv">$MPI_ROOT</span>/include:<span class="nv">$MPI_ROOT</span>/include/openmpi:<span class="nv">$CPATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CPLUS_INCLUDE_PATH</span><span class="o">=</span><span class="nv">$MPI_ROOT</span>/include:<span class="nv">$MPI_ROOT</span>/include/openmpi:<span class="nv">$CPLUS_INCLUDE_PATH</span>
+
+<span class="nb">source</span><span class="w"> </span>/work/home/actm7jwqlm/soft/OpenFOAM/v2.3.1/OpenFOAM-2.3.1/etc/bashrc
+
+<span class="c1">## 并行编译</span>
+<span class="nv">WM_NCOMPPROCS</span><span class="o">=</span><span class="m">10</span><span class="w"> </span><span class="nv">WM_MPLIB</span><span class="o">=</span>SYSTEMOPENMPI
+./Allwmake<span class="w"> </span>-j<span class="w"> </span><span class="m">10</span><span class="w"> </span>
+nohup<span class="w"> </span>./Allwmake<span class="w">  </span>&gt;<span class="w"> </span><span class="s2">&quot;log.compile&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ccmToFoam</span>
+<span class="c1">## 包在 /public/home/jsyadmin/tanjj/paks/of/libccmio-2.6.1.tar.gz # 昆山</span>
+<span class="c1">## v20.。版本的方式 </span>
+
+<span class="c1"># 要重新编译下of</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WM_THIRD_PARTY_DIR</span>
+./makeCCMIO<span class="w"> </span>libso
+./makeCCMIO<span class="w"> </span>lib
+foam
+./Allwmake
+app
+<span class="nb">cd</span><span class="w"> </span>utilities/mesh/conversion/ccm
+./Allwmake
+
+<span class="c1"># 手册 https://www.gofarlic.com/techArticleDetail?noticeId=147791</span>
+
+<span class="c1">## v9..版本方式</span>
+
+<span class="c1"># 不用重新编译</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WM_THIRD_PARTY_DIR</span>
+./AllwmakeLibccmio
+<span class="nb">cd</span><span class="w"> </span>/yourPath/OpenFOAM/OpenFOAM-8/applications/utilities/mesh/conversion/Optional
+./Allwmake
+
+<span class="c1"># 手册 https://zhuanlan.zhihu.com/p/270397232</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># foam-extend版本如果转移的话要改mpi gcc 安装路径的环境  </span>
+<span class="c1"># etc/bashrc 里修改安装路径     其他版本可以看 etc/config.sh</span>
+<span class="nv">foamInstall</span><span class="o">=</span>/work/home/ac0kp5kcqe/software/foam<span class="w"> </span><span class="c1"># 安装路径 不到foam-extend-4.1这边</span>
+
+<span class="c1"># etc/prefs.sh 里 修改 环境路径</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">WM_MPLIB</span><span class="o">=</span>SYSTEMOPENMPI
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENMPI_DIR</span><span class="o">=</span>/public/software/mpi/hpcx/v2.7.4/gcc-7.3.1
+<span class="c1">#export OPENMPI_DIR=/opt/hpc/software/mpi/hpcx/v2.7.4/gcc-7.3.1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENMPI_BIN_DIR</span><span class="o">=</span><span class="nv">$OPENMPI_DIR</span>/bin
+<span class="c1">#</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENMPI_LIB_DIR</span><span class="o">=</span><span class="s2">&quot;`</span><span class="nv">$OPENMPI_BIN_DIR</span><span class="s2">/mpicc --showme:libdirs`&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENMPI_INCLUDE_DIR</span><span class="o">=</span><span class="s2">&quot;`</span><span class="nv">$OPENMPI_BIN_DIR</span><span class="s2">/mpicc --showme:incdirs`&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENMPI_COMPILE_FLAGS</span><span class="o">=</span><span class="s2">&quot;`</span><span class="nv">$OPENMPI_BIN_DIR</span><span class="s2">/mpicc --showme:compile`&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENMPI_LINK_FLAGS</span><span class="o">=</span><span class="s2">&quot;`</span><span class="nv">$OPENMPI_BIN_DIR</span><span class="s2">/mpicc --showme:link`&quot;</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">QT_BIN_DIR</span><span class="o">=</span>/usr/bin/
+<span class="nb">export</span><span class="w"> </span><span class="nv">CMAKE_DIR</span><span class="o">=</span>/public/software/compiler/cmake-3.15.6
+<span class="c1">#export CMAKE_DIR=/public/software/compiler/cmake-3.17.2</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CMAKE_SYSTEM</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CMAKE_BIN_DIR</span><span class="o">=</span><span class="nv">$CMAKE_DIR</span>/bin
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># libAcoustics-2412  链接</span>
+
+<span class="c1">### 要有fftw 商城的一般没有，要下载fftw源码编译，链接到库</span>
+<span class="c1">## fftw编译</span>
+/public/home/jsyadmin/tanjj/paks/fftw-3.3.10.tar.gz<span class="w">  </span><span class="c1"># 哈尔滨</span>
+tar<span class="w"> </span>-zxvf<span class="w"> </span>fftw-3.3.10.tar.gz<span class="w"> </span>
+<span class="nb">cd</span><span class="w"> </span>fftw-3.3.10
+./configure<span class="w"> </span>--prefix<span class="o">=</span>/work/home/ac2b2b65rz/software/share/fftw3/install<span class="w">   </span>--enable-static<span class="w"> </span>--enable-shared<span class="w"> </span><span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;-fPIC&quot;</span><span class="w"> </span><span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-fPIC&quot;</span><span class="w"> </span>
+make<span class="w"> </span>-j10
+make<span class="w"> </span>install
+
+<span class="c1">### 一般还会差个-lrandomProcesses 库 of的 依赖fftw，所有没有装好 </span>
+<span class="nb">cd</span><span class="w"> </span>/work/home/ac2b2b65rz/apprepo/OpenFoam_com/v2412-gcc_9.3.0_openmpi_4.1.5/app/OpenFOAM-v2412/src/randomProcesses
+vim<span class="w"> </span>Make/options
+<span class="c1">## options 长这样，补充上面编译的fftw的位置</span>
+<span class="nv">EXE_INC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/finiteVolume/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/fileFormats/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/surfMesh/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/meshTools/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/sampling/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I/work/home/ac2b2b65rz/software/share/fftw3/install/include
+
+<span class="nv">LIB_LIBS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lfiniteVolume<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lfileFormats<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lmeshTools<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lsurfMesh<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lsampling<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-L/work/home/ac2b2b65rz/software/share/fftw3/install/lib<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lfftw3
+
+wmake<span class="w"> </span><span class="c1"># 不要./Allwmake </span>
+foam<span class="w">  </span>
+ll<span class="w"> </span>platforms/linux64GccDPInt32Opt/lib/librandomProcesses.so<span class="w"> </span><span class="c1"># 就能看到</span>
+
+<span class="c1">#### 最后编译 libAcoustics-2412</span>
+unzip<span class="w"> </span>libAcoustics-2412
+<span class="nb">cd</span><span class="w"> </span>libAcoustics-2412
+vim<span class="w"> </span>Sources/lib/Make/options
+
+<span class="c1">### options长这样</span>
+<span class="nv">fftw_root</span><span class="o">=</span><span class="k">$(</span>FFTW_ARCH_PATH<span class="k">)</span><span class="w"> </span><span class="c1"># 我没用 直接改下面的绝对路径 # 整个变量对应是在of etc/config.sh/FFTW 里有定义 可以改成现在的export FFTW_ARCH_PATH=/work/home/ac2b2b65rz/software/share/fftw3/install</span>
+
+<span class="nv">EXE_INC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/fileFormats/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/sampling/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/transportModels<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/transportModels/compressible/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/TurbulenceModels/turbulenceModels/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/TurbulenceModels/incompressible/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/TurbulenceModels/compressible/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/thermophysicalModels/basic/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/finiteVolume/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/meshTools/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/functionObjects/forces/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/surfMesh/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I/work/home/ac2b2b65rz/software/share/fftw3/install/include
+
+<span class="nv">LIB_LIBS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lcompressibleTransportModels<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lsampling<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lturbulenceModels<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lincompressibleTurbulenceModels<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lcompressibleTurbulenceModels<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lincompressibleTransportModels<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lfluidThermophysicalModels<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lspecie<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lfileFormats<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lfiniteVolume<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lmeshTools<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lforces<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lsurfMesh<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-L/work/home/ac2b2b65rz/software/share/fftw3/install/lib<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lfftw3
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># of-extend </span>
+<span class="c1">## 参考指导连接</span>
+https://forum.cfdac.com/t/topic/1236
+https://blog.csdn.net/snuhxm/article/details/109338081
+
+<span class="c1"># 安装好的有了 在 /public/home/jsyadmin/tanjj/paks/of/foam-extend-4.1/build/foam-extend-4.1.zip  昆山 可以直接解压用 gcc7.3.0 openmpi1.8.8</span>
+<span class="c1">## 正式源码编译</span>
+<span class="c1">### 首先，将需要的一些源码包手动下载好，放到这边 /work/home/acyzhmmsjm/soft/openfoam/foam-extend-4.1/ThirdParty/rpmBuild/SOURCES</span>
+<span class="nb">cd</span><span class="w"> </span>of-extend-4.1
+
+vim<span class="w"> </span>etc/bashrc<span class="w"> </span>
+<span class="c1"># 修改以下</span>
+<span class="nv">foamInstall</span><span class="o">=</span>/work/home/acyzhmmsjm/soft/openfoam<span class="w"> </span><span class="c1"># 安装路径</span>
+:<span class="w"> </span><span class="si">${</span><span class="nv">WM_COMPILER</span><span class="p">:=Gcc</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span>WM_COMPILER<span class="w"> </span><span class="c1"># 编译器</span>
+:<span class="w"> </span><span class="si">${</span><span class="nv">WM_MPLIB</span><span class="p">:=SYSTEMOPENMPI</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span>WM_MPLIB<span class="w"> </span><span class="c1"># mpi </span>
+<span class="c1"># mpi要用集群编译下，软件默认编译方式有问题 ，或者将集群编译好的替换掉 /work/home/acyzhmmsjm/soft/openfoam/foam-extend-4.1/ThirdParty/packages/openmpi-1.8.8/platforms/linux64GccDPInt32Opt/ 这里的 </span>
+<span class="c1"># 注意原来的 /work/home/acyzhmmsjm/soft/openfoam/foam-extend-4.1/ThirdParty/packages/openmpi-1.8.8/platforms/linux64GccDPInt32Opt/etc/openmpi-1.8.8.sh 也要复制过来，</span>
+<span class="c1"># 其他安装好的也类似方法替换</span>
+
+<span class="nb">cd</span><span class="w"> </span>etc
+cp<span class="w"> </span>prefs.sh-EXAMPLE<span class="w"> </span>prefs.sh
+vim<span class="w"> </span>prefs.sh
+<span class="c1">#export WM_THIRD_PARTY_USE_PYFOAM_069=1</span>
+<span class="c1">## 该注释注释，不需要的就注释</span>
+
+<span class="nb">cd</span><span class="w"> </span>../
+sourcr<span class="w"> </span>etc/bashrc
+./Allwmake.firstInstall<span class="w"> </span>-j10
+
+
+<span class="c1">## 并行计算算例 /work/home/acyzhmmsjm/soft/openfoam/foam-extend-4.1/tutorials/incompressible/simpleFoam/pitzDaily</span>
+<span class="c1">## 计算脚本</span>
+<span class="c1">#!/bin/bash</span>
+<span class="c1">#SBATCH -J test  # 作业名称</span>
+<span class="c1">#SBATCH -p xhacnormalc #指定分区</span>
+<span class="c1">#SBATCH -N 2 #请求1个节点</span>
+<span class="c1">#SBATCH --ntasks-per-node=2 #每个节点1个任务</span>
+<span class="c1">##SBATCH --exclusive </span>
+
+<span class="c1"># foam环境激活</span>
+<span class="nb">source</span><span class="w"> </span>/work/home/acyzhmmsjm/soft/openfoam/foam-extend-4.1/env.sh
+
+<span class="c1"># 计算指令</span>
+<span class="c1">#bash ./Allrun</span>
+blockMesh
+<span class="c1">#snappyHexMesh</span>
+decomposePar<span class="w"> </span>-force
+mpirun<span class="w"> </span>--mca<span class="w"> </span>btl<span class="w"> </span>self,tcp<span class="w"> </span>--mca<span class="w"> </span>btl_tcp_if_include<span class="w"> </span>ib0<span class="w"> </span>simpleFoam<span class="w">  </span>-parallel
+
+
+<span class="c1">### 插件包安装</span>
+<span class="c1">## gklib</span>
+make<span class="w"> </span>config<span class="w"> </span><span class="nv">shared</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">openmp</span><span class="o">=</span>ON<span class="w"> </span><span class="nv">cc</span><span class="o">=</span>/opt/rh/devtoolset-7/root/usr/bin/gcc<span class="w"> </span><span class="nv">prefix</span><span class="o">=</span>/work/home/acyzhmmsjm/soft/apps/install/gklib
+make<span class="w"> </span>install
+
+<span class="c1">## metis</span>
+make<span class="w"> </span>config<span class="w"> </span><span class="nv">shared</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">openmp</span><span class="o">=</span>ON<span class="w"> </span><span class="nv">cc</span><span class="o">=</span>/opt/rh/devtoolset-7/root/usr/bin/gcc<span class="w"> </span><span class="nv">prefix</span><span class="o">=</span>/work/home/acyzhmmsjm/soft/apps/install/metis
+make<span class="w"> </span>install
+
+<span class="c1">## parmetis</span>
+make<span class="w"> </span>config<span class="w"> </span><span class="nv">shared</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">openmp</span><span class="o">=</span>ON<span class="w"> </span><span class="nv">cc</span><span class="o">=</span>/opt/rh/devtoolset-7/root/usr/bin/gcc<span class="w"> </span><span class="nv">prefix</span><span class="o">=</span>//work/home/acyzhmmsjm/soft/apps/install/parmetis<span class="w"> </span><span class="nv">gklib_path</span><span class="o">=</span>/work/home/acyzhmmsjm/soft/apps/install/gklib<span class="w"> </span><span class="nv">metis_path</span><span class="o">=</span>/work/home/acyzhmmsjm/soft/apps/install/metis<span class="w"> </span>
+make<span class="w"> </span>install<span class="w"> </span>
+</code></pre></div>
+<blockquote>
+<p>openmpi-1.6.5 编译好的在昆山 <code>/public/home/jsyadmin/tanjj/soft/openmpi-v1.6.5-gcc4.8.5.zip</code></p>
+</blockquote>
+<ul>
+<li>CFDEM</li>
+</ul>
+<p>手册在 <code>https://www.cfdem.com/media/CFDEM/docu/CFDEMcoupling_Manual.html#install-7</code></p>
+<ol>
+<li>加载 openfoam 环境</li>
+</ol>
+<blockquote>
+<p>要先编译好 openfoam</p>
+</blockquote>
+<ol>
+<li>LIGGGHTS 编译</li>
+</ol>
+<blockquote>
+<p>再编译 LIGGGHTS</p>
+</blockquote>
+<p>手册在  <code>https://zhuanlan.zhihu.com/p/664114645</code>
+<code>https://www.cfdem.com/media/DEM/docu/Section_start.html#making-liggghts-r-public</code></p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>LIGGGHTS
+git<span class="w"> </span>clone<span class="w"> </span>git://github.com/CFDEMproject/LIGGGHTS-PUBLIC.git
+git<span class="w"> </span>clone<span class="w"> </span>git://github.com/CFDEMproject/LPP.git<span class="w"> </span>lpp
+
+<span class="nb">cd</span><span class="w"> </span>/.../LIGGGHTS/LIGGGHTS-PUBLIC/src/MAKE
+vim<span class="w"> </span>Makefile.user<span class="w"> </span><span class="c1"># 取消注释 改成 AUTOINSTALLATION_VTK=&quot;ON&quot;</span>
+<span class="nb">cd</span><span class="w"> </span>/.../LIGGGHTS/LIGGGHTS-PUBLIC/lib/vtk<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>下载vtk
+<span class="nb">cd</span><span class="w"> </span>/.../LIGGGHTS/LIGGGHTS-PUBLIC/src/
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">WM_NCOMPPROCS</span><span class="o">=</span><span class="m">10</span><span class="w"> </span><span class="c1"># 10核并行编译</span>
+make<span class="w"> </span>auto
+</code></pre></div>
+<blockquote>
+<p>vtk 这边有 <code>/work/home/jsyadmin/tanjj/soft/vtk.zip</code>  西安</p>
+</blockquote>
+<ol>
+<li>CFDEM 编译</li>
+</ol>
+<p>env 里
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">CFDHOME</span><span class="o">=</span>/work/home/xuwanxin/softwares/CFDEM<span class="w"> </span><span class="c1"># 安装位置</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFDEM_SRC_DIR</span><span class="o">=</span>/work/home/xuwanxin/softwares/CFDEM/CFDEMcoupling-PUBLIC-5.x/src<span class="w">  </span><span class="c1"># 源码位置</span>
+<span class="nb">source</span><span class="w"> </span>/work/home/xuwanxin/apprepo/OpenFOAM_org/v5.x-gcc_9.3.0_openmpi_4.1.5_gcc9.3.0/scripts/env.sh<span class="w"> </span><span class="c1"># of激活</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/work/home/xuwanxin/softwares/CFDEM/LIGGGHTS/LIGGGHTS-PUBLIC/lib/vtk/build/lib:<span class="nv">$LD_LIBRARY_PATH</span><span class="w"> </span><span class="c1"># vtk在LIGGGHTS前先编译好</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFDEM_VERSION</span><span class="o">=</span>PUBLIC
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFDEM_PROJECT_DIR</span><span class="o">=</span><span class="nv">$CFDHOME</span>/CFDEMcoupling-<span class="nv">$CFDEM_VERSION</span>-<span class="nv">$WM_PROJECT_VERSION</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFDEM_PROJECT_USER_DIR</span><span class="o">=</span><span class="nv">$CFDHOME</span>/<span class="nv">$LOGNAME</span>-<span class="nv">$CFDEM_VERSION</span>-<span class="nv">$WM_PROJECT_VERSION</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFDEM_bashrc</span><span class="o">=</span><span class="nv">$CFDEM_PROJECT_DIR</span>/src/lagrangian/cfdemParticle/etc/bashrc
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFDEM_LIGGGHTS_SRC_DIR</span><span class="o">=</span><span class="nv">$CFDHOME</span>/LIGGGHTS/LIGGGHTS-PUBLIC/src
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFDEM_LIGGGHTS_MAKEFILE_NAME</span><span class="o">=</span>auto
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFDEM_LPP_DIR</span><span class="o">=</span><span class="nv">$CFDHOME</span>/LIGGGHTS/lpp/src
+<span class="nb">source</span><span class="w"> </span><span class="nv">$CFDEM_bashrc</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">WM_NCOMPPROCS</span><span class="o">=</span><span class="m">10</span><span class="w">  </span><span class="c1"># 10核编译</span>
+
+cfdemCompCFDEMall<span class="w"> </span><span class="c1"># 全部编译</span>
+</code></pre></div></p>
+<ul>
+<li>dropletInterCanteraFoam</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 先安装Cantera-2.5.0  参考链接：https://zhuanlan.zhihu.com/p/21002053665</span>
+<span class="c1"># 直接用conda 安装，源码安装太多依赖了，费力搞不好</span>
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>cantera_dev<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.8.2<span class="w"> </span>scons<span class="w"> </span>numpy<span class="w"> </span>cython<span class="w"> </span>ruamel_yaml<span class="w"> </span>libboost<span class="w"> </span>h5py<span class="w"> </span>ipython<span class="w"> </span>pytest
+conda<span class="w"> </span>activate<span class="w"> </span>cantera_dev
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>cantera<span class="w"> </span>libcantera-devel<span class="o">=</span><span class="m">2</span>.5.1
+
+<span class="c1"># 然后编译dropletInterCanteraFoam</span>
+<span class="nb">cd</span><span class="w"> </span>/public/home/yuanzerui/dropletInterCanteraFoam/dropletInterCanteraFoam
+<span class="c1">## 环境用gcc的</span>
+cat<span class="w"> </span>env.sh
+<span class="nb">source</span><span class="w"> </span>/public/home/yuanzerui/apprepo/openfoam/v8-gcc9.3.0_openmpi4.1.5/scripts/env.sh<span class="w"> </span>
+<span class="nv">CanteraDir</span><span class="o">=</span><span class="s2">&quot;/public/home/yuanzerui/miniconda3/envs/cantera2.5.0&quot;</span><span class="w"> </span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">CanteraDir</span><span class="si">}</span><span class="s2">/bin&quot;</span><span class="w"> </span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PYTHONPATH</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">CanteraDir</span><span class="si">}</span><span class="s2">/lib/python3.9/site-packages&quot;</span><span class="w"> </span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CanteraDir</span><span class="si">}</span><span class="s2">/lib:</span><span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="c1">## 修改Make/options # 改成conda安装后的实际路径</span>
+<span class="c1">## 其中os.h os_config.h 去源码下一下包https://github.com/adamheinrich/os.h/blob/master/src/os.h</span>
+vim<span class="w"> </span>./Make/files
+dropletInterCanteraFoam.C
+
+<span class="nv">EXE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">$(</span>FOAM_USER_APPBIN<span class="k">)</span>/dropletInterCanteraFoam
+
+vim<span class="w"> </span>./Make/options
+<span class="nv">EXE_INC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-w<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-IliquidThermoTransport<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-IupdateProperties<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/finiteVolume/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/meshTools/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/sampling/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/MomentumTransportModels/momentumTransportModels/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/MomentumTransportModels/compressible/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/thermophysicalModels/specie/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/thermophysicalModels/reactionThermo/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/thermophysicalModels/basic/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/thermophysicalModels/chemistryModel/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/ODE/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/combustionModels/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I/public/home/yuanzerui/miniconda3/envs/cantera2.5.0/include<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I/public/home/yuanzerui/miniconda3/envs/cantera2.5.0/include/cantera/base<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I/public/home/yuanzerui/miniconda3/envs/cantera2.5.0/include/cantera/thermo<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I/public/home/yuanzerui/miniconda3/envs/cantera2.5.0/include/cantera/transport<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I/public/home/yuanzerui/miniconda3/envs/cantera2.5.0/include/cantera/ext<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I/public/home/yuanzerui/miniconda3/envs/cantera2.5.0/include/cantera/ext/fmt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I/public/home/yuanzerui/dropletInterCanteraFoam/dropletInterCanteraFoam/share/os.h-master/src<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I/public/home/yuanzerui/dropletInterCanteraFoam/dropletInterCanteraFoam/share/os.h-master/examples/stm32f030x8
+
+<span class="nv">EXE_LIBS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-L<span class="k">$(</span>FOAM_USER_LIBBIN<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-L<span class="k">$(</span>FOAM_LIBBIN<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lfiniteVolume<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lfvOptions<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lmeshTools<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lsampling<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lspecie<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lreactionThermophysicalModels<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lfluidThermophysicalModels<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lchemistryModel<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lODE<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lcombustionModels<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/public/home/yuanzerui/miniconda3/envs/cantera2.5.0/lib/libcantera_shared.so.2
+
+
+<span class="c1">## 修改  Allwmake.sh</span>
+<span class="c1">#!/bin/bash</span>
+<span class="nb">set</span><span class="w"> </span>-x
+
+<span class="nv">local_or_NSCC</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="p">-local</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># local | NSCC</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$local_or_NSCC</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;NSCC&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nv">CanteraDir_local</span><span class="o">=</span><span class="s2">&quot;/public/home/yuanzerui/miniconda3/envs/cantera2.5.0&quot;</span>
+<span class="w">    </span><span class="nv">CanteraDir_NSCC</span><span class="o">=</span><span class="s2">&quot;/public/home/yuanzerui/miniconda3/envs/cantera2.5.0&quot;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$CanteraDir_NSCC</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s:</span><span class="si">${</span><span class="nv">CanteraDir_local</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">CanteraDir_NSCC</span><span class="si">}</span><span class="s2">:g&quot;</span><span class="w"> </span>Make/options
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No </span><span class="nv">$CanteraDir_NSCC</span><span class="s2"> exits.&quot;</span>
+<span class="w">        </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="k">fi</span>
+
+<span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">0</span><span class="p">%/*</span><span class="si">}</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span><span class="w">    </span><span class="c1"># Run from this directory</span>
+
+wmake
+
+<span class="c1"># 编译</span>
+./Allwmake.sh
+
+<span class="c1"># 运行脚本</span>
+<span class="c1">#!/bin/bash</span>
+
+<span class="c1">#SBATCH -J test # 作业名</span>
+<span class="c1">#SBATCH -p kshcnormal # 队列名</span>
+<span class="c1">#SBATCH -N 2 # 节点个数</span>
+<span class="c1">#SBATCH --ntasks-per-node=2  # 每节点进程数</span>
+
+<span class="c1"># of环境激活 不需要修改</span>
+<span class="nb">source</span><span class="w"> </span>/public/home/yuanzerui/apprepo/openfoam/v8-gcc9.3.0_openmpi4.1.5/scripts/env-drop.sh<span class="w"> </span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">UCX_IB_ADDR_TYPE</span><span class="o">=</span>ib_global<span class="w">  </span><span class="c1"># 通信变量置于后面最好</span>
+
+<span class="c1"># of运行指令 根据算例自行修改不同指令</span>
+cp<span class="w"> </span><span class="s2">&quot;CH3OH.yaml&quot;</span><span class="w"> </span><span class="s2">&quot;tmp.yaml&quot;</span>
+./generateMesh.sh
+cp<span class="w"> </span>-r<span class="w"> </span><span class="m">0</span>.org<span class="w"> </span><span class="m">0</span>
+setFields<span class="w"> </span>-dict<span class="w"> </span><span class="s2">&quot;system/setFieldsDict.setDroplet&quot;</span>
+setFields<span class="w"> </span>-dict<span class="w"> </span><span class="s2">&quot;system/setFieldsDict.ignite&quot;</span>
+decomposePar<span class="w"> </span>-cellDist<span class="w"> </span>-force<span class="w">  </span><span class="c1"># 分区要与实际进程数一致 总进程数=节点个数*每节点进程数 与 system/decomposeParDict 里的一致</span>
+rm<span class="w"> </span>constant/cellDecomposition
+mpirun<span class="w">  </span>dropletInterCanteraFoam<span class="w"> </span>-parallel
+</code></pre></div>
+<blockquote>
+<p>手册如下：
+![[Readme.pdf]]</p>
+</blockquote>
+<ul>
+<li>
+<p>高版本编译报错
+<div class="highlight"><pre><span></span><code><span class="c1"># 13 icc不行要用 icx 也就是intelonempi</span>
+<span class="o">[</span>jsyadmin@tylogin02<span class="w"> </span>OpenFOAM-13<span class="o">]</span>$<span class="w"> </span>./Allwmake<span class="w"> </span>-j<span class="w"> </span><span class="m">2</span>
+Compiling<span class="w"> </span>enabled<span class="w"> </span>on<span class="w"> </span><span class="m">2</span><span class="w"> </span>cores
+Allwmake<span class="w"> </span>/work/home/jsyadmin/tanjj/soft/openfoam/icc21-intelmpi21/OpenFOAM-13
+/work/home/jsyadmin/tanjj/soft/openfoam/icc21-intelmpi21/OpenFOAM-13/wmake/rules/General/general:27:<span class="w"> </span>/work/home/jsyadmin/tanjj/soft/openfoam/icc21-intelmpi21/OpenFOAM-13/wmake/rules/linux64Icc/general:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
+/work/home/jsyadmin/tanjj/soft/openfoam/icc21-intelmpi21/OpenFOAM-13/wmake/rules/General/general:28:<span class="w"> </span>/work/home/jsyadmin/tanjj/soft/openfoam/icc21-intelmpi21/OpenFOAM-13/wmake/rules/linux64Icc/c++:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
+make:<span class="w"> </span>***<span class="w"> </span>No<span class="w"> </span>rule<span class="w"> </span>to<span class="w"> </span>make<span class="w"> </span>target<span class="w"> </span><span class="sb">`</span>/work/home/jsyadmin/tanjj/soft/openfoam/icc21-intelmpi21/OpenFOAM-13/wmake/rules/linux64Icc/c++<span class="err">&#39;</span>.<span class="w">  </span>Stop.
+</code></pre></div></p>
+</li>
+<li>
+<p>rehotool 编译
+<div class="highlight"><pre><span></span><code><span class="c1"># 手册</span>
+https://github.com/fppimenta/rheoTool/tree/master/doc
+
+<span class="c1">## petsc 装不上直接拉平台的</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PETSC_DIR</span><span class="o">=</span>/work/home/aciqdjdj1s/apprepo/petsc/3.19.5-hpcx/app<span class="w"> </span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/work/home/aciqdjdj1s/apprepo/petsc/3.19.5-hpcx/app/lib:<span class="nv">$LD_LIBRARY_PATH</span><span class="w"> </span>
+<span class="c1">## EIGEN_RHEO好装</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">EIGEN_RHEO</span><span class="o">=</span>/work/home/aciqdjdj1s/OpenFOAM/aciqdjdj1s-9/ThirdParty/Eigen3.2.9
+<span class="c1">## hypre 也好装</span>
+<span class="w"> </span><span class="c1"># 要链接上lib和头文件 Make/options 里 一个个改的我</span>
+-I/work/home/aciqdjdj1s/OpenFOAM/aciqdjdj1s-9/ThirdParty/hypre-2.28.0/install/include<span class="w"> </span><span class="se">\</span>
+-L/work/home/aciqdjdj1s/OpenFOAM/aciqdjdj1s-9/ThirdParty/hypre-2.28.0/install/lib<span class="w"> </span>-lHYPRE<span class="w"> </span><span class="se">\</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PFLAGS</span><span class="o">=</span><span class="s2">&quot;-I/work/home/aciqdjdj1s/OpenFOAM/aciqdjdj1s-9/ThirdParty/hypre-2.28.0/install/include&quot;</span><span class="w"> </span><span class="c1"># 好像没用</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PLIBS</span><span class="o">=</span><span class="s2">&quot;-L/work/home/aciqdjdj1s/OpenFOAM/aciqdjdj1s-9/ThirdParty/hypre-2.28.0/install/lib -lHYPRE&quot;</span><span class="w"> </span><span class="c1"># 好像没用</span>
+
+
+./Allwmake<span class="w"> </span>-j4
+</code></pre></div></p>
+</li>
+</ul>
+<h3 id="12">1.2 求解器编译改造</h3>
+<p>源码改造目录下有源码和 Make 目录应该
+<div class="highlight"><pre><span></span><code><span class="o">[</span>glory27@login10<span class="w"> </span>processInterfaceTransfer<span class="o">]</span>$<span class="w"> </span>ls<span class="w"> </span>-R
+Make<span class="w">  </span>processInterfaceTransfer.C
+
+./Make:
+files<span class="w">  </span>linux64GccDPInt32Opt<span class="w">  </span>options
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># files里</span>
+processInterfaceTransfer.C<span class="w"> </span><span class="c1">#要编译的源码</span>
+
+<span class="nv">EXE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">$(</span>GCFOAM_APPBIN<span class="k">)</span>/processInterfaceTransfer<span class="w"> </span><span class="c1"># 编译后指定的可执行文件</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># option 里</span>
+
+<span class="nv">EXE_INC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># OpenFOAM-v2212/src 里找</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/transportModels<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/transportModels/incompressible/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/thermophysicalModels/specie/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/finiteVolume/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/meshTools/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/transportModels/tw<span class="o">[]()</span>oPhaseProperties/lnInclude<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-I<span class="k">$(</span>LIB_SRC<span class="k">)</span>/transportModels/twoPhaseMixture/lnInclude
+
+<span class="nv">EXE_LIBS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># OpenFOAM-v2212/platforms/linux64GccDPInt32Opt/lib/ 里找</span>
+<span class="w">    </span>-lincompressibleTransportModels<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lspecie<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-lfiniteVolume<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-ltwoPhaseProperties
+
+<span class="c1"># 可以用grep 筛查出来</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>wmake<span class="w"> </span>processInterfaceTransfer.C<span class="w"> </span><span class="c1"># 开始编译</span>
+wclean<span class="w"> </span><span class="se">\ </span>wmake<span class="w"> </span>clean<span class="w"> </span><span class="c1"># 清除</span>
+</code></pre></div>
+<h2 id="2">2 脚本相关</h2>
+<h3 id="21-singularity-openfoam">2.1 singularity 运行 openfoam</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J test  # 作业名称</span>
+<span class="c1">#SBATCH -p xahcnormal #指定分区</span>
+<span class="c1">#SBATCH -N 1 #请求1个节点</span>
+<span class="c1">#SBATCH --ntasks-per-node=1 #每个节点1个任务</span>
+<span class="c1">##SBATCH -c 32 #每个任务32个线程</span>
+
+<span class="c1">#-J test：作业名称</span>
+<span class="c1">#-p xahctest：指定分区</span>
+<span class="c1">#-N 1：请求1个节点</span>
+<span class="c1">#--ntasks-per-node=1：每个节点1个任务</span>
+<span class="c1">#-c 32：每个任务32个CPU核心</span>
+
+<span class="c1">#source ../scripts/env.sh</span>
+<span class="c1">#source /work/home/jsyadmin/L4/wys/shangcheng/sci_package_supplement/202503/openfoam/openfoam7_adapter_precice2.5.0_package/scripts/env.sh</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">COMMAND</span><span class="o">=</span><span class="s2">&quot;</span>
+<span class="s2">cd fluid-bottom-openfoam</span>
+<span class="s2">./run.sh &amp;&gt; log1 &amp;</span>
+
+<span class="s2">cd ..</span>
+<span class="s2">cd fluid-top-openfoam</span>
+<span class="s2">./run.sh &amp;&gt; log2 &amp;</span>
+
+<span class="s2">cd ..</span>
+<span class="s2">cd solid-calculix</span>
+<span class="s2">./run.sh &amp;&gt; log3 &amp;</span>
+
+<span class="s2">wait</span>
+<span class="s2">&quot;</span>
+
+srun<span class="w"> </span>--mpi<span class="o">=</span>pmix_v3<span class="w"> </span>singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-B<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">WHERE_IS_SIF</span><span class="si">}</span><span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">singularity exec -B </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">WHERE_IS_SIF</span><span class="si">}</span><span class="s2"> bash -c &quot;</span>
+<span class="nb">source</span><span class="w"> </span>/opt/openfoam7/etc/bashrc
+<span class="nv">$COMMAND</span>
+<span class="s2">&quot;</span>
+</code></pre></div>
+<h1 id="3-faq">3 FAQ</h1>
+<h2 id="mpi">mpi</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># of 用低版本openmpi 1.6.5 不支持 ucx  报错如下，</span>
+--------------------------------------------------------------------------
+WARNING:<span class="w"> </span>No<span class="w"> </span>preset<span class="w"> </span>parameters<span class="w"> </span>were<span class="w"> </span>found<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>device<span class="w"> </span>that<span class="w"> </span>Open<span class="w"> </span>MPI
+detected:
+
+<span class="w">  </span>Local<span class="w"> </span>host:<span class="w">            </span>a03r2n05
+<span class="w">  </span>Device<span class="w"> </span>name:<span class="w">           </span>mlx5_0
+<span class="w">  </span>Device<span class="w"> </span>vendor<span class="w"> </span>ID:<span class="w">      </span>0x02c9
+<span class="w">  </span>Device<span class="w"> </span>vendor<span class="w"> </span>part<span class="w"> </span>ID:<span class="w"> </span><span class="m">4123</span>
+
+Default<span class="w"> </span>device<span class="w"> </span>parameters<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>used,<span class="w"> </span>which<span class="w"> </span>may<span class="w"> </span>result<span class="w"> </span><span class="k">in</span><span class="w"> </span>lower
+performance.<span class="w">  </span>You<span class="w"> </span>can<span class="w"> </span>edit<span class="w"> </span>any<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>files<span class="w"> </span>specified<span class="w"> </span>by<span class="w"> </span>the
+btl_openib_device_param_files<span class="w"> </span>MCA<span class="w"> </span>parameter<span class="w"> </span>to<span class="w"> </span><span class="nb">set</span><span class="w"> </span>values<span class="w"> </span><span class="k">for</span><span class="w"> </span>your
+device.
+
+NOTE:<span class="w"> </span>You<span class="w"> </span>can<span class="w"> </span>turn<span class="w"> </span>off<span class="w"> </span>this<span class="w"> </span>warning<span class="w"> </span>by<span class="w"> </span>setting<span class="w"> </span>the<span class="w"> </span>MCA<span class="w"> </span>parameter
+<span class="w">      </span>btl_openib_warn_no_device_params_found<span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.
+--------------------------------------------------------------------------
+
+<span class="c1"># mpirun加上这些参数，高版本openmpi不用，走ucx参数</span>
+mpirun<span class="w">  </span>--mca<span class="w"> </span>btl<span class="w"> </span>self,tcp<span class="w"> </span>--mca<span class="w"> </span>btl_tcp_if_include<span class="w"> </span>ib0<span class="w"> </span>pimpleDyMFoam<span class="w"> </span>-parallel<span class="w"> </span>&gt;<span class="w"> </span>log.pimpleDyMFoam
+</code></pre></div>
+<ul>
+<li>Duplicate Entry 解决办法
+https://zhuanlan.zhihu.com/p/356859133</li>
+</ul>
+<div class="highlight"><pre><span></span><code>srun<span class="w"> </span>--mpi<span class="o">=</span>pmix_v3<span class="w"> </span>--exclusive<span class="w"> </span>-n<span class="w"> </span><span class="m">8</span><span class="w"> </span>fluidSwimmingFoam<span class="w"> </span>-parallel<span class="w"> </span>&gt;<span class="w"> </span>log<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="c1"># 一个作业同时算多个算例 </span>
+</code></pre></div>
+<ul>
+<li>
+<p>通信
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">UCX_TLS</span><span class="o">=</span>self,tcp,rc,rc_mlx5,ud,ud_mlx5,mm,cma<span class="w"> </span>
+</code></pre></div></p>
+</li>
+<li>
+<p>A 区通信问题
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">UCX_NET_DEVICES</span><span class="o">=</span>ib0
+<span class="nb">export</span><span class="w"> </span><span class="nv">FI_PROVIDER</span><span class="o">=</span>psm2
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">I_MPI_FABRICS</span><span class="o">=</span>shm:ofi
+</code></pre></div></p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

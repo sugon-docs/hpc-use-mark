@@ -1,0 +1,1427 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Workbench - hpc-use-mark</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#workbench" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="hpc-use-mark" class="md-header__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            hpc-use-mark
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Workbench
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="hpc-use-mark" class="md-nav__button md-logo" aria-label="hpc-use-mark" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    hpc-use-mark
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    软件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    软件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abaqus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    abaqus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ansysem%20hfss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ansysem hfss
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apdl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    apdl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autodyna/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    autodyna
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ccx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ccx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CFD%2B%2B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFD++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CFX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemkin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    chemkin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comsol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    comsol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../converge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    converge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpfd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cpfd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    edem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fdtd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fdtd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    feko
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fidelityCharles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fidelityCharles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fluent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IBAMR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IBAMR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../noe" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    科学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    气象
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    异构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    智能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集群
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    集群
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Styling your docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../none" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    非集群tip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#workbench" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        workbench
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="workbench">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        启动命令行无需添加什么参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maxwellansysem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        与 maxwell（ansysem） 集成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        并行配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        日常查看
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tip
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报错
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h2 id="workbench">workbench</h2>
+<h3 id="_1">启动命令行无需添加什么参数</h3>
+<h3 id="maxwellansysem">与 maxwell（ansysem） 集成</h3>
+<p>在 maxwell 中
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/public/home/jsyadmin/apprepo/maxwell/2021r1-none/app/AnsysEM21.1/Linux64/scripts
+
+./IntegrateWithANSYS21.1.pl
+
+<span class="o">[</span>jsyadmin@vncserver01<span class="w"> </span>scripts<span class="o">]</span>$<span class="w"> </span>./IntegrateWithANSYS21.1.pl<span class="w"> </span>
+ANSYS<span class="w"> </span>Electromagnetics<span class="w"> </span><span class="m">21</span>.1:<span class="w"> </span>Modify<span class="w"> </span>Integration<span class="w"> </span>with<span class="w"> </span>ANSYS<span class="w"> </span><span class="m">21</span>.1
+<span class="o">===============================================================</span>
+Would<span class="w"> </span>you<span class="w"> </span>like<span class="w"> </span>to<span class="w"> </span>add<span class="w"> </span>or<span class="w"> </span>remove<span class="w"> </span>the<span class="w"> </span>integration<span class="w"> </span><span class="o">[</span>add<span class="p">|</span>remove<span class="p">|</span>quit<span class="o">]</span>?<span class="w"> </span>add<span class="w"> </span>
+***<span class="w"> </span>Invalid<span class="w"> </span>action<span class="w"> </span>YES.<span class="w">  </span>Please<span class="w"> </span>re-enter:<span class="w"> </span>add
+
+Please<span class="w"> </span>specify<span class="w"> </span>the<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>ANSYS<span class="w"> </span><span class="m">21</span>.1<span class="w"> </span>installation<span class="w"> </span>directory<span class="w"> </span><span class="o">(</span>q<span class="w"> </span>to<span class="w"> </span>quit<span class="o">)</span>
+&gt;<span class="w"> </span>/public/home/jsyadmin/apprepo/workbench/2021r1-none/app/v211
+
+Created:<span class="w"> </span>/public/home/jsyadmin/apprepo/workbench/2021r1-none/app/v211/commonfiles/registry/linx64/AnsoftPreferences.xml
+Created:<span class="w"> </span>/public/home/jsyadmin/apprepo/workbench/2021r1-none/app/v211/Addins/Configuration/Ansoft.xml
+
+Integration<span class="w"> </span>added.
+
+
+<span class="c1"># workbench的安装路径到v211那一层  /public/home/jsyadmin/apprepo/workbench/2021r1-none/app/v211</span>
+</code></pre></div></p>
+<p>测试：在 workbench 中，启动可见左侧功能树中有 <code>HFSS、maxwell2d、、、</code> 即成功</p>
+<h3 id="_2">并行配置</h3>
+<p>![[workbench操作.pdf]]</p>
+<blockquote>
+<p>mechanical 里的总运行核数也要设置一下再</p>
+</blockquote>
+<h3 id="_3">日常查看</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 可以切换到节点上</span>
+top<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>查看进程
+<span class="c1">##如下</span>
+top<span class="w"> </span>-<span class="w"> </span><span class="m">14</span>:46:28<span class="w"> </span>up<span class="w"> </span><span class="m">116</span><span class="w"> </span>days,<span class="w">  </span><span class="m">4</span>:53,<span class="w">  </span><span class="m">2</span><span class="w"> </span>users,<span class="w">  </span>load<span class="w"> </span>average:<span class="w"> </span><span class="m">78</span>.47,<span class="w"> </span><span class="m">79</span>.18,<span class="w"> </span><span class="m">80</span>.01
+Tasks:<span class="w"> </span><span class="m">1340</span><span class="w"> </span>total,<span class="w">  </span><span class="m">82</span><span class="w"> </span>running,<span class="w"> </span><span class="m">1258</span><span class="w"> </span>sleeping,<span class="w">   </span><span class="m">0</span><span class="w"> </span>stopped,<span class="w">   </span><span class="m">0</span><span class="w"> </span>zombie
+%Cpu<span class="o">(</span>s<span class="o">)</span>:<span class="w"> </span><span class="m">90</span>.4<span class="w"> </span>us,<span class="w">  </span><span class="m">9</span>.4<span class="w"> </span>sy,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>ni,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>id,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>wa,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>hi,<span class="w">  </span><span class="m">0</span>.3<span class="w"> </span>si,<span class="w">  </span><span class="m">0</span>.0<span class="w"> </span>st
+KiB<span class="w"> </span>Mem<span class="w"> </span>:<span class="w"> </span><span class="m">26168512</span>+total,<span class="w"> </span><span class="m">67930776</span><span class="w"> </span>free,<span class="w"> </span><span class="m">11343240</span>+used,<span class="w"> </span><span class="m">80321952</span><span class="w"> </span>buff/cache
+KiB<span class="w"> </span>Swap:<span class="w">        </span><span class="m">0</span><span class="w"> </span>total,<span class="w">        </span><span class="m">0</span><span class="w"> </span>free,<span class="w">        </span><span class="m">0</span><span class="w"> </span>used.<span class="w"> </span><span class="m">14290713</span>+avail<span class="w"> </span>Mem<span class="w"> </span>
+
+<span class="w">  </span>PID<span class="w"> </span>USER<span class="w">      </span>PR<span class="w">  </span>NI<span class="w">    </span>VIRT<span class="w">    </span>RES<span class="w">    </span>SHR<span class="w"> </span>S<span class="w">  </span>%CPU<span class="w"> </span>%MEM<span class="w">     </span>TIME+<span class="w"> </span>COMMAND<span class="w">                                                                                                               </span>
+<span class="m">11000</span><span class="w"> </span>shenjun+<span class="w">  </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">6096436</span><span class="w">   </span><span class="m">2</span>.1g<span class="w"> </span><span class="m">561736</span><span class="w"> </span>R<span class="w">  </span><span class="m">94</span>.8<span class="w">  </span><span class="m">0</span>.9<span class="w"> </span><span class="m">180</span>:37.88<span class="w"> </span>ansys.e<span class="w">                                                                                                                                                                                                                           </span>
+<span class="m">3721</span><span class="w"> </span>shenjun+<span class="w">  </span><span class="m">20</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">2034176</span><span class="w"> </span><span class="m">799056</span><span class="w">  </span><span class="m">80164</span><span class="w"> </span>R<span class="w">  </span><span class="m">26</span>.5<span class="w">  </span><span class="m">0</span>.3<span class="w">  </span><span class="m">63</span>:01.69<span class="w"> </span>fluent_mpi.22.1<span class="w">                                          </span>
+
+
+<span class="c1"># ansys.e 为结构运行进程 fluent_mpi.22.1  为流体进程</span>
+pwdx<span class="w"> </span><span class="m">11000</span><span class="w"> </span><span class="c1"># 进程号</span>
+<span class="c1">## 如下</span>
+<span class="m">11000</span>:<span class="w"> </span>/work/home/shenjunyan/sjy/fsi-8.7/_ProjectScratch/Scr1A9B
+<span class="c1">## 结构日志</span>
+/work/home/shenjunyan/sjy/fsi-8.7/_ProjectScratch/Scr1A9B/solve.out
+<span class="c1">## 流体日志</span>
+/work/home/shenjunyan/sjy/fsi-8.7/fsi_files/dp0/FFF-1/Fluent/olution.trn
+</code></pre></div>
+<h1 id="tip">tip</h1>
+<div class="highlight"><pre><span></span><code>workbench双向流固耦合的话，每个模块尽量别超过3/4的核，因为计算模式是流体计算（固体休眠）-固体计算（流体休眠）-流体计算（固体休眠）...<span class="w"> </span>需要留一部分给休眠程序
+
+比如64就是固体48，流体48试试
+</code></pre></div>
+<h1 id="_4">报错</h1>
+<ul>
+<li>打开错误</li>
+</ul>
+<p>![[Pasted image 20250828203819.png]]</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 遇到类似的报错 重装一下软件  优先删除  </span>
+rm<span class="w"> </span>-fr<span class="w"> </span>~/.mw/<span class="s1">&#39;Application Data&#39;</span>/Ansys/v211<span class="w"> </span><span class="c1"># 应该是这个有效了 </span>
+<span class="c1"># 其他的  ~/.ansys   ~/.config/Ansys/  也可以尝试 反正就是home目录下的一些配置文件</span>
+</code></pre></div>
+<ul>
+<li>
+<p>单机错误
+<div class="highlight"><pre><span></span><code><span class="c1"># 单机裸金属运行 注意 </span>
+https://zhuanlan.zhihu.com/p/445792522
+
+<span class="c1"># 如图，取消图中Distributed的勾选</span>
+File-&gt;<span class="o">[</span>Solve<span class="w"> </span>Process<span class="w"> </span>Settings<span class="w"> </span>-&gt;Advanced...，取消勾选Distribute<span class="w"> </span>Solution<span class="o">(</span><span class="k">if</span><span class="w"> </span>possible<span class="o">)</span>
+
+<span class="c1"># mpi并行的问题</span>
+
+-mpi<span class="w"> </span>msmpi<span class="w"> </span><span class="c1"># 微软mpi</span>
+
+-mpi<span class="w"> </span>intel2018<span class="w"> </span><span class="c1">#linux </span>
+</code></pre></div>
+![[Pasted image 20250915130558.png]]</p>
+</li>
+<li>
+<p>system coupling 闪退
+<div class="highlight"><pre><span></span><code><span class="c1"># system coupling 闪退</span>
+/ansys_inc/v201/Framework/bin/Linux64/runwb2<span class="w"> </span>-oglmesa<span class="w"> </span>
+</code></pre></div></p>
+</li>
+<li>
+<p>252 QT 库报错</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 报错</span>
+Unhandled<span class="w"> </span>exception<span class="w"> </span>caught<span class="w"> </span>:
+
+System.EntryPointNotFoundException:<span class="w"> </span>ans_qt_Application_setPluginDirectory<span class="w"> </span>assembly:&lt;unknown<span class="w"> </span>assembly&gt;<span class="w"> </span>type:&lt;unknown<span class="w"> </span>type&gt;<span class="w"> </span>member:<span class="o">(</span>null<span class="o">)</span>
+<span class="w">  </span>at<span class="w"> </span><span class="o">(</span>wrapper<span class="w"> </span>managed-to-native<span class="o">)</span><span class="w"> </span>Ansys.UI.Toolkit.QTC.Application.ans_qt_Application_setPluginDirectory<span class="o">(</span>intptr,string<span class="o">)</span>
+<span class="w">  </span>at<span class="w"> </span>Ansys.UI.Toolkit.QT.Application.SetPluginDirectory<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">[</span>0x000cb<span class="o">]</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;49401e93f6e2458298921567776382b9&gt;:0<span class="w"> </span>
+<span class="w">  </span>at<span class="w"> </span>Ansys.UI.Toolkit.QT.Application..ctor<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">[</span>0x00006<span class="o">]</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;49401e93f6e2458298921567776382b9&gt;:0<span class="w"> </span>
+<span class="w">  </span>at<span class="w"> </span>Ansys.UI.Toolkit.QT.UIFactory.newApplication<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">[</span>0x00000<span class="o">]</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;49401e93f6e2458298921567776382b9&gt;:0<span class="w"> </span>
+<span class="w">  </span>at<span class="w"> </span>Ansys.UI.Toolkit.UIFactory.newApplication<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">[</span>0x0000c<span class="o">]</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;ab1cbf05066b4d5395ed2a5be5d88bcc&gt;:0<span class="w"> </span>
+<span class="w">  </span>at<span class="w"> </span>Ansys.UI.Toolkit.Application.InstantiateIApplication<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">[</span>0x00000<span class="o">]</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;ab1cbf05066b4d5395ed2a5be5d88bcc&gt;:0<span class="w"> </span>
+<span class="w">  </span>at<span class="w"> </span>Ansys.UI.Toolkit.Application..cctor<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">[</span>0x0000a<span class="o">]</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;ab1cbf05066b4d5395ed2a5be5d88bcc&gt;:0<span class="w"> </span>
+---<span class="w"> </span>System.TypeInitializationException:<span class="w"> </span>The<span class="w"> </span><span class="nb">type</span><span class="w"> </span>initializer<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s1">&#39;Ansys.UI.Toolkit.Application&#39;</span><span class="w"> </span>threw<span class="w"> </span>an<span class="w"> </span>exception.
+<span class="w">  </span>at<span class="w"> </span>Ansys.UI.UIManager..ctor<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">[</span>0x00055<span class="o">]</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;87eea9da8b5d4479bad739440ab2bdde&gt;:0<span class="w"> </span>
+<span class="w">  </span>at<span class="w"> </span>Ansys.UI.UIManager.get_Instance<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">[</span>0x00023<span class="o">]</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;87eea9da8b5d4479bad739440ab2bdde&gt;:0<span class="w"> </span>
+<span class="w">  </span>at<span class="w"> </span>Ans.Program.Runtime.InitializeSplashScreen<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">[</span>0x00057<span class="o">]</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;b65a1b8249984f848ddc454acf0e29ab&gt;:0<span class="w"> </span>
+<span class="w">  </span>at<span class="w"> </span>Ans.Program.Runtime.Initialize<span class="w"> </span><span class="o">(</span>Ans.Program.RuntimeSettings<span class="w"> </span>settings<span class="o">)</span><span class="w"> </span><span class="o">[</span>0x0021e<span class="o">]</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;b65a1b8249984f848ddc454acf0e29ab&gt;:0<span class="w"> </span>
+<span class="w">  </span>at<span class="w"> </span>Ans.Program.ExecutableBase.Run<span class="w"> </span><span class="o">(</span>Ans.Program.CommandLineParse<span class="w"> </span>parser<span class="o">)</span><span class="w"> </span><span class="o">[</span>0x0000d<span class="o">]</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;469c1bc1266c4a148d3547bd3be89b39&gt;:0<span class="w"> </span>
+<span class="w">  </span>at<span class="w"> </span>Ans.Program.ExecutableBase.DoMain<span class="w"> </span><span class="o">(</span>System.String<span class="o">[]</span><span class="w"> </span>args<span class="o">)</span><span class="w"> </span><span class="o">[</span>0x000c8<span class="o">]</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;469c1bc1266c4a148d3547bd3be89b39&gt;:0<span class="w"> </span>
+
+<span class="c1"># 替换这个下面的lib 用fluent 的 /work/share/hushuming_001/softs/ansys/252/ansys_inc/v252/fluent/lib/lnamd64/Qt/lib</span>
+/work/share/hushuming_001/softs/ansys/252/ansys_inc/v252/tp/qt/5.15.18/linx64
+</code></pre></div>
+<ul>
+<li>mechanical 界面里 solve 会闪退，这边 update
+![[Pasted image 20251106154634.png]]</li>
+<li>
+<p>mechanical  里设置 mpi
+<div class="highlight"><pre><span></span><code>-mpi<span class="w"> </span>intel2018<span class="w"> </span><span class="c1"># 23 24版本 linux</span>
+</code></pre></div>
+![[Pasted image 20251106154843.png]]</p>
+</li>
+<li>
+<p>![[dbf4e9b1b99c29bb0b0fc48671d3770f.png]]
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">KMP_AFFINITY</span><span class="o">=</span>disabled<span class="w"> </span><span class="c1"># 取消 OpenMP 线程与 CPU 核心的固定绑定</span>
+</code></pre></div></p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
